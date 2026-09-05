@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Countersign discovers what a company is, proposes the risk domains and the controls that cover them, runs those controls on a schedule, and brings a person only the findings that need a signature.">
+  <title>Countersign · the second line, running</title>
+  <link rel="icon" href="/assets/mark.svg">
+  <link rel="stylesheet" href="/assets/app.css">
+</head>
+<body>
+
+<div id="toast-region" class="toast-region" aria-live="polite"></div>
+
+<header class="shellbar">
+  <div class="shellbar-left">
+    <a class="wordmark" href="#overview" aria-label="Countersign home">
+      <img src="/assets/mark.svg" alt="" class="brand-mark" width="22" height="22">
+      <span>Countersign</span>
+    </a>
+    <span class="shellbar-divider" aria-hidden="true"></span>
+    <label class="tenant-switch">
+      <span class="visually-hidden">Tenant</span>
+      <select id="tenant-select"></select>
+    </label>
+  </div>
+  <div class="shellbar-right">
+    <span id="mode-pill" class="shell-pill" title="Which engine produced the reports on screen"></span>
+    <span id="chain-pill" class="shell-pill" title="Audit chain integrity"></span>
+    <button id="auth-button" class="shell-button">Sign in</button>
+    <span id="avatar" class="avatar" hidden></span>
+  </div>
+</header>
+
+<div class="shell">
+  <nav class="sidenav" aria-label="Primary">
+    <button class="nav-item is-active" data-view="overview"><span class="nav-icon" aria-hidden="true">◧</span><span>Overview</span></button>
+    <button class="nav-item" data-view="discovery"><span class="nav-icon" aria-hidden="true">◎</span><span>Discovery</span></button>
+    <button class="nav-item" data-view="domains"><span class="nav-icon" aria-hidden="true">◈</span><span>Risk domains</span><b id="badge-domains" class="nav-badge" hidden>0</b></button>
+    <button class="nav-item" data-view="controls"><span class="nav-icon" aria-hidden="true">▦</span><span>Controls</span></button>
+    <button class="nav-item" data-view="findings"><span class="nav-icon" aria-hidden="true">⚑</span><span>Findings</span><b id="badge-findings" class="nav-badge" hidden>0</b></button>
+    <button class="nav-item" data-view="register"><span class="nav-icon" aria-hidden="true">§</span><span>Obligations</span></button>
+    <button class="nav-item" data-view="activity"><span class="nav-icon" aria-hidden="true">≡</span><span>Activity</span></button>
+    <div class="sidenav-foot">
+      <p class="sidenav-note" id="as-of-note"></p>
+    </div>
+  </nav>
+
+  <main class="workspace">
+    <div id="page-header" class="page-header"></div>
+    <div id="content" class="content" aria-live="polite"></div>
+  </main>
+</div>
+
+<dialog id="dialog" class="dialog">
+  <form id="dialog-form" method="dialog" class="dialog-card">
+    <div class="dialog-head">
+      <div>
+        <p class="eyebrow" id="dialog-kicker"></p>
+        <h2 id="dialog-title"></h2>
+      </div>
+      <button type="button" id="dialog-close" class="icon-button" aria-label="Close">&times;</button>
+    </div>
+    <p class="muted" id="dialog-copy"></p>
+    <div id="dialog-fields"></div>
+    <p class="form-error" id="dialog-error" role="alert"></p>
+    <div class="dialog-actions">
+      <button type="button" id="dialog-cancel" class="button">Cancel</button>
+      <button type="submit" id="dialog-submit" class="button emphasized">Confirm</button>
+    </div>
+  </form>
+</dialog>
+
+<script src="/assets/app.js" defer></script>
+<script src="/assets/demo.js" defer></script>
+</body>
+</html>
