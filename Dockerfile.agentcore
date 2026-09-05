@@ -1,0 +1,44 @@
+# The Amazon Bedrock AgentCore runtime.
+#
+# Stateless. It exposes /ping and /invocations, runs the Strands agents, and
+# returns their structured output. It holds no database and its IAM role grants
+# model invocation and telemetry only, so a compromised runtime cannot reach a
+# tenant's canonical state.
+#
+# AgentCore runs ARM64. Build with:
+#   docker buildx build --platform linux/arm64 -f Dockerfile.agentcore -t <ecr>:<tag> --push .
+
+FROM --platform=linux/arm64 python:3.12-slim AS builder
+
+ENV PIP_NO_CACHE_DIR=1
+WORKDIR /build
+COPY requirements.lock ./
+RUN python -m pip install setuptools==80.9.0 \
+    && python -m pip install --require-hashes -r requirements.lock
+COPY pyproject.toml README.md LICENSE ./
+COPY src ./src
+RUN python -m pip wheel --no-deps --no-build-isolation . --wheel-dir /wheels
+
+FROM --platform=linux/arm64 python:3.12-slim AS runtime
+
+ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 PIP_NO_CACHE_DIR=1 \
+    COUNTERSIGN_MODEL_MODE=bedrock \
+    COUNTERSIGN_SESSION_PATH=/app/data/strands-sessions
+WORKDIR /app
+
+RUN addgroup --system countersign \
+    && adduser --system --ingroup countersign --home /app countersign
+
+COPY requirements.lock ./
+COPY --from=builder /wheels /wheels
+RUN python -m pip install --require-hashes -r requirements.lock \
+    && python -m pip install --no-deps /wheels/countersign-1.0.0-py3-none-any.whl \
+    && rm -rf /wheels requirements.lock
+
+RUN mkdir -p /app/data && chown -R countersign:countersign /app
+USER countersign
+EXPOSE 8080
+HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \
+  CMD python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/ping', timeout=2)"
+
+CMD ["uvicorn", "countersign.agentcore:app", "--host", "0.0.0.0", "--port", "8080"]
