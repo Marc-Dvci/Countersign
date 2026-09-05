@@ -117,7 +117,7 @@ def main() -> int:
     listing = HERE / "concat.txt"
     silence = SPEECH / "gap.wav"
     subprocess.run(
-        ["ffmpeg", "-y", "-f", "lavfi", "-i", f"anullsrc=r=24000:cl=mono", "-t", str(GAP),
+        ["ffmpeg", "-y", "-f", "lavfi", "-i", "anullsrc=r=24000:cl=mono", "-t", str(GAP),
          "-c:a", "pcm_s16le", str(silence)],
         check=True, capture_output=True,
     )
@@ -145,7 +145,7 @@ def main() -> int:
 
     cues = []
     cursor = 0.0
-    for index, (line, length) in enumerate(zip(lines, seconds), start=1):
+    for index, (line, length) in enumerate(zip(lines, seconds, strict=True), start=1):
         cues.append(
             f"{index}\n{timestamp(cursor)} --> {timestamp(cursor + length - 0.1)}\n{line}\n"
         )
