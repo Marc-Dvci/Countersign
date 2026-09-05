@@ -1,0 +1,193 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" width="1400" height="900" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" role="img" aria-labelledby="title desc">
+  <title id="title">Countersign architecture</title>
+  <desc id="desc">Read-only connectors feed two Strands agent graphs. The onboarding graph proposes an enterprise profile, risk domains and controls, which a person must accept and approve before anything is scheduled. On every scheduled run the deterministic test registry walks the full population and counts the outcome before any model is invoked; the review graph then writes the report and argues against its own findings. A person dispositions each finding, and a finding closes only when a later run of the same control comes back clean. Every state change is appended to a hash-chained audit log. No edge runs from a model to an outcome or to authority.</desc>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a5a6a"/>
+    </marker>
+    <marker id="arrow-model" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8a6d0b"/>
+    </marker>
+    <marker id="arrow-strong" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0064d9"/>
+    </marker>
+  </defs>
+
+  <rect width="1400" height="900" fill="#f2f4f6"/>
+
+  <!-- header -->
+  <text x="40" y="46" font-size="24" font-weight="600" fill="#131b23">Countersign</text>
+  <text x="176" y="46" font-size="15" fill="#4a5a6a">a second-line control function that a person still signs for</text>
+  <line x1="40" y1="62" x2="1360" y2="62" stroke="#dfe3e8" stroke-width="1"/>
+
+  <!-- ================= sources ================= -->
+  <rect x="40" y="92" width="212" height="430" rx="10" fill="#ffffff" stroke="#dfe3e8"/>
+  <text x="56" y="118" font-size="11" font-weight="600" letter-spacing="1" fill="#75818f">SOURCE SYSTEMS</text>
+
+  <g font-size="13" fill="#131b23">
+    <rect x="56" y="132" width="180" height="34" rx="6" fill="#f7f8fa" stroke="#eceff2"/><text x="70" y="154">GitHub</text>
+    <rect x="56" y="174" width="180" height="34" rx="6" fill="#f7f8fa" stroke="#eceff2"/><text x="70" y="196">Jira</text>
+    <rect x="56" y="216" width="180" height="34" rx="6" fill="#f7f8fa" stroke="#eceff2"/><text x="70" y="238">Okta directory</text>
+    <rect x="56" y="258" width="180" height="34" rx="6" fill="#f7f8fa" stroke="#eceff2"/><text x="70" y="280">HR system</text>
+    <rect x="56" y="300" width="180" height="34" rx="6" fill="#f7f8fa" stroke="#eceff2"/><text x="70" y="322">Policy library</text>
+    <rect x="56" y="342" width="180" height="34" rx="6" fill="#eaf2ff" stroke="#c5d9f5"/><text x="70" y="364" font-weight="600" fill="#0040b0">Obligation register</text>
+    <rect x="56" y="384" width="180" height="34" rx="6" fill="#f7f8fa" stroke="#eceff2"/><text x="70" y="406">Vendor register</text>
+    <rect x="56" y="426" width="180" height="34" rx="6" fill="#f7f8fa" stroke="#eceff2"/><text x="70" y="448">Payment ledger</text>
+  </g>
+  <text x="56" y="484" font-size="11.5" fill="#0040b0" font-weight="600">Every threshold a control tests</text>
+  <text x="56" y="500" font-size="11.5" fill="#0040b0" font-weight="600">against is a row in the register.</text>
+  <text x="56" y="516" font-size="11.5" fill="#75818f">No limit is hardcoded anywhere.</text>
+
+  <!-- ================= connectors ================= -->
+  <rect x="286" y="92" width="176" height="230" rx="10" fill="#ffffff" stroke="#dfe3e8"/>
+  <text x="302" y="118" font-size="11" font-weight="600" letter-spacing="1" fill="#75818f">CONNECTORS</text>
+  <text x="302" y="144" font-size="13.5" font-weight="600" fill="#131b23">Read-only</text>
+  <text x="302" y="166" font-size="12" fill="#4a5a6a">inventory() and fetch().</text>
+  <text x="302" y="184" font-size="12" fill="#4a5a6a">There is no verb that</text>
+  <text x="302" y="202" font-size="12" fill="#4a5a6a">writes, which is the only</text>
+  <text x="302" y="220" font-size="12" fill="#4a5a6a">version of that guarantee</text>
+  <text x="302" y="238" font-size="12" fill="#4a5a6a">worth having.</text>
+  <rect x="302" y="256" width="144" height="24" rx="12" fill="#eff8f1" stroke="#cbe7d4"/>
+  <text x="316" y="272" font-size="11.5" fill="#17692e" font-weight="600">live, when credentialed</text>
+  <rect x="302" y="286" width="144" height="24" rx="12" fill="#f0f2f5" stroke="#dfe3e8"/>
+  <text x="316" y="302" font-size="11.5" fill="#5b6b7c" font-weight="600">seeded corpus otherwise</text>
+
+  <line x1="252" y1="200" x2="284" y2="200" stroke="#4a5a6a" stroke-width="1.6" marker-end="url(#arrow)"/>
+
+  <!-- ================= ONBOARDING ROW ================= -->
+  <rect x="496" y="92" width="864" height="230" rx="10" fill="#ffffff" stroke="#dfe3e8"/>
+  <text x="516" y="118" font-size="11" font-weight="600" letter-spacing="1" fill="#75818f">ONCE PER TENANT · ONBOARDING GRAPH</text>
+  <rect x="1180" y="102" width="166" height="22" rx="11" fill="#fdf7e3" stroke="#efe0ae"/>
+  <text x="1194" y="118" font-size="11" fill="#8a6d0b" font-weight="600">Strands · Bedrock / AgentCore</text>
+
+  <g>
+    <rect x="516" y="140" width="150" height="66" rx="8" fill="#fdf7e3" stroke="#efe0ae"/>
+    <text x="530" y="164" font-size="13" font-weight="600" fill="#8a6d0b">discovery</text>
+    <text x="530" y="184" font-size="11.5" fill="#7a5c00">what is this</text>
+    <text x="530" y="199" font-size="11.5" fill="#7a5c00">company?</text>
+
+    <rect x="690" y="140" width="150" height="66" rx="8" fill="#fdf7e3" stroke="#efe0ae"/>
+    <text x="704" y="164" font-size="13" font-weight="600" fill="#8a6d0b">taxonomy</text>
+    <text x="704" y="184" font-size="11.5" fill="#7a5c00">which risk domains</text>
+    <text x="704" y="199" font-size="11.5" fill="#7a5c00">does it have to cover?</text>
+
+    <rect x="864" y="140" width="164" height="66" rx="8" fill="#fdf7e3" stroke="#efe0ae"/>
+    <text x="878" y="164" font-size="13" font-weight="600" fill="#8a6d0b">control designer</text>
+    <text x="878" y="184" font-size="11.5" fill="#7a5c00">which registered test,</text>
+    <text x="878" y="199" font-size="11.5" fill="#7a5c00">and how often?</text>
+
+    <line x1="666" y1="173" x2="688" y2="173" stroke="#8a6d0b" stroke-width="1.6" marker-end="url(#arrow-model)"/>
+    <line x1="840" y1="173" x2="862" y2="173" stroke="#8a6d0b" stroke-width="1.6" marker-end="url(#arrow-model)"/>
+  </g>
+
+  <!-- gate 1/2 -->
+  <rect x="1064" y="140" width="282" height="66" rx="8" fill="#eaf2ff" stroke="#c5d9f5"/>
+  <text x="1080" y="164" font-size="13" font-weight="600" fill="#0040b0">A person accepts, and approves</text>
+  <text x="1080" y="184" font-size="11.5" fill="#0040b0">An actor named agent: is refused by the</text>
+  <text x="1080" y="199" font-size="11.5" fill="#0040b0">database, not by the interface.</text>
+  <line x1="1028" y1="173" x2="1062" y2="173" stroke="#8a6d0b" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#arrow-model)"/>
+
+  <text x="516" y="240" font-size="12" fill="#4a5a6a">A control may only bind to a test that exists in the registry below. One naming a test that does not exist, or carrying parameters that</text>
+  <text x="516" y="258" font-size="12" fill="#4a5a6a">test does not accept, is refused before it can ever be scheduled, so a model cannot talk a control into existence.</text>
+  <text x="516" y="284" font-size="12" fill="#b8500a">A control whose evidence source is not connected is still proposed, and cannot be approved. That gap is the most useful thing on the page.</text>
+
+  <!-- connector feed into onboarding -->
+  <path d="M 462 200 L 480 200 L 480 173 L 514 173" fill="none" stroke="#4a5a6a" stroke-width="1.6" marker-end="url(#arrow)"/>
+
+  <!-- ================= RUN ROW ================= -->
+  <rect x="286" y="352" width="1074" height="286" rx="10" fill="#ffffff" stroke="#dfe3e8"/>
+  <text x="306" y="378" font-size="11" font-weight="600" letter-spacing="1" fill="#75818f">ON EVERY SCHEDULED RUN</text>
+
+  <rect x="306" y="396" width="132" height="72" rx="8" fill="#f7f8fa" stroke="#dfe3e8"/>
+  <text x="320" y="420" font-size="13" font-weight="600" fill="#131b23">scheduler</text>
+  <text x="320" y="440" font-size="11.5" fill="#4a5a6a">daily … annual,</text>
+  <text x="320" y="455" font-size="11.5" fill="#4a5a6a">per control</text>
+
+  <!-- the deterministic core -->
+  <rect x="462" y="386" width="286" height="150" rx="8" fill="#eaf2ff" stroke="#0064d9" stroke-width="1.8"/>
+  <text x="478" y="410" font-size="11" font-weight="600" letter-spacing="1" fill="#0040b0">DETERMINISTIC TEST REGISTRY</text>
+  <text x="478" y="434" font-size="13.5" font-weight="600" fill="#131b23">Ten tests, ordinary Python</text>
+  <text x="478" y="456" font-size="12" fill="#4a5a6a">Walks the whole population, not a sample.</text>
+  <text x="478" y="474" font-size="12" fill="#4a5a6a">Reads its limits from the obligation register.</text>
+  <rect x="478" y="486" width="254" height="36" rx="6" fill="#ffffff" stroke="#c5d9f5"/>
+  <text x="492" y="503" font-size="12.5" font-weight="600" fill="#0040b0">The outcome is counted here,</text>
+  <text x="492" y="518" font-size="12.5" font-weight="600" fill="#0040b0">before any model is invoked.</text>
+
+  <line x1="438" y1="432" x2="460" y2="432" stroke="#4a5a6a" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <path d="M 372 322 L 372 394" fill="none" stroke="#4a5a6a" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <text x="386" y="344" font-size="11.5" fill="#75818f">approved controls</text>
+
+  <!-- review graph -->
+  <rect x="778" y="386" width="330" height="150" rx="8" fill="#fdf7e3" stroke="#efe0ae"/>
+  <text x="794" y="410" font-size="11" font-weight="600" letter-spacing="1" fill="#8a6d0b">REVIEW GRAPH · STRANDS</text>
+  <g font-size="12.5">
+    <rect x="794" y="422" width="298" height="30" rx="6" fill="#ffffff" stroke="#efe0ae"/>
+    <text x="806" y="442" fill="#8a6d0b" font-weight="600">evidence_reader</text>
+    <text x="908" y="442" fill="#7a5c00" font-size="11.5">why did it happen?</text>
+    <rect x="794" y="458" width="298" height="30" rx="6" fill="#ffffff" stroke="#efe0ae"/>
+    <text x="806" y="478" fill="#8a6d0b" font-weight="600">narrator</text>
+    <text x="908" y="478" fill="#7a5c00" font-size="11.5">condition · criterion · cause · effect</text>
+    <rect x="794" y="494" width="298" height="30" rx="6" fill="#ffffff" stroke="#efe0ae"/>
+    <text x="806" y="514" fill="#8a6d0b" font-weight="600">challenger</text>
+    <text x="908" y="514" fill="#7a5c00" font-size="11.5">the case against, before anyone signs</text>
+  </g>
+  <line x1="748" y1="461" x2="776" y2="461" stroke="#4a5a6a" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <text x="742" y="380" font-size="11.5" fill="#75818f">settled result</text>
+
+  <!-- injection -->
+  <rect x="306" y="486" width="132" height="128" rx="8" fill="#fdeeee" stroke="#f0cfcf"/>
+  <text x="318" y="508" font-size="11" font-weight="600" letter-spacing="1" fill="#a80808">CONTAINMENT</text>
+  <text x="318" y="530" font-size="11.5" fill="#6b2020">Seven detectors</text>
+  <text x="318" y="546" font-size="11.5" fill="#6b2020">scan the evidence</text>
+  <text x="318" y="562" font-size="11.5" fill="#6b2020">a run actually read.</text>
+  <text x="318" y="584" font-size="11.5" fill="#6b2020">An instruction is</text>
+  <text x="318" y="600" font-size="11.5" fill="#6b2020">reported, not obeyed.</text>
+
+  <!-- outcome cannot be moved -->
+  <path d="M 940 536 L 940 566" fill="none" stroke="#8a6d0b" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#arrow-model)"/>
+  <rect x="778" y="566" width="330" height="52" rx="8" fill="#ffffff" stroke="#dfe3e8"/>
+  <text x="794" y="588" font-size="12.5" fill="#131b23">The agents explain a result they cannot change. A model</text>
+  <text x="794" y="606" font-size="12.5" fill="#131b23">that disagrees has its disagreement recorded, not honoured.</text>
+
+  <!-- ================= gate 3 and closure ================= -->
+  <rect x="40" y="668" width="656" height="192" rx="10" fill="#ffffff" stroke="#dfe3e8"/>
+  <text x="60" y="694" font-size="11" font-weight="600" letter-spacing="1" fill="#75818f">WHAT REACHES A PERSON</text>
+  <rect x="60" y="710" width="290" height="64" rx="8" fill="#eaf2ff" stroke="#c5d9f5"/>
+  <text x="76" y="732" font-size="13" font-weight="600" fill="#0040b0">A person dispositions the finding</text>
+  <text x="76" y="752" font-size="11.5" fill="#0040b0">Accepting a risk without a stated reason</text>
+  <text x="76" y="766" font-size="11.5" fill="#0040b0">is refused. Somebody will be asked.</text>
+
+  <rect x="370" y="710" width="306" height="64" rx="8" fill="#eff8f1" stroke="#cbe7d4"/>
+  <text x="386" y="732" font-size="13" font-weight="600" fill="#17692e">Closing needs evidence, not agreement</text>
+  <text x="386" y="752" font-size="11.5" fill="#17692e">A finding closes when a LATER run of the same</text>
+  <text x="386" y="766" font-size="11.5" fill="#17692e">control walks a fresh population and comes back clean.</text>
+
+  <text x="60" y="800" font-size="12" fill="#4a5a6a">Controls run in the background and most of them raise nothing. Only a finding surfaces, which is the theme of this</text>
+  <text x="60" y="818" font-size="12" fill="#4a5a6a">hackathon, in the one profession where surfacing everything is the failure mode.</text>
+  <text x="60" y="842" font-size="12" fill="#a80808">Nothing in this diagram lets a model grant itself authority. There is no approve tool, no schedule tool and no close tool.</text>
+
+  <!-- ================= store ================= -->
+  <rect x="716" y="668" width="644" height="192" rx="10" fill="#ffffff" stroke="#dfe3e8"/>
+  <text x="736" y="694" font-size="11" font-weight="600" letter-spacing="1" fill="#75818f">CANONICAL STATE</text>
+  <g font-size="12.5" fill="#131b23">
+    <rect x="736" y="710" width="140" height="30" rx="6" fill="#f7f8fa" stroke="#eceff2"/><text x="750" y="730">risk domains</text>
+    <rect x="888" y="710" width="140" height="30" rx="6" fill="#f7f8fa" stroke="#eceff2"/><text x="902" y="730">controls</text>
+    <rect x="1040" y="710" width="140" height="30" rx="6" fill="#f7f8fa" stroke="#eceff2"/><text x="1054" y="730">runs</text>
+    <rect x="1192" y="710" width="148" height="30" rx="6" fill="#f7f8fa" stroke="#eceff2"/><text x="1206" y="730">population</text>
+    <rect x="736" y="748" width="140" height="30" rx="6" fill="#f7f8fa" stroke="#eceff2"/><text x="750" y="768">findings</text>
+    <rect x="888" y="748" width="452" height="30" rx="6" fill="#fdeeee" stroke="#f0cfcf"/>
+    <text x="902" y="768" fill="#a80808" font-weight="600">audit · append-only, each hash covers the one before it</text>
+  </g>
+  <text x="736" y="804" font-size="12" fill="#4a5a6a">SQLite, one writer, short transactions. Triggers reject every UPDATE and DELETE on the audit table, and</text>
+  <text x="736" y="822" font-size="12" fill="#4a5a6a">the chain is recomputed from genesis on every page load, so tampering shows at the event it touched.</text>
+  <text x="736" y="846" font-size="12" fill="#4a5a6a">Every published fact carries an evidence reference and a digest of the source row it came from.</text>
+
+  <!-- legend -->
+  <g transform="translate(986, 330)">
+    <line x1="0" y1="0" x2="26" y2="0" stroke="#4a5a6a" stroke-width="1.6" marker-end="url(#arrow)"/>
+    <text x="34" y="4" font-size="11.5" fill="#4a5a6a">deterministic path</text>
+    <line x1="152" y1="0" x2="178" y2="0" stroke="#8a6d0b" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#arrow-model)"/>
+    <text x="186" y="4" font-size="11.5" fill="#8a6d0b">a model proposes only</text>
+  </g>
+</svg>
