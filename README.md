@@ -311,6 +311,12 @@ in-flight view repainting over a newer one after an action completed, a stale
 toast being read as the result of the next action, and a control reporting a
 prompt injection in a document it had never opened.
 
+Pass `--url` and the same script drives a deployed instance. A fourth bug showed
+up only that way: over the network, the added latency widened a race in which a
+view could fetch a record by an id the address bar had already moved past. It is
+fixed, and the harness passes the full tour and the guided walkthrough against
+the live site.
+
 ## Scope
 
 - **Demo mode does not exercise a model.** It runs a deterministic composer.
