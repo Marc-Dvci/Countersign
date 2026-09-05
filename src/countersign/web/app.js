@@ -511,8 +511,9 @@
 
   // --------------------------------------------------------- control detail
 
-  async function viewControl() {
-    const control = await api(tenantUrl(`/controls/${encodeURIComponent(state.param)}`));
+  async function viewControl(param = state.param) {
+    if (!param) return;
+    const control = await api(tenantUrl(`/controls/${encodeURIComponent(param)}`));
     const latest = control.runs[0] || null;
     const run = latest ? await api(tenantUrl(`/runs/${latest.id}`)) : null;
     const canAct = Boolean(state.info.user);
@@ -836,8 +837,9 @@
     );
   }
 
-  async function viewFinding() {
-    const finding = await api(tenantUrl(`/findings/${state.param}`));
+  async function viewFinding(param = state.param) {
+    if (!param) return;
+    const finding = await api(tenantUrl(`/findings/${encodeURIComponent(param)}`));
     const canAct = Boolean(state.info.user);
     const challenge = finding.challenge && finding.challenge.finding_title ? finding.challenge : null;
 
@@ -1220,7 +1222,10 @@
     state.tenant = state.info.tenant;
     renderShell();
     try {
-      await VIEWS[startedView]();
+      // The param is captured for the same reason the view is: a view fetched
+      // by id must fetch the id this render was for, not the id the address bar
+      // has moved on to while the fetch was in flight.
+      await VIEWS[startedView](startedParam);
       mark.painted = true;
     } catch (error) {
       mark.error = String(error);
