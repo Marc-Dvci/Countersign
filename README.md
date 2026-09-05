@@ -32,6 +32,8 @@ document about work rather than the work.
 
 Countersign takes the walking. A person keeps the signing.
 
+![The control programme](docs/screenshots/01-overview.png)
+
 ## Who it is for
 
 Second-line functions: permanent control, compliance, operational risk. The
@@ -142,6 +144,8 @@ an automated reader is itself a finding.
 A control only reports an instruction in a document it actually read.
 `PAY-4EYES-01` never opens the incident response plan, so it never mentions it.
 Over-reporting is how a real signal gets ignored.
+
+![A control report](docs/screenshots/05-control-report.png)
 
 ## The demonstration
 

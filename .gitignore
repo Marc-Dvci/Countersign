@@ -16,5 +16,8 @@ demo_video/speech/
 demo_video/*.wav
 demo_video/*.mp3
 docs/screenshots/*.png
+!docs/screenshots/01-overview.png
+!docs/screenshots/05-control-report.png
+!docs/screenshots/08-finding.png
 demo_video/concat.txt
 data/
