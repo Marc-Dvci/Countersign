@@ -1,0 +1,62 @@
+[
+  {
+    "reference": "SOC2-CC8.1",
+    "regime": "SOC 2 Trust Services Criteria",
+    "requirement": "Changes to production are authorised, designed, tested and approved before implementation.",
+    "applies_to": [
+      "change"
+    ],
+    "quantitative_limit": null,
+    "limit_unit": null,
+    "source_document": "Obligation register row SOC2-CC8.1, owner Head of Engineering",
+    "url": ""
+  },
+  {
+    "reference": "SOC2-CC6.2",
+    "regime": "SOC 2 Trust Services Criteria",
+    "requirement": "Access is removed when no longer required, within 1 business day of a leaver's final day.",
+    "applies_to": [
+      "identity"
+    ],
+    "quantitative_limit": 1,
+    "limit_unit": "days",
+    "source_document": "Obligation register row SOC2-CC6.2, owner IT",
+    "url": ""
+  },
+  {
+    "reference": "SOC2-CC6.3",
+    "regime": "SOC 2 Trust Services Criteria",
+    "requirement": "Privileged access is reviewed and recertified at least quarterly.",
+    "applies_to": [
+      "identity"
+    ],
+    "quantitative_limit": 90,
+    "limit_unit": "days",
+    "source_document": "Obligation register row SOC2-CC6.3, owner IT",
+    "url": ""
+  },
+  {
+    "reference": "GDPR-28",
+    "regime": "Regulation (EU) 2016/679 (GDPR)",
+    "requirement": "Every processor handling personal data on the controller's behalf is engaged under a written data processing agreement.",
+    "applies_to": [
+      "vendor"
+    ],
+    "quantitative_limit": null,
+    "limit_unit": null,
+    "source_document": "Obligation register row GDPR-28, owner DPO",
+    "url": ""
+  },
+  {
+    "reference": "INT-POL-REVIEW",
+    "regime": "Internal: Policy Governance Standard",
+    "requirement": "Review and re-approve every mandated policy within its stated review cycle.",
+    "applies_to": [
+      "policy"
+    ],
+    "quantitative_limit": null,
+    "limit_unit": null,
+    "source_document": "POL-GOV-000",
+    "url": ""
+  }
+]

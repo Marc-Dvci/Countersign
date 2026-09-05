@@ -1,0 +1,35 @@
+[
+  {
+    "id": "SEC-POL-01",
+    "name": "Information Security Policy",
+    "asset_kind": "policy",
+    "owner": "security@northwindsystems.com",
+    "review_cycle_months": 12,
+    "last_reviewed": "2026-05-04",
+    "approved_by": "Leadership Team",
+    "mandated": true,
+    "content": "All production change is peer reviewed. Access is removed on the leaver's final day."
+  },
+  {
+    "id": "SEC-POL-04",
+    "name": "Access Control Standard",
+    "asset_kind": "policy",
+    "owner": "it@northwindsystems.com",
+    "review_cycle_months": 12,
+    "last_reviewed": "2025-06-30",
+    "approved_by": "Leadership Team",
+    "mandated": true,
+    "content": "Privileged access is recertified quarterly."
+  },
+  {
+    "id": "DP-POL-02",
+    "name": "Data Protection Policy",
+    "asset_kind": "policy",
+    "owner": "dpo@northwindsystems.com",
+    "review_cycle_months": 12,
+    "last_reviewed": "2026-02-18",
+    "approved_by": "Leadership Team",
+    "mandated": true,
+    "content": "Every processor is engaged under a data processing agreement."
+  }
+]

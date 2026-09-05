@@ -1,0 +1,16 @@
+[
+  {
+    "id": "HSE",
+    "key": "HSE",
+    "name": "Site Inspections",
+    "asset_kind": "project",
+    "project_type": "business"
+  },
+  {
+    "id": "EXP",
+    "key": "EXP",
+    "name": "Export Shipments",
+    "asset_kind": "project",
+    "project_type": "business"
+  }
+]

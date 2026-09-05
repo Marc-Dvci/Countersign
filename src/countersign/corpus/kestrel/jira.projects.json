@@ -1,0 +1,23 @@
+[
+  {
+    "id": "INC",
+    "key": "INC",
+    "name": "Incident Management",
+    "asset_kind": "project",
+    "project_type": "service_desk"
+  },
+  {
+    "id": "CHG",
+    "key": "CHG",
+    "name": "Change Advisory Board",
+    "asset_kind": "project",
+    "project_type": "service_desk"
+  },
+  {
+    "id": "TPR",
+    "key": "TPR",
+    "name": "Third Party Risk",
+    "asset_kind": "project",
+    "project_type": "business"
+  }
+]

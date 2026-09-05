@@ -1,0 +1,62 @@
+[
+  {
+    "reference": "CSRD-E1",
+    "regime": "Directive (EU) 2022/2464 (CSRD), ESRS E1",
+    "requirement": "Report gross Scope 1 and Scope 2 greenhouse gas emissions, with the methodology and the boundary stated.",
+    "applies_to": [
+      "disclosure"
+    ],
+    "quantitative_limit": null,
+    "limit_unit": null,
+    "source_document": "Obligation register row CSRD-E1, owner Group Sustainability",
+    "url": ""
+  },
+  {
+    "reference": "CSRD-S1",
+    "regime": "Directive (EU) 2022/2464 (CSRD), ESRS S1",
+    "requirement": "Report recordable work-related injuries across the own workforce.",
+    "applies_to": [
+      "disclosure"
+    ],
+    "quantitative_limit": null,
+    "limit_unit": null,
+    "source_document": "Obligation register row CSRD-S1, owner Group HSE",
+    "url": ""
+  },
+  {
+    "reference": "DUAL-USE-ART3",
+    "regime": "Regulation (EU) 2021/821 (dual-use export control)",
+    "requirement": "No listed dual-use item is shipped outside the customs territory without a valid export authorisation recorded before dispatch.",
+    "applies_to": [
+      "shipment"
+    ],
+    "quantitative_limit": null,
+    "limit_unit": null,
+    "source_document": "Obligation register row DUAL-USE-ART3, owner Trade Compliance",
+    "url": ""
+  },
+  {
+    "reference": "INT-HSE-INSP",
+    "regime": "Internal: Health and Safety Standard",
+    "requirement": "Inspect every high-hazard work area at least every 30 days.",
+    "applies_to": [
+      "site"
+    ],
+    "quantitative_limit": 30,
+    "limit_unit": "days",
+    "source_document": "HSE-STD-002 section 5",
+    "url": ""
+  },
+  {
+    "reference": "INT-POL-REVIEW",
+    "regime": "Internal: Policy Governance Standard",
+    "requirement": "Review and re-approve every mandated policy within its stated review cycle.",
+    "applies_to": [
+      "policy"
+    ],
+    "quantitative_limit": null,
+    "limit_unit": null,
+    "source_document": "POL-GOV-000",
+    "url": ""
+  }
+]

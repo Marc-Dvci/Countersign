@@ -1,0 +1,110 @@
+[
+  {
+    "reference": "DORA-19-1",
+    "regime": "Regulation (EU) 2022/2554 (DORA)",
+    "requirement": "Submit the initial notification of a major ICT-related incident to the competent authority within 4 hours of classifying the incident as major, and no later than 24 hours after becoming aware of it.",
+    "applies_to": [
+      "ict_incident"
+    ],
+    "quantitative_limit": 4,
+    "limit_unit": "hours",
+    "source_document": "Obligation register row DORA-19-1, owner Regulatory Affairs, last confirmed 2026-05-08",
+    "url": ""
+  },
+  {
+    "reference": "DORA-28-8",
+    "regime": "Regulation (EU) 2022/2554 (DORA)",
+    "requirement": "Maintain a documented exit strategy for every contractual arrangement supporting a critical or important function, and keep the due diligence supporting that arrangement current within 12 months.",
+    "applies_to": [
+      "vendor"
+    ],
+    "quantitative_limit": 12,
+    "limit_unit": "months",
+    "source_document": "Obligation register row DORA-28-8, owner Third Party Risk",
+    "url": ""
+  },
+  {
+    "reference": "EMR-SAFE-01",
+    "regime": "European Union (Electronic Money) Regulations 2011, safeguarding",
+    "requirement": "Reconcile safeguarded funds to aggregate customer balances every business day.",
+    "applies_to": [
+      "ledger"
+    ],
+    "quantitative_limit": 1,
+    "limit_unit": "days",
+    "source_document": "Obligation register row EMR-SAFE-01, owner Treasury",
+    "url": ""
+  },
+  {
+    "reference": "AML-SCR-01",
+    "regime": "Criminal Justice (Money Laundering and Terrorist Financing) Acts as implemented",
+    "requirement": "Screen every counterparty against the applicable sanctions lists before the first payment is executed for that counterparty.",
+    "applies_to": [
+      "counterparty"
+    ],
+    "quantitative_limit": null,
+    "limit_unit": null,
+    "source_document": "Obligation register row AML-SCR-01, owner MLRO",
+    "url": ""
+  },
+  {
+    "reference": "INT-PAY-4EYES",
+    "regime": "Internal: Board-approved Payments Authorisation Policy",
+    "requirement": "Payment instructions of EUR 50,000 or more require two independent authorisers; the second authoriser may not be the initiator.",
+    "applies_to": [
+      "payment"
+    ],
+    "quantitative_limit": 50000,
+    "limit_unit": "EUR",
+    "source_document": "POL-PAY-006 section 4.1",
+    "url": ""
+  },
+  {
+    "reference": "INT-ACC-REVOKE",
+    "regime": "Internal: Access Management Policy",
+    "requirement": "Revoke all system access within 1 business day of a leaver's final working day.",
+    "applies_to": [
+      "identity"
+    ],
+    "quantitative_limit": 1,
+    "limit_unit": "days",
+    "source_document": "POL-ACC-001 section 6.3",
+    "url": ""
+  },
+  {
+    "reference": "INT-ACC-DORMANT",
+    "regime": "Internal: Access Management Policy",
+    "requirement": "Disable privileged accounts that have not authenticated for 90 consecutive days.",
+    "applies_to": [
+      "identity"
+    ],
+    "quantitative_limit": 90,
+    "limit_unit": "days",
+    "source_document": "POL-ACC-001 section 6.7",
+    "url": ""
+  },
+  {
+    "reference": "INT-POL-REVIEW",
+    "regime": "Internal: Policy Governance Standard",
+    "requirement": "Review and re-approve every board-mandated policy within its stated review cycle.",
+    "applies_to": [
+      "policy"
+    ],
+    "quantitative_limit": null,
+    "limit_unit": null,
+    "source_document": "POL-GOV-000 section 3",
+    "url": ""
+  },
+  {
+    "reference": "INT-CHG-APPROVE",
+    "regime": "Internal: Change Management Standard",
+    "requirement": "Every change merged to a production branch carries an approval recorded by a person other than its author.",
+    "applies_to": [
+      "change"
+    ],
+    "quantitative_limit": null,
+    "limit_unit": null,
+    "source_document": "POL-CHG-003 section 5.1",
+    "url": ""
+  }
+]

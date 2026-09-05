@@ -1,0 +1,211 @@
+[
+  {
+    "id": "u_abrennan",
+    "name": "a.brennan@kestrelpay.eu",
+    "asset_kind": "user",
+    "email": "a.brennan@kestrelpay.eu",
+    "display_name": "Aoife Brennan",
+    "status": "ACTIVE",
+    "created_at": "2021-03-01",
+    "last_login": "2026-08-25",
+    "deactivated_at": ""
+  },
+  {
+    "id": "u_tbrennan",
+    "name": "t.brennan@kestrelpay.eu",
+    "asset_kind": "user",
+    "email": "t.brennan@kestrelpay.eu",
+    "display_name": "Tomasz Brennan",
+    "status": "ACTIVE",
+    "created_at": "2022-09-12",
+    "last_login": "2026-09-01",
+    "deactivated_at": ""
+  },
+  {
+    "id": "u_mnowak",
+    "name": "m.nowak@kestrelpay.eu",
+    "asset_kind": "user",
+    "email": "m.nowak@kestrelpay.eu",
+    "display_name": "Marek Nowak",
+    "status": "ACTIVE",
+    "created_at": "2020-06-15",
+    "last_login": "2026-08-24",
+    "deactivated_at": ""
+  },
+  {
+    "id": "u_dvarga",
+    "name": "d.varga@kestrelpay.eu",
+    "asset_kind": "user",
+    "email": "d.varga@kestrelpay.eu",
+    "display_name": "Dora Varga",
+    "status": "ACTIVE",
+    "created_at": "2023-01-09",
+    "last_login": "2026-08-24",
+    "deactivated_at": ""
+  },
+  {
+    "id": "u_sokafor",
+    "name": "s.okafor@kestrelpay.eu",
+    "asset_kind": "user",
+    "email": "s.okafor@kestrelpay.eu",
+    "display_name": "Samuel Okafor",
+    "status": "ACTIVE",
+    "created_at": "2021-11-02",
+    "last_login": "2026-08-28",
+    "deactivated_at": ""
+  },
+  {
+    "id": "u_ghartmann",
+    "name": "g.hartmann@kestrelpay.eu",
+    "asset_kind": "user",
+    "email": "g.hartmann@kestrelpay.eu",
+    "display_name": "Greta Hartmann",
+    "status": "ACTIVE",
+    "created_at": "2019-04-22",
+    "last_login": "2026-04-02",
+    "deactivated_at": ""
+  },
+  {
+    "id": "u_plindqvist",
+    "name": "p.lindqvist@kestrelpay.eu",
+    "asset_kind": "user",
+    "email": "p.lindqvist@kestrelpay.eu",
+    "display_name": "Petra Lindqvist",
+    "status": "ACTIVE",
+    "created_at": "2020-02-17",
+    "last_login": "2026-05-14",
+    "deactivated_at": ""
+  },
+  {
+    "id": "u_cwalsh",
+    "name": "c.walsh@kestrelpay.eu",
+    "asset_kind": "user",
+    "email": "c.walsh@kestrelpay.eu",
+    "display_name": "Ciara Walsh",
+    "status": "ACTIVE",
+    "created_at": "2022-05-30",
+    "last_login": "2026-08-28",
+    "deactivated_at": ""
+  },
+  {
+    "id": "u_ihaddad",
+    "name": "i.haddad@kestrelpay.eu",
+    "asset_kind": "user",
+    "email": "i.haddad@kestrelpay.eu",
+    "display_name": "Idris Haddad",
+    "status": "ACTIVE",
+    "created_at": "2021-08-16",
+    "last_login": "2026-08-23",
+    "deactivated_at": ""
+  },
+  {
+    "id": "u_nfitzgerald",
+    "name": "n.fitzgerald@kestrelpay.eu",
+    "asset_kind": "user",
+    "email": "n.fitzgerald@kestrelpay.eu",
+    "display_name": "Nuala Fitzgerald",
+    "status": "ACTIVE",
+    "created_at": "2020-10-05",
+    "last_login": "2026-08-27",
+    "deactivated_at": ""
+  },
+  {
+    "id": "u_balmeida",
+    "name": "b.almeida@kestrelpay.eu",
+    "asset_kind": "user",
+    "email": "b.almeida@kestrelpay.eu",
+    "display_name": "Bruno Almeida",
+    "status": "ACTIVE",
+    "created_at": "2023-07-24",
+    "last_login": "2026-08-30",
+    "deactivated_at": ""
+  },
+  {
+    "id": "u_hnovak",
+    "name": "h.novak@kestrelpay.eu",
+    "asset_kind": "user",
+    "email": "h.novak@kestrelpay.eu",
+    "display_name": "Hana Novak",
+    "status": "ACTIVE",
+    "created_at": "2024-02-05",
+    "last_login": "2026-08-26",
+    "deactivated_at": ""
+  },
+  {
+    "id": "u_okelly",
+    "name": "o.kelly@kestrelpay.eu",
+    "asset_kind": "user",
+    "email": "o.kelly@kestrelpay.eu",
+    "display_name": "Oisin Kelly",
+    "status": "ACTIVE",
+    "created_at": "2022-11-14",
+    "last_login": "2026-08-27",
+    "deactivated_at": ""
+  },
+  {
+    "id": "u_lmoreau",
+    "name": "l.moreau@kestrelpay.eu",
+    "asset_kind": "user",
+    "email": "l.moreau@kestrelpay.eu",
+    "display_name": "Lena Moreau",
+    "status": "ACTIVE",
+    "created_at": "2021-01-25",
+    "last_login": "2026-08-28",
+    "deactivated_at": ""
+  },
+  {
+    "id": "u_dferreira",
+    "name": "d.ferreira@kestrelpay.eu",
+    "asset_kind": "user",
+    "email": "d.ferreira@kestrelpay.eu",
+    "display_name": "Diego Ferreira",
+    "status": "ACTIVE",
+    "created_at": "2023-04-03",
+    "last_login": "2026-08-31",
+    "deactivated_at": ""
+  },
+  {
+    "id": "u_kzielinska",
+    "name": "k.zielinska@kestrelpay.eu",
+    "asset_kind": "user",
+    "email": "k.zielinska@kestrelpay.eu",
+    "display_name": "Katarzyna Zielinska",
+    "status": "ACTIVE",
+    "created_at": "2022-08-08",
+    "last_login": "2026-08-27",
+    "deactivated_at": ""
+  },
+  {
+    "id": "u_rdelacroix",
+    "name": "r.delacroix@kestrelpay.eu",
+    "asset_kind": "user",
+    "email": "r.delacroix@kestrelpay.eu",
+    "display_name": "Renaud Delacroix",
+    "status": "ACTIVE",
+    "created_at": "2020-05-11",
+    "last_login": "2026-08-20",
+    "deactivated_at": ""
+  },
+  {
+    "id": "u_akowalski",
+    "name": "a.kowalski@kestrelpay.eu",
+    "asset_kind": "user",
+    "email": "a.kowalski@kestrelpay.eu",
+    "display_name": "Artur Kowalski",
+    "status": "ACTIVE",
+    "created_at": "2021-09-27",
+    "last_login": "2026-07-26",
+    "deactivated_at": ""
+  },
+  {
+    "id": "u_sbyrne",
+    "name": "s.byrne@kestrelpay.eu",
+    "asset_kind": "user",
+    "email": "s.byrne@kestrelpay.eu",
+    "display_name": "Sinead Byrne",
+    "status": "ACTIVE",
+    "created_at": "2019-11-18",
+    "last_login": "2026-08-28",
+    "deactivated_at": ""
+  }
+]

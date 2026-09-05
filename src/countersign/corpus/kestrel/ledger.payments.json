@@ -1,0 +1,4125 @@
+[
+  {
+    "id": "PAY-80000",
+    "name": "Payment PAY-80000",
+    "asset_kind": "payment",
+    "amount_eur": 223654.39,
+    "authorised_at": "2026-06-11T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu",
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2000"
+  },
+  {
+    "id": "PAY-80001",
+    "name": "Payment PAY-80001",
+    "asset_kind": "payment",
+    "amount_eur": 12959.39,
+    "authorised_at": "2026-08-21T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2001"
+  },
+  {
+    "id": "PAY-80002",
+    "name": "Payment PAY-80002",
+    "asset_kind": "payment",
+    "amount_eur": 35283.57,
+    "authorised_at": "2026-06-28T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2002"
+  },
+  {
+    "id": "PAY-80003",
+    "name": "Payment PAY-80003",
+    "asset_kind": "payment",
+    "amount_eur": 734.88,
+    "authorised_at": "2026-08-21T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2003"
+  },
+  {
+    "id": "PAY-80004",
+    "name": "Payment PAY-80004",
+    "asset_kind": "payment",
+    "amount_eur": 40249.63,
+    "authorised_at": "2026-08-12T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2004"
+  },
+  {
+    "id": "PAY-80005",
+    "name": "Payment PAY-80005",
+    "asset_kind": "payment",
+    "amount_eur": 40064.47,
+    "authorised_at": "2026-08-13T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2005"
+  },
+  {
+    "id": "PAY-80006",
+    "name": "Payment PAY-80006",
+    "asset_kind": "payment",
+    "amount_eur": 26663.89,
+    "authorised_at": "2026-07-14T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2006"
+  },
+  {
+    "id": "PAY-80007",
+    "name": "Payment PAY-80007",
+    "asset_kind": "payment",
+    "amount_eur": 28798.38,
+    "authorised_at": "2026-06-21T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2007"
+  },
+  {
+    "id": "PAY-80008",
+    "name": "Payment PAY-80008",
+    "asset_kind": "payment",
+    "amount_eur": 301563.77,
+    "authorised_at": "2026-08-02T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu",
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2008"
+  },
+  {
+    "id": "PAY-80009",
+    "name": "Payment PAY-80009",
+    "asset_kind": "payment",
+    "amount_eur": 2024.35,
+    "authorised_at": "2026-06-30T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2009"
+  },
+  {
+    "id": "PAY-80010",
+    "name": "Payment PAY-80010",
+    "asset_kind": "payment",
+    "amount_eur": 10490.7,
+    "authorised_at": "2026-08-02T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2010"
+  },
+  {
+    "id": "PAY-80011",
+    "name": "Payment PAY-80011",
+    "asset_kind": "payment",
+    "amount_eur": 23722.95,
+    "authorised_at": "2026-06-26T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2011"
+  },
+  {
+    "id": "PAY-80012",
+    "name": "Payment PAY-80012",
+    "asset_kind": "payment",
+    "amount_eur": 12395.42,
+    "authorised_at": "2026-08-14T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2012"
+  },
+  {
+    "id": "PAY-80013",
+    "name": "Payment PAY-80013",
+    "asset_kind": "payment",
+    "amount_eur": 44145.24,
+    "authorised_at": "2026-08-05T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2013"
+  },
+  {
+    "id": "PAY-80014",
+    "name": "Payment PAY-80014",
+    "asset_kind": "payment",
+    "amount_eur": 15458.04,
+    "authorised_at": "2026-08-16T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2014"
+  },
+  {
+    "id": "PAY-80015",
+    "name": "Payment PAY-80015",
+    "asset_kind": "payment",
+    "amount_eur": 30458.21,
+    "authorised_at": "2026-07-17T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2015"
+  },
+  {
+    "id": "PAY-80016",
+    "name": "Payment PAY-80016",
+    "asset_kind": "payment",
+    "amount_eur": 239915.81,
+    "authorised_at": "2026-07-15T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu",
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2016"
+  },
+  {
+    "id": "PAY-80017",
+    "name": "Payment PAY-80017",
+    "asset_kind": "payment",
+    "amount_eur": 26269.56,
+    "authorised_at": "2026-07-10T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2017"
+  },
+  {
+    "id": "PAY-80018",
+    "name": "Payment PAY-80018",
+    "asset_kind": "payment",
+    "amount_eur": 36467.07,
+    "authorised_at": "2026-07-17T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2018"
+  },
+  {
+    "id": "PAY-80019",
+    "name": "Payment PAY-80019",
+    "asset_kind": "payment",
+    "amount_eur": 16717.69,
+    "authorised_at": "2026-07-02T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2019"
+  },
+  {
+    "id": "PAY-80020",
+    "name": "Payment PAY-80020",
+    "asset_kind": "payment",
+    "amount_eur": 44351.67,
+    "authorised_at": "2026-06-27T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2020"
+  },
+  {
+    "id": "PAY-80021",
+    "name": "Payment PAY-80021",
+    "asset_kind": "payment",
+    "amount_eur": 33302.07,
+    "authorised_at": "2026-07-25T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2021"
+  },
+  {
+    "id": "PAY-80022",
+    "name": "Payment PAY-80022",
+    "asset_kind": "payment",
+    "amount_eur": 9439.8,
+    "authorised_at": "2026-07-30T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2022"
+  },
+  {
+    "id": "PAY-80023",
+    "name": "Payment PAY-80023",
+    "asset_kind": "payment",
+    "amount_eur": 6076.11,
+    "authorised_at": "2026-08-28T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2023"
+  },
+  {
+    "id": "PAY-80024",
+    "name": "Payment PAY-80024",
+    "asset_kind": "payment",
+    "amount_eur": 168297.79,
+    "authorised_at": "2026-08-31T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu",
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2024"
+  },
+  {
+    "id": "PAY-80025",
+    "name": "Payment PAY-80025",
+    "asset_kind": "payment",
+    "amount_eur": 28329.14,
+    "authorised_at": "2026-08-28T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2025"
+  },
+  {
+    "id": "PAY-80026",
+    "name": "Payment PAY-80026",
+    "asset_kind": "payment",
+    "amount_eur": 48799.55,
+    "authorised_at": "2026-07-27T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2026"
+  },
+  {
+    "id": "PAY-80027",
+    "name": "Payment PAY-80027",
+    "asset_kind": "payment",
+    "amount_eur": 45079.18,
+    "authorised_at": "2026-06-25T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2027"
+  },
+  {
+    "id": "PAY-80028",
+    "name": "Payment PAY-80028",
+    "asset_kind": "payment",
+    "amount_eur": 13755.19,
+    "authorised_at": "2026-07-18T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2028"
+  },
+  {
+    "id": "PAY-80029",
+    "name": "Payment PAY-80029",
+    "asset_kind": "payment",
+    "amount_eur": 38998.39,
+    "authorised_at": "2026-07-29T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2029"
+  },
+  {
+    "id": "PAY-80030",
+    "name": "Payment PAY-80030",
+    "asset_kind": "payment",
+    "amount_eur": 37776.04,
+    "authorised_at": "2026-07-26T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2030"
+  },
+  {
+    "id": "PAY-80031",
+    "name": "Payment PAY-80031",
+    "asset_kind": "payment",
+    "amount_eur": 8084.44,
+    "authorised_at": "2026-08-10T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2031"
+  },
+  {
+    "id": "PAY-80032",
+    "name": "Payment PAY-80032",
+    "asset_kind": "payment",
+    "amount_eur": 423160.67,
+    "authorised_at": "2026-08-09T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu",
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2032"
+  },
+  {
+    "id": "PAY-80033",
+    "name": "Payment PAY-80033",
+    "asset_kind": "payment",
+    "amount_eur": 28899.12,
+    "authorised_at": "2026-07-03T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2033"
+  },
+  {
+    "id": "PAY-80034",
+    "name": "Payment PAY-80034",
+    "asset_kind": "payment",
+    "amount_eur": 34175.79,
+    "authorised_at": "2026-08-03T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2034"
+  },
+  {
+    "id": "PAY-80035",
+    "name": "Payment PAY-80035",
+    "asset_kind": "payment",
+    "amount_eur": 36378.13,
+    "authorised_at": "2026-08-02T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2035"
+  },
+  {
+    "id": "PAY-80036",
+    "name": "Payment PAY-80036",
+    "asset_kind": "payment",
+    "amount_eur": 17564.99,
+    "authorised_at": "2026-08-22T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2036"
+  },
+  {
+    "id": "PAY-80037",
+    "name": "Payment PAY-80037",
+    "asset_kind": "payment",
+    "amount_eur": 3196.15,
+    "authorised_at": "2026-06-30T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2037"
+  },
+  {
+    "id": "PAY-80038",
+    "name": "Payment PAY-80038",
+    "asset_kind": "payment",
+    "amount_eur": 30928.44,
+    "authorised_at": "2026-07-01T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2038"
+  },
+  {
+    "id": "PAY-80039",
+    "name": "Payment PAY-80039",
+    "asset_kind": "payment",
+    "amount_eur": 9779.99,
+    "authorised_at": "2026-06-28T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2039"
+  },
+  {
+    "id": "PAY-80040",
+    "name": "Payment PAY-80040",
+    "asset_kind": "payment",
+    "amount_eur": 419856.94,
+    "authorised_at": "2026-08-04T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu",
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2040"
+  },
+  {
+    "id": "PAY-80041",
+    "name": "Payment PAY-80041",
+    "asset_kind": "payment",
+    "amount_eur": 26629.29,
+    "authorised_at": "2026-08-02T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2041"
+  },
+  {
+    "id": "PAY-80042",
+    "name": "Payment PAY-80042",
+    "asset_kind": "payment",
+    "amount_eur": 44162.38,
+    "authorised_at": "2026-08-12T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2042"
+  },
+  {
+    "id": "PAY-80043",
+    "name": "Payment PAY-80043",
+    "asset_kind": "payment",
+    "amount_eur": 48205.51,
+    "authorised_at": "2026-07-31T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2043"
+  },
+  {
+    "id": "PAY-80044",
+    "name": "Payment PAY-80044",
+    "asset_kind": "payment",
+    "amount_eur": 37401.58,
+    "authorised_at": "2026-08-10T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2044"
+  },
+  {
+    "id": "PAY-80045",
+    "name": "Payment PAY-80045",
+    "asset_kind": "payment",
+    "amount_eur": 7518.2,
+    "authorised_at": "2026-08-13T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2045"
+  },
+  {
+    "id": "PAY-80046",
+    "name": "Payment PAY-80046",
+    "asset_kind": "payment",
+    "amount_eur": 39888.91,
+    "authorised_at": "2026-08-23T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2046"
+  },
+  {
+    "id": "PAY-80047",
+    "name": "Payment PAY-80047",
+    "asset_kind": "payment",
+    "amount_eur": 41074.48,
+    "authorised_at": "2026-08-21T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2047"
+  },
+  {
+    "id": "PAY-80048",
+    "name": "Payment PAY-80048",
+    "asset_kind": "payment",
+    "amount_eur": 70287.74,
+    "authorised_at": "2026-08-24T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu",
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2048"
+  },
+  {
+    "id": "PAY-80049",
+    "name": "Payment PAY-80049",
+    "asset_kind": "payment",
+    "amount_eur": 737.36,
+    "authorised_at": "2026-08-29T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2049"
+  },
+  {
+    "id": "PAY-80050",
+    "name": "Payment PAY-80050",
+    "asset_kind": "payment",
+    "amount_eur": 22105.39,
+    "authorised_at": "2026-08-15T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2050"
+  },
+  {
+    "id": "PAY-80051",
+    "name": "Payment PAY-80051",
+    "asset_kind": "payment",
+    "amount_eur": 48127.72,
+    "authorised_at": "2026-07-31T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2051"
+  },
+  {
+    "id": "PAY-80052",
+    "name": "Payment PAY-80052",
+    "asset_kind": "payment",
+    "amount_eur": 35903.74,
+    "authorised_at": "2026-06-10T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2052"
+  },
+  {
+    "id": "PAY-80053",
+    "name": "Payment PAY-80053",
+    "asset_kind": "payment",
+    "amount_eur": 35589.58,
+    "authorised_at": "2026-08-24T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2053"
+  },
+  {
+    "id": "PAY-80054",
+    "name": "Payment PAY-80054",
+    "asset_kind": "payment",
+    "amount_eur": 26158.32,
+    "authorised_at": "2026-08-01T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2054"
+  },
+  {
+    "id": "PAY-80055",
+    "name": "Payment PAY-80055",
+    "asset_kind": "payment",
+    "amount_eur": 8036.4,
+    "authorised_at": "2026-08-04T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2055"
+  },
+  {
+    "id": "PAY-80056",
+    "name": "Payment PAY-80056",
+    "asset_kind": "payment",
+    "amount_eur": 317792.84,
+    "authorised_at": "2026-08-02T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu",
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2056"
+  },
+  {
+    "id": "PAY-80057",
+    "name": "Payment PAY-80057",
+    "asset_kind": "payment",
+    "amount_eur": 32480.58,
+    "authorised_at": "2026-08-28T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2057"
+  },
+  {
+    "id": "PAY-80058",
+    "name": "Payment PAY-80058",
+    "asset_kind": "payment",
+    "amount_eur": 33811.1,
+    "authorised_at": "2026-08-23T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2058"
+  },
+  {
+    "id": "PAY-80059",
+    "name": "Payment PAY-80059",
+    "asset_kind": "payment",
+    "amount_eur": 37273.88,
+    "authorised_at": "2026-08-16T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2059"
+  },
+  {
+    "id": "PAY-80060",
+    "name": "Payment PAY-80060",
+    "asset_kind": "payment",
+    "amount_eur": 44962.54,
+    "authorised_at": "2026-07-05T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2060"
+  },
+  {
+    "id": "PAY-80061",
+    "name": "Payment PAY-80061",
+    "asset_kind": "payment",
+    "amount_eur": 4650.96,
+    "authorised_at": "2026-07-18T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2061"
+  },
+  {
+    "id": "PAY-80062",
+    "name": "Payment PAY-80062",
+    "asset_kind": "payment",
+    "amount_eur": 41469.26,
+    "authorised_at": "2026-08-14T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2062"
+  },
+  {
+    "id": "PAY-80063",
+    "name": "Payment PAY-80063",
+    "asset_kind": "payment",
+    "amount_eur": 8562.96,
+    "authorised_at": "2026-07-29T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2063"
+  },
+  {
+    "id": "PAY-80064",
+    "name": "Payment PAY-80064",
+    "asset_kind": "payment",
+    "amount_eur": 66958.57,
+    "authorised_at": "2026-07-26T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu",
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2064"
+  },
+  {
+    "id": "PAY-80065",
+    "name": "Payment PAY-80065",
+    "asset_kind": "payment",
+    "amount_eur": 11137.69,
+    "authorised_at": "2026-06-28T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2065"
+  },
+  {
+    "id": "PAY-80066",
+    "name": "Payment PAY-80066",
+    "asset_kind": "payment",
+    "amount_eur": 43605.62,
+    "authorised_at": "2026-08-28T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2066"
+  },
+  {
+    "id": "PAY-80067",
+    "name": "Payment PAY-80067",
+    "asset_kind": "payment",
+    "amount_eur": 7352.27,
+    "authorised_at": "2026-08-29T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2067"
+  },
+  {
+    "id": "PAY-80068",
+    "name": "Payment PAY-80068",
+    "asset_kind": "payment",
+    "amount_eur": 23379.88,
+    "authorised_at": "2026-07-20T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2068"
+  },
+  {
+    "id": "PAY-80069",
+    "name": "Payment PAY-80069",
+    "asset_kind": "payment",
+    "amount_eur": 43159.93,
+    "authorised_at": "2026-07-27T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2069"
+  },
+  {
+    "id": "PAY-80070",
+    "name": "Payment PAY-80070",
+    "asset_kind": "payment",
+    "amount_eur": 28567.67,
+    "authorised_at": "2026-07-29T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2070"
+  },
+  {
+    "id": "PAY-80071",
+    "name": "Payment PAY-80071",
+    "asset_kind": "payment",
+    "amount_eur": 18217.76,
+    "authorised_at": "2026-07-02T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2071"
+  },
+  {
+    "id": "PAY-80072",
+    "name": "Payment PAY-80072",
+    "asset_kind": "payment",
+    "amount_eur": 312273.64,
+    "authorised_at": "2026-07-20T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu",
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2072"
+  },
+  {
+    "id": "PAY-80073",
+    "name": "Payment PAY-80073",
+    "asset_kind": "payment",
+    "amount_eur": 23070.31,
+    "authorised_at": "2026-07-23T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2073"
+  },
+  {
+    "id": "PAY-80074",
+    "name": "Payment PAY-80074",
+    "asset_kind": "payment",
+    "amount_eur": 27952.83,
+    "authorised_at": "2026-08-02T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2074"
+  },
+  {
+    "id": "PAY-80075",
+    "name": "Payment PAY-80075",
+    "asset_kind": "payment",
+    "amount_eur": 21252.28,
+    "authorised_at": "2026-08-16T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2075"
+  },
+  {
+    "id": "PAY-80076",
+    "name": "Payment PAY-80076",
+    "asset_kind": "payment",
+    "amount_eur": 27251.0,
+    "authorised_at": "2026-08-21T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2076"
+  },
+  {
+    "id": "PAY-80077",
+    "name": "Payment PAY-80077",
+    "asset_kind": "payment",
+    "amount_eur": 19991.06,
+    "authorised_at": "2026-07-13T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2077"
+  },
+  {
+    "id": "PAY-80078",
+    "name": "Payment PAY-80078",
+    "asset_kind": "payment",
+    "amount_eur": 8749.82,
+    "authorised_at": "2026-07-31T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2078"
+  },
+  {
+    "id": "PAY-80079",
+    "name": "Payment PAY-80079",
+    "asset_kind": "payment",
+    "amount_eur": 39848.35,
+    "authorised_at": "2026-08-10T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2079"
+  },
+  {
+    "id": "PAY-80080",
+    "name": "Payment PAY-80080",
+    "asset_kind": "payment",
+    "amount_eur": 203175.31,
+    "authorised_at": "2026-07-31T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu",
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2080"
+  },
+  {
+    "id": "PAY-80081",
+    "name": "Payment PAY-80081",
+    "asset_kind": "payment",
+    "amount_eur": 46849.46,
+    "authorised_at": "2026-08-04T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2081"
+  },
+  {
+    "id": "PAY-80082",
+    "name": "Payment PAY-80082",
+    "asset_kind": "payment",
+    "amount_eur": 32322.28,
+    "authorised_at": "2026-07-15T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2082"
+  },
+  {
+    "id": "PAY-80083",
+    "name": "Payment PAY-80083",
+    "asset_kind": "payment",
+    "amount_eur": 40875.38,
+    "authorised_at": "2026-08-25T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2083"
+  },
+  {
+    "id": "PAY-80084",
+    "name": "Payment PAY-80084",
+    "asset_kind": "payment",
+    "amount_eur": 10371.83,
+    "authorised_at": "2026-07-31T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2084"
+  },
+  {
+    "id": "PAY-80085",
+    "name": "Payment PAY-80085",
+    "asset_kind": "payment",
+    "amount_eur": 41510.62,
+    "authorised_at": "2026-08-30T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2085"
+  },
+  {
+    "id": "PAY-80086",
+    "name": "Payment PAY-80086",
+    "asset_kind": "payment",
+    "amount_eur": 15330.56,
+    "authorised_at": "2026-08-20T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2086"
+  },
+  {
+    "id": "PAY-80087",
+    "name": "Payment PAY-80087",
+    "asset_kind": "payment",
+    "amount_eur": 40717.4,
+    "authorised_at": "2026-06-14T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2087"
+  },
+  {
+    "id": "PAY-80088",
+    "name": "Payment PAY-80088",
+    "asset_kind": "payment",
+    "amount_eur": 77837.97,
+    "authorised_at": "2026-08-23T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu",
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2088"
+  },
+  {
+    "id": "PAY-80089",
+    "name": "Payment PAY-80089",
+    "asset_kind": "payment",
+    "amount_eur": 20702.63,
+    "authorised_at": "2026-08-10T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2089"
+  },
+  {
+    "id": "PAY-80090",
+    "name": "Payment PAY-80090",
+    "asset_kind": "payment",
+    "amount_eur": 35300.11,
+    "authorised_at": "2026-08-20T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2090"
+  },
+  {
+    "id": "PAY-80091",
+    "name": "Payment PAY-80091",
+    "asset_kind": "payment",
+    "amount_eur": 7354.27,
+    "authorised_at": "2026-08-26T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2091"
+  },
+  {
+    "id": "PAY-80092",
+    "name": "Payment PAY-80092",
+    "asset_kind": "payment",
+    "amount_eur": 46188.53,
+    "authorised_at": "2026-08-19T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2092"
+  },
+  {
+    "id": "PAY-80093",
+    "name": "Payment PAY-80093",
+    "asset_kind": "payment",
+    "amount_eur": 5246.96,
+    "authorised_at": "2026-08-22T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2093"
+  },
+  {
+    "id": "PAY-80094",
+    "name": "Payment PAY-80094",
+    "asset_kind": "payment",
+    "amount_eur": 27482.12,
+    "authorised_at": "2026-08-01T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2094"
+  },
+  {
+    "id": "PAY-80095",
+    "name": "Payment PAY-80095",
+    "asset_kind": "payment",
+    "amount_eur": 11442.57,
+    "authorised_at": "2026-08-19T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2095"
+  },
+  {
+    "id": "PAY-80096",
+    "name": "Payment PAY-80096",
+    "asset_kind": "payment",
+    "amount_eur": 51414.6,
+    "authorised_at": "2026-06-27T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu",
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2096"
+  },
+  {
+    "id": "PAY-80097",
+    "name": "Payment PAY-80097",
+    "asset_kind": "payment",
+    "amount_eur": 27808.08,
+    "authorised_at": "2026-07-02T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2097"
+  },
+  {
+    "id": "PAY-80098",
+    "name": "Payment PAY-80098",
+    "asset_kind": "payment",
+    "amount_eur": 10578.34,
+    "authorised_at": "2026-07-24T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2098"
+  },
+  {
+    "id": "PAY-80099",
+    "name": "Payment PAY-80099",
+    "asset_kind": "payment",
+    "amount_eur": 14767.9,
+    "authorised_at": "2026-08-31T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2099"
+  },
+  {
+    "id": "PAY-80100",
+    "name": "Payment PAY-80100",
+    "asset_kind": "payment",
+    "amount_eur": 38321.6,
+    "authorised_at": "2026-07-18T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2100"
+  },
+  {
+    "id": "PAY-80101",
+    "name": "Payment PAY-80101",
+    "asset_kind": "payment",
+    "amount_eur": 3389.21,
+    "authorised_at": "2026-07-19T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2101"
+  },
+  {
+    "id": "PAY-80102",
+    "name": "Payment PAY-80102",
+    "asset_kind": "payment",
+    "amount_eur": 22617.01,
+    "authorised_at": "2026-08-23T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2102"
+  },
+  {
+    "id": "PAY-80103",
+    "name": "Payment PAY-80103",
+    "asset_kind": "payment",
+    "amount_eur": 27990.16,
+    "authorised_at": "2026-08-11T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2103"
+  },
+  {
+    "id": "PAY-80104",
+    "name": "Payment PAY-80104",
+    "asset_kind": "payment",
+    "amount_eur": 302686.69,
+    "authorised_at": "2026-06-18T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu",
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2104"
+  },
+  {
+    "id": "PAY-80105",
+    "name": "Payment PAY-80105",
+    "asset_kind": "payment",
+    "amount_eur": 35940.35,
+    "authorised_at": "2026-08-15T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2105"
+  },
+  {
+    "id": "PAY-80106",
+    "name": "Payment PAY-80106",
+    "asset_kind": "payment",
+    "amount_eur": 8570.39,
+    "authorised_at": "2026-07-19T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2106"
+  },
+  {
+    "id": "PAY-80107",
+    "name": "Payment PAY-80107",
+    "asset_kind": "payment",
+    "amount_eur": 5802.31,
+    "authorised_at": "2026-07-21T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2107"
+  },
+  {
+    "id": "PAY-80108",
+    "name": "Payment PAY-80108",
+    "asset_kind": "payment",
+    "amount_eur": 33004.84,
+    "authorised_at": "2026-07-11T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2108"
+  },
+  {
+    "id": "PAY-80109",
+    "name": "Payment PAY-80109",
+    "asset_kind": "payment",
+    "amount_eur": 22336.99,
+    "authorised_at": "2026-08-07T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2109"
+  },
+  {
+    "id": "PAY-80110",
+    "name": "Payment PAY-80110",
+    "asset_kind": "payment",
+    "amount_eur": 20442.99,
+    "authorised_at": "2026-08-19T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2110"
+  },
+  {
+    "id": "PAY-80111",
+    "name": "Payment PAY-80111",
+    "asset_kind": "payment",
+    "amount_eur": 48170.15,
+    "authorised_at": "2026-07-17T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2111"
+  },
+  {
+    "id": "PAY-80112",
+    "name": "Payment PAY-80112",
+    "asset_kind": "payment",
+    "amount_eur": 162851.33,
+    "authorised_at": "2026-07-14T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu",
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2112"
+  },
+  {
+    "id": "PAY-80113",
+    "name": "Payment PAY-80113",
+    "asset_kind": "payment",
+    "amount_eur": 36978.55,
+    "authorised_at": "2026-08-23T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2113"
+  },
+  {
+    "id": "PAY-80114",
+    "name": "Payment PAY-80114",
+    "asset_kind": "payment",
+    "amount_eur": 29639.58,
+    "authorised_at": "2026-08-20T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2114"
+  },
+  {
+    "id": "PAY-80115",
+    "name": "Payment PAY-80115",
+    "asset_kind": "payment",
+    "amount_eur": 47905.14,
+    "authorised_at": "2026-07-29T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2115"
+  },
+  {
+    "id": "PAY-80116",
+    "name": "Payment PAY-80116",
+    "asset_kind": "payment",
+    "amount_eur": 38756.14,
+    "authorised_at": "2026-07-14T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2116"
+  },
+  {
+    "id": "PAY-80117",
+    "name": "Payment PAY-80117",
+    "asset_kind": "payment",
+    "amount_eur": 28117.06,
+    "authorised_at": "2026-06-25T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2117"
+  },
+  {
+    "id": "PAY-80118",
+    "name": "Payment PAY-80118",
+    "asset_kind": "payment",
+    "amount_eur": 25195.76,
+    "authorised_at": "2026-07-27T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2118"
+  },
+  {
+    "id": "PAY-80119",
+    "name": "Payment PAY-80119",
+    "asset_kind": "payment",
+    "amount_eur": 5630.18,
+    "authorised_at": "2026-08-30T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2119"
+  },
+  {
+    "id": "PAY-80120",
+    "name": "Payment PAY-80120",
+    "asset_kind": "payment",
+    "amount_eur": 453043.0,
+    "authorised_at": "2026-08-13T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu",
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2120"
+  },
+  {
+    "id": "PAY-80121",
+    "name": "Payment PAY-80121",
+    "asset_kind": "payment",
+    "amount_eur": 35547.52,
+    "authorised_at": "2026-07-15T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2121"
+  },
+  {
+    "id": "PAY-80122",
+    "name": "Payment PAY-80122",
+    "asset_kind": "payment",
+    "amount_eur": 3749.64,
+    "authorised_at": "2026-08-16T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2122"
+  },
+  {
+    "id": "PAY-80123",
+    "name": "Payment PAY-80123",
+    "asset_kind": "payment",
+    "amount_eur": 32338.45,
+    "authorised_at": "2026-07-09T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2123"
+  },
+  {
+    "id": "PAY-80124",
+    "name": "Payment PAY-80124",
+    "asset_kind": "payment",
+    "amount_eur": 31048.93,
+    "authorised_at": "2026-07-06T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2124"
+  },
+  {
+    "id": "PAY-80125",
+    "name": "Payment PAY-80125",
+    "asset_kind": "payment",
+    "amount_eur": 8839.07,
+    "authorised_at": "2026-07-22T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2125"
+  },
+  {
+    "id": "PAY-80126",
+    "name": "Payment PAY-80126",
+    "asset_kind": "payment",
+    "amount_eur": 40344.42,
+    "authorised_at": "2026-07-06T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2126"
+  },
+  {
+    "id": "PAY-80127",
+    "name": "Payment PAY-80127",
+    "asset_kind": "payment",
+    "amount_eur": 31367.43,
+    "authorised_at": "2026-08-25T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2127"
+  },
+  {
+    "id": "PAY-80128",
+    "name": "Payment PAY-80128",
+    "asset_kind": "payment",
+    "amount_eur": 243193.25,
+    "authorised_at": "2026-08-09T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu",
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2128"
+  },
+  {
+    "id": "PAY-80129",
+    "name": "Payment PAY-80129",
+    "asset_kind": "payment",
+    "amount_eur": 32051.93,
+    "authorised_at": "2026-07-17T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2129"
+  },
+  {
+    "id": "PAY-80130",
+    "name": "Payment PAY-80130",
+    "asset_kind": "payment",
+    "amount_eur": 45988.98,
+    "authorised_at": "2026-08-11T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2130"
+  },
+  {
+    "id": "PAY-80131",
+    "name": "Payment PAY-80131",
+    "asset_kind": "payment",
+    "amount_eur": 46098.17,
+    "authorised_at": "2026-07-17T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2131"
+  },
+  {
+    "id": "PAY-80132",
+    "name": "Payment PAY-80132",
+    "asset_kind": "payment",
+    "amount_eur": 11145.41,
+    "authorised_at": "2026-07-09T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2132"
+  },
+  {
+    "id": "PAY-80133",
+    "name": "Payment PAY-80133",
+    "asset_kind": "payment",
+    "amount_eur": 15510.65,
+    "authorised_at": "2026-07-01T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2133"
+  },
+  {
+    "id": "PAY-80134",
+    "name": "Payment PAY-80134",
+    "asset_kind": "payment",
+    "amount_eur": 15436.85,
+    "authorised_at": "2026-08-19T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2134"
+  },
+  {
+    "id": "PAY-80135",
+    "name": "Payment PAY-80135",
+    "asset_kind": "payment",
+    "amount_eur": 18030.43,
+    "authorised_at": "2026-08-23T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2135"
+  },
+  {
+    "id": "PAY-80136",
+    "name": "Payment PAY-80136",
+    "asset_kind": "payment",
+    "amount_eur": 123171.89,
+    "authorised_at": "2026-08-09T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu",
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2136"
+  },
+  {
+    "id": "PAY-80137",
+    "name": "Payment PAY-80137",
+    "asset_kind": "payment",
+    "amount_eur": 11874.45,
+    "authorised_at": "2026-07-28T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2137"
+  },
+  {
+    "id": "PAY-80138",
+    "name": "Payment PAY-80138",
+    "asset_kind": "payment",
+    "amount_eur": 46419.73,
+    "authorised_at": "2026-07-23T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2138"
+  },
+  {
+    "id": "PAY-80139",
+    "name": "Payment PAY-80139",
+    "asset_kind": "payment",
+    "amount_eur": 47821.43,
+    "authorised_at": "2026-07-24T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2139"
+  },
+  {
+    "id": "PAY-80140",
+    "name": "Payment PAY-80140",
+    "asset_kind": "payment",
+    "amount_eur": 46090.03,
+    "authorised_at": "2026-07-27T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2140"
+  },
+  {
+    "id": "PAY-80141",
+    "name": "Payment PAY-80141",
+    "asset_kind": "payment",
+    "amount_eur": 20841.5,
+    "authorised_at": "2026-08-20T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2141"
+  },
+  {
+    "id": "PAY-80142",
+    "name": "Payment PAY-80142",
+    "asset_kind": "payment",
+    "amount_eur": 33569.23,
+    "authorised_at": "2026-08-15T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2142"
+  },
+  {
+    "id": "PAY-80143",
+    "name": "Payment PAY-80143",
+    "asset_kind": "payment",
+    "amount_eur": 17296.79,
+    "authorised_at": "2026-08-24T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2143"
+  },
+  {
+    "id": "PAY-80144",
+    "name": "Payment PAY-80144",
+    "asset_kind": "payment",
+    "amount_eur": 375473.81,
+    "authorised_at": "2026-08-22T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu",
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2144"
+  },
+  {
+    "id": "PAY-80145",
+    "name": "Payment PAY-80145",
+    "asset_kind": "payment",
+    "amount_eur": 41807.17,
+    "authorised_at": "2026-08-26T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2145"
+  },
+  {
+    "id": "PAY-80146",
+    "name": "Payment PAY-80146",
+    "asset_kind": "payment",
+    "amount_eur": 46003.47,
+    "authorised_at": "2026-08-10T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2146"
+  },
+  {
+    "id": "PAY-80147",
+    "name": "Payment PAY-80147",
+    "asset_kind": "payment",
+    "amount_eur": 17630.75,
+    "authorised_at": "2026-08-05T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2147"
+  },
+  {
+    "id": "PAY-80148",
+    "name": "Payment PAY-80148",
+    "asset_kind": "payment",
+    "amount_eur": 47321.87,
+    "authorised_at": "2026-08-24T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2148"
+  },
+  {
+    "id": "PAY-80149",
+    "name": "Payment PAY-80149",
+    "asset_kind": "payment",
+    "amount_eur": 36089.42,
+    "authorised_at": "2026-07-30T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2149"
+  },
+  {
+    "id": "PAY-80150",
+    "name": "Payment PAY-80150",
+    "asset_kind": "payment",
+    "amount_eur": 28081.8,
+    "authorised_at": "2026-08-02T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2150"
+  },
+  {
+    "id": "PAY-80151",
+    "name": "Payment PAY-80151",
+    "asset_kind": "payment",
+    "amount_eur": 45463.34,
+    "authorised_at": "2026-08-16T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2151"
+  },
+  {
+    "id": "PAY-80152",
+    "name": "Payment PAY-80152",
+    "asset_kind": "payment",
+    "amount_eur": 317046.87,
+    "authorised_at": "2026-08-06T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu",
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2152"
+  },
+  {
+    "id": "PAY-80153",
+    "name": "Payment PAY-80153",
+    "asset_kind": "payment",
+    "amount_eur": 16895.48,
+    "authorised_at": "2026-06-27T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2153"
+  },
+  {
+    "id": "PAY-80154",
+    "name": "Payment PAY-80154",
+    "asset_kind": "payment",
+    "amount_eur": 36059.19,
+    "authorised_at": "2026-08-01T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2154"
+  },
+  {
+    "id": "PAY-80155",
+    "name": "Payment PAY-80155",
+    "asset_kind": "payment",
+    "amount_eur": 14292.62,
+    "authorised_at": "2026-08-19T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2155"
+  },
+  {
+    "id": "PAY-80156",
+    "name": "Payment PAY-80156",
+    "asset_kind": "payment",
+    "amount_eur": 1740.79,
+    "authorised_at": "2026-06-06T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2156"
+  },
+  {
+    "id": "PAY-80157",
+    "name": "Payment PAY-80157",
+    "asset_kind": "payment",
+    "amount_eur": 16311.53,
+    "authorised_at": "2026-07-07T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2157"
+  },
+  {
+    "id": "PAY-80158",
+    "name": "Payment PAY-80158",
+    "asset_kind": "payment",
+    "amount_eur": 2531.6,
+    "authorised_at": "2026-07-22T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2158"
+  },
+  {
+    "id": "PAY-80159",
+    "name": "Payment PAY-80159",
+    "asset_kind": "payment",
+    "amount_eur": 25580.26,
+    "authorised_at": "2026-07-28T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2159"
+  },
+  {
+    "id": "PAY-80160",
+    "name": "Payment PAY-80160",
+    "asset_kind": "payment",
+    "amount_eur": 144464.02,
+    "authorised_at": "2026-08-12T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu",
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2160"
+  },
+  {
+    "id": "PAY-80161",
+    "name": "Payment PAY-80161",
+    "asset_kind": "payment",
+    "amount_eur": 4488.25,
+    "authorised_at": "2026-08-19T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2161"
+  },
+  {
+    "id": "PAY-80162",
+    "name": "Payment PAY-80162",
+    "asset_kind": "payment",
+    "amount_eur": 37136.82,
+    "authorised_at": "2026-08-09T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2162"
+  },
+  {
+    "id": "PAY-80163",
+    "name": "Payment PAY-80163",
+    "asset_kind": "payment",
+    "amount_eur": 34381.09,
+    "authorised_at": "2026-08-31T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2163"
+  },
+  {
+    "id": "PAY-80164",
+    "name": "Payment PAY-80164",
+    "asset_kind": "payment",
+    "amount_eur": 40230.52,
+    "authorised_at": "2026-07-24T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2164"
+  },
+  {
+    "id": "PAY-80165",
+    "name": "Payment PAY-80165",
+    "asset_kind": "payment",
+    "amount_eur": 43715.39,
+    "authorised_at": "2026-06-30T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2165"
+  },
+  {
+    "id": "PAY-80166",
+    "name": "Payment PAY-80166",
+    "asset_kind": "payment",
+    "amount_eur": 29009.53,
+    "authorised_at": "2026-08-24T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2166"
+  },
+  {
+    "id": "PAY-80167",
+    "name": "Payment PAY-80167",
+    "asset_kind": "payment",
+    "amount_eur": 21851.23,
+    "authorised_at": "2026-08-06T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2167"
+  },
+  {
+    "id": "PAY-80168",
+    "name": "Payment PAY-80168",
+    "asset_kind": "payment",
+    "amount_eur": 275439.0,
+    "authorised_at": "2026-08-02T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu",
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2168"
+  },
+  {
+    "id": "PAY-80169",
+    "name": "Payment PAY-80169",
+    "asset_kind": "payment",
+    "amount_eur": 28997.45,
+    "authorised_at": "2026-08-02T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2169"
+  },
+  {
+    "id": "PAY-80170",
+    "name": "Payment PAY-80170",
+    "asset_kind": "payment",
+    "amount_eur": 39548.8,
+    "authorised_at": "2026-06-18T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2170"
+  },
+  {
+    "id": "PAY-80171",
+    "name": "Payment PAY-80171",
+    "asset_kind": "payment",
+    "amount_eur": 2980.45,
+    "authorised_at": "2026-08-29T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2171"
+  },
+  {
+    "id": "PAY-80172",
+    "name": "Payment PAY-80172",
+    "asset_kind": "payment",
+    "amount_eur": 25137.36,
+    "authorised_at": "2026-08-27T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2172"
+  },
+  {
+    "id": "PAY-80173",
+    "name": "Payment PAY-80173",
+    "asset_kind": "payment",
+    "amount_eur": 19310.27,
+    "authorised_at": "2026-07-23T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2173"
+  },
+  {
+    "id": "PAY-80174",
+    "name": "Payment PAY-80174",
+    "asset_kind": "payment",
+    "amount_eur": 39835.19,
+    "authorised_at": "2026-08-31T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2174"
+  },
+  {
+    "id": "PAY-80175",
+    "name": "Payment PAY-80175",
+    "asset_kind": "payment",
+    "amount_eur": 13568.79,
+    "authorised_at": "2026-08-19T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2175"
+  },
+  {
+    "id": "PAY-80176",
+    "name": "Payment PAY-80176",
+    "asset_kind": "payment",
+    "amount_eur": 420338.64,
+    "authorised_at": "2026-08-12T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu",
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2176"
+  },
+  {
+    "id": "PAY-80177",
+    "name": "Payment PAY-80177",
+    "asset_kind": "payment",
+    "amount_eur": 40893.78,
+    "authorised_at": "2026-08-04T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2177"
+  },
+  {
+    "id": "PAY-80178",
+    "name": "Payment PAY-80178",
+    "asset_kind": "payment",
+    "amount_eur": 15914.42,
+    "authorised_at": "2026-08-04T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2178"
+  },
+  {
+    "id": "PAY-80179",
+    "name": "Payment PAY-80179",
+    "asset_kind": "payment",
+    "amount_eur": 17442.81,
+    "authorised_at": "2026-08-01T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2179"
+  },
+  {
+    "id": "PAY-80180",
+    "name": "Payment PAY-80180",
+    "asset_kind": "payment",
+    "amount_eur": 15424.88,
+    "authorised_at": "2026-08-13T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2180"
+  },
+  {
+    "id": "PAY-80181",
+    "name": "Payment PAY-80181",
+    "asset_kind": "payment",
+    "amount_eur": 23801.59,
+    "authorised_at": "2026-08-08T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2181"
+  },
+  {
+    "id": "PAY-80182",
+    "name": "Payment PAY-80182",
+    "asset_kind": "payment",
+    "amount_eur": 32389.81,
+    "authorised_at": "2026-07-30T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2182"
+  },
+  {
+    "id": "PAY-80183",
+    "name": "Payment PAY-80183",
+    "asset_kind": "payment",
+    "amount_eur": 2357.63,
+    "authorised_at": "2026-08-21T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2183"
+  },
+  {
+    "id": "PAY-80184",
+    "name": "Payment PAY-80184",
+    "asset_kind": "payment",
+    "amount_eur": 335112.61,
+    "authorised_at": "2026-08-04T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu",
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2184"
+  },
+  {
+    "id": "PAY-80185",
+    "name": "Payment PAY-80185",
+    "asset_kind": "payment",
+    "amount_eur": 38488.11,
+    "authorised_at": "2026-07-15T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2185"
+  },
+  {
+    "id": "PAY-80186",
+    "name": "Payment PAY-80186",
+    "asset_kind": "payment",
+    "amount_eur": 27909.5,
+    "authorised_at": "2026-07-14T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2186"
+  },
+  {
+    "id": "PAY-80187",
+    "name": "Payment PAY-80187",
+    "asset_kind": "payment",
+    "amount_eur": 25118.02,
+    "authorised_at": "2026-08-02T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2187"
+  },
+  {
+    "id": "PAY-80188",
+    "name": "Payment PAY-80188",
+    "asset_kind": "payment",
+    "amount_eur": 8729.77,
+    "authorised_at": "2026-08-01T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2188"
+  },
+  {
+    "id": "PAY-80189",
+    "name": "Payment PAY-80189",
+    "asset_kind": "payment",
+    "amount_eur": 27202.51,
+    "authorised_at": "2026-08-20T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2189"
+  },
+  {
+    "id": "PAY-80190",
+    "name": "Payment PAY-80190",
+    "asset_kind": "payment",
+    "amount_eur": 19553.65,
+    "authorised_at": "2026-08-23T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2190"
+  },
+  {
+    "id": "PAY-80191",
+    "name": "Payment PAY-80191",
+    "asset_kind": "payment",
+    "amount_eur": 22288.16,
+    "authorised_at": "2026-08-13T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2191"
+  },
+  {
+    "id": "PAY-80192",
+    "name": "Payment PAY-80192",
+    "asset_kind": "payment",
+    "amount_eur": 466246.24,
+    "authorised_at": "2026-08-21T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu",
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2192"
+  },
+  {
+    "id": "PAY-80193",
+    "name": "Payment PAY-80193",
+    "asset_kind": "payment",
+    "amount_eur": 47715.78,
+    "authorised_at": "2026-07-31T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2193"
+  },
+  {
+    "id": "PAY-80194",
+    "name": "Payment PAY-80194",
+    "asset_kind": "payment",
+    "amount_eur": 5309.49,
+    "authorised_at": "2026-07-20T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2194"
+  },
+  {
+    "id": "PAY-80195",
+    "name": "Payment PAY-80195",
+    "asset_kind": "payment",
+    "amount_eur": 35603.98,
+    "authorised_at": "2026-07-27T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2195"
+  },
+  {
+    "id": "PAY-80196",
+    "name": "Payment PAY-80196",
+    "asset_kind": "payment",
+    "amount_eur": 21077.44,
+    "authorised_at": "2026-08-28T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2196"
+  },
+  {
+    "id": "PAY-80197",
+    "name": "Payment PAY-80197",
+    "asset_kind": "payment",
+    "amount_eur": 2736.5,
+    "authorised_at": "2026-07-16T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2197"
+  },
+  {
+    "id": "PAY-80198",
+    "name": "Payment PAY-80198",
+    "asset_kind": "payment",
+    "amount_eur": 48593.78,
+    "authorised_at": "2026-08-14T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2198"
+  },
+  {
+    "id": "PAY-80199",
+    "name": "Payment PAY-80199",
+    "asset_kind": "payment",
+    "amount_eur": 34468.47,
+    "authorised_at": "2026-08-28T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2199"
+  },
+  {
+    "id": "PAY-80200",
+    "name": "Payment PAY-80200",
+    "asset_kind": "payment",
+    "amount_eur": 357994.96,
+    "authorised_at": "2026-08-02T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu",
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2200"
+  },
+  {
+    "id": "PAY-80201",
+    "name": "Payment PAY-80201",
+    "asset_kind": "payment",
+    "amount_eur": 23568.69,
+    "authorised_at": "2026-08-02T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2201"
+  },
+  {
+    "id": "PAY-80202",
+    "name": "Payment PAY-80202",
+    "asset_kind": "payment",
+    "amount_eur": 8346.12,
+    "authorised_at": "2026-08-16T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2202"
+  },
+  {
+    "id": "PAY-80203",
+    "name": "Payment PAY-80203",
+    "asset_kind": "payment",
+    "amount_eur": 32694.36,
+    "authorised_at": "2026-07-28T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2203"
+  },
+  {
+    "id": "PAY-80204",
+    "name": "Payment PAY-80204",
+    "asset_kind": "payment",
+    "amount_eur": 14327.07,
+    "authorised_at": "2026-07-24T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2204"
+  },
+  {
+    "id": "PAY-80205",
+    "name": "Payment PAY-80205",
+    "asset_kind": "payment",
+    "amount_eur": 42053.73,
+    "authorised_at": "2026-08-28T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2205"
+  },
+  {
+    "id": "PAY-80206",
+    "name": "Payment PAY-80206",
+    "asset_kind": "payment",
+    "amount_eur": 4636.46,
+    "authorised_at": "2026-07-10T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2206"
+  },
+  {
+    "id": "PAY-80207",
+    "name": "Payment PAY-80207",
+    "asset_kind": "payment",
+    "amount_eur": 34312.89,
+    "authorised_at": "2026-08-12T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2207"
+  },
+  {
+    "id": "PAY-80208",
+    "name": "Payment PAY-80208",
+    "asset_kind": "payment",
+    "amount_eur": 394491.63,
+    "authorised_at": "2026-08-27T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu",
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2208"
+  },
+  {
+    "id": "PAY-80209",
+    "name": "Payment PAY-80209",
+    "asset_kind": "payment",
+    "amount_eur": 29051.55,
+    "authorised_at": "2026-08-09T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2209"
+  },
+  {
+    "id": "PAY-80210",
+    "name": "Payment PAY-80210",
+    "asset_kind": "payment",
+    "amount_eur": 41981.72,
+    "authorised_at": "2026-08-29T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2210"
+  },
+  {
+    "id": "PAY-80211",
+    "name": "Payment PAY-80211",
+    "asset_kind": "payment",
+    "amount_eur": 42098.28,
+    "authorised_at": "2026-08-30T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2211"
+  },
+  {
+    "id": "PAY-80212",
+    "name": "Payment PAY-80212",
+    "asset_kind": "payment",
+    "amount_eur": 30615.86,
+    "authorised_at": "2026-07-22T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2000"
+  },
+  {
+    "id": "PAY-80213",
+    "name": "Payment PAY-80213",
+    "asset_kind": "payment",
+    "amount_eur": 10516.99,
+    "authorised_at": "2026-08-08T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2001"
+  },
+  {
+    "id": "PAY-80214",
+    "name": "Payment PAY-80214",
+    "asset_kind": "payment",
+    "amount_eur": 25434.27,
+    "authorised_at": "2026-07-03T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2002"
+  },
+  {
+    "id": "PAY-80215",
+    "name": "Payment PAY-80215",
+    "asset_kind": "payment",
+    "amount_eur": 46061.89,
+    "authorised_at": "2026-08-27T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2003"
+  },
+  {
+    "id": "PAY-80216",
+    "name": "Payment PAY-80216",
+    "asset_kind": "payment",
+    "amount_eur": 398669.38,
+    "authorised_at": "2026-07-28T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu",
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2004"
+  },
+  {
+    "id": "PAY-80217",
+    "name": "Payment PAY-80217",
+    "asset_kind": "payment",
+    "amount_eur": 4681.68,
+    "authorised_at": "2026-08-06T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2005"
+  },
+  {
+    "id": "PAY-80218",
+    "name": "Payment PAY-80218",
+    "asset_kind": "payment",
+    "amount_eur": 1597.17,
+    "authorised_at": "2026-07-16T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2006"
+  },
+  {
+    "id": "PAY-80219",
+    "name": "Payment PAY-80219",
+    "asset_kind": "payment",
+    "amount_eur": 34031.24,
+    "authorised_at": "2026-08-18T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2007"
+  },
+  {
+    "id": "PAY-80220",
+    "name": "Payment PAY-80220",
+    "asset_kind": "payment",
+    "amount_eur": 24758.57,
+    "authorised_at": "2026-07-18T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2008"
+  },
+  {
+    "id": "PAY-80221",
+    "name": "Payment PAY-80221",
+    "asset_kind": "payment",
+    "amount_eur": 40909.52,
+    "authorised_at": "2026-08-11T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2009"
+  },
+  {
+    "id": "PAY-80222",
+    "name": "Payment PAY-80222",
+    "asset_kind": "payment",
+    "amount_eur": 47375.89,
+    "authorised_at": "2026-08-05T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2010"
+  },
+  {
+    "id": "PAY-80223",
+    "name": "Payment PAY-80223",
+    "asset_kind": "payment",
+    "amount_eur": 47243.19,
+    "authorised_at": "2026-08-01T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2011"
+  },
+  {
+    "id": "PAY-80224",
+    "name": "Payment PAY-80224",
+    "asset_kind": "payment",
+    "amount_eur": 78684.62,
+    "authorised_at": "2026-08-25T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu",
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2012"
+  },
+  {
+    "id": "PAY-80225",
+    "name": "Payment PAY-80225",
+    "asset_kind": "payment",
+    "amount_eur": 21862.32,
+    "authorised_at": "2026-08-22T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2013"
+  },
+  {
+    "id": "PAY-80226",
+    "name": "Payment PAY-80226",
+    "asset_kind": "payment",
+    "amount_eur": 30172.82,
+    "authorised_at": "2026-07-28T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2014"
+  },
+  {
+    "id": "PAY-80227",
+    "name": "Payment PAY-80227",
+    "asset_kind": "payment",
+    "amount_eur": 15140.15,
+    "authorised_at": "2026-08-14T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2015"
+  },
+  {
+    "id": "PAY-80228",
+    "name": "Payment PAY-80228",
+    "asset_kind": "payment",
+    "amount_eur": 28804.36,
+    "authorised_at": "2026-08-21T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2016"
+  },
+  {
+    "id": "PAY-80229",
+    "name": "Payment PAY-80229",
+    "asset_kind": "payment",
+    "amount_eur": 21643.61,
+    "authorised_at": "2026-06-22T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2017"
+  },
+  {
+    "id": "PAY-80230",
+    "name": "Payment PAY-80230",
+    "asset_kind": "payment",
+    "amount_eur": 4618.96,
+    "authorised_at": "2026-07-06T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2018"
+  },
+  {
+    "id": "PAY-80231",
+    "name": "Payment PAY-80231",
+    "asset_kind": "payment",
+    "amount_eur": 46377.23,
+    "authorised_at": "2026-07-05T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2019"
+  },
+  {
+    "id": "PAY-80232",
+    "name": "Payment PAY-80232",
+    "asset_kind": "payment",
+    "amount_eur": 119638.16,
+    "authorised_at": "2026-08-11T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu",
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2020"
+  },
+  {
+    "id": "PAY-80233",
+    "name": "Payment PAY-80233",
+    "asset_kind": "payment",
+    "amount_eur": 1595.2,
+    "authorised_at": "2026-07-04T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2021"
+  },
+  {
+    "id": "PAY-80234",
+    "name": "Payment PAY-80234",
+    "asset_kind": "payment",
+    "amount_eur": 45413.89,
+    "authorised_at": "2026-07-24T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2022"
+  },
+  {
+    "id": "PAY-80235",
+    "name": "Payment PAY-80235",
+    "asset_kind": "payment",
+    "amount_eur": 27825.3,
+    "authorised_at": "2026-08-20T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2023"
+  },
+  {
+    "id": "PAY-80236",
+    "name": "Payment PAY-80236",
+    "asset_kind": "payment",
+    "amount_eur": 1020.35,
+    "authorised_at": "2026-08-29T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2024"
+  },
+  {
+    "id": "PAY-80237",
+    "name": "Payment PAY-80237",
+    "asset_kind": "payment",
+    "amount_eur": 9407.44,
+    "authorised_at": "2026-08-24T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2025"
+  },
+  {
+    "id": "PAY-80238",
+    "name": "Payment PAY-80238",
+    "asset_kind": "payment",
+    "amount_eur": 5240.1,
+    "authorised_at": "2026-07-31T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2026"
+  },
+  {
+    "id": "PAY-80239",
+    "name": "Payment PAY-80239",
+    "asset_kind": "payment",
+    "amount_eur": 38021.39,
+    "authorised_at": "2026-07-27T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2027"
+  },
+  {
+    "id": "PAY-80240",
+    "name": "Payment PAY-80240",
+    "asset_kind": "payment",
+    "amount_eur": 421265.03,
+    "authorised_at": "2026-06-29T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu",
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2028"
+  },
+  {
+    "id": "PAY-80241",
+    "name": "Payment PAY-80241",
+    "asset_kind": "payment",
+    "amount_eur": 12699.71,
+    "authorised_at": "2026-08-28T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2029"
+  },
+  {
+    "id": "PAY-80242",
+    "name": "Payment PAY-80242",
+    "asset_kind": "payment",
+    "amount_eur": 42406.62,
+    "authorised_at": "2026-07-07T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2030"
+  },
+  {
+    "id": "PAY-80243",
+    "name": "Payment PAY-80243",
+    "asset_kind": "payment",
+    "amount_eur": 32451.48,
+    "authorised_at": "2026-07-23T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2031"
+  },
+  {
+    "id": "PAY-80244",
+    "name": "Payment PAY-80244",
+    "asset_kind": "payment",
+    "amount_eur": 13854.13,
+    "authorised_at": "2026-08-11T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2032"
+  },
+  {
+    "id": "PAY-80245",
+    "name": "Payment PAY-80245",
+    "asset_kind": "payment",
+    "amount_eur": 6698.63,
+    "authorised_at": "2026-07-07T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2033"
+  },
+  {
+    "id": "PAY-80246",
+    "name": "Payment PAY-80246",
+    "asset_kind": "payment",
+    "amount_eur": 2205.65,
+    "authorised_at": "2026-08-16T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2034"
+  },
+  {
+    "id": "PAY-80247",
+    "name": "Payment PAY-80247",
+    "asset_kind": "payment",
+    "amount_eur": 5817.63,
+    "authorised_at": "2026-08-18T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2035"
+  },
+  {
+    "id": "PAY-80248",
+    "name": "Payment PAY-80248",
+    "asset_kind": "payment",
+    "amount_eur": 472929.59,
+    "authorised_at": "2026-08-29T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu",
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2036"
+  },
+  {
+    "id": "PAY-80249",
+    "name": "Payment PAY-80249",
+    "asset_kind": "payment",
+    "amount_eur": 48456.45,
+    "authorised_at": "2026-07-15T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2037"
+  },
+  {
+    "id": "PAY-80250",
+    "name": "Payment PAY-80250",
+    "asset_kind": "payment",
+    "amount_eur": 4443.15,
+    "authorised_at": "2026-08-27T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2038"
+  },
+  {
+    "id": "PAY-80251",
+    "name": "Payment PAY-80251",
+    "asset_kind": "payment",
+    "amount_eur": 494.81,
+    "authorised_at": "2026-08-02T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2039"
+  },
+  {
+    "id": "PAY-80252",
+    "name": "Payment PAY-80252",
+    "asset_kind": "payment",
+    "amount_eur": 2100.05,
+    "authorised_at": "2026-07-18T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2040"
+  },
+  {
+    "id": "PAY-80253",
+    "name": "Payment PAY-80253",
+    "asset_kind": "payment",
+    "amount_eur": 346.51,
+    "authorised_at": "2026-07-08T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2041"
+  },
+  {
+    "id": "PAY-80254",
+    "name": "Payment PAY-80254",
+    "asset_kind": "payment",
+    "amount_eur": 1173.28,
+    "authorised_at": "2026-08-29T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2042"
+  },
+  {
+    "id": "PAY-80255",
+    "name": "Payment PAY-80255",
+    "asset_kind": "payment",
+    "amount_eur": 1018.44,
+    "authorised_at": "2026-08-15T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2043"
+  },
+  {
+    "id": "PAY-80256",
+    "name": "Payment PAY-80256",
+    "asset_kind": "payment",
+    "amount_eur": 332015.48,
+    "authorised_at": "2026-07-11T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu",
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2044"
+  },
+  {
+    "id": "PAY-80257",
+    "name": "Payment PAY-80257",
+    "asset_kind": "payment",
+    "amount_eur": 48072.92,
+    "authorised_at": "2026-08-13T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2045"
+  },
+  {
+    "id": "PAY-80258",
+    "name": "Payment PAY-80258",
+    "asset_kind": "payment",
+    "amount_eur": 9971.08,
+    "authorised_at": "2026-08-25T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2046"
+  },
+  {
+    "id": "PAY-80259",
+    "name": "Payment PAY-80259",
+    "asset_kind": "payment",
+    "amount_eur": 902.61,
+    "authorised_at": "2026-08-26T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2047"
+  },
+  {
+    "id": "PAY-80260",
+    "name": "Payment PAY-80260",
+    "asset_kind": "payment",
+    "amount_eur": 2519.0,
+    "authorised_at": "2026-07-03T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2048"
+  },
+  {
+    "id": "PAY-80261",
+    "name": "Payment PAY-80261",
+    "asset_kind": "payment",
+    "amount_eur": 25301.12,
+    "authorised_at": "2026-08-08T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2049"
+  },
+  {
+    "id": "PAY-80262",
+    "name": "Payment PAY-80262",
+    "asset_kind": "payment",
+    "amount_eur": 12600.36,
+    "authorised_at": "2026-07-03T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2050"
+  },
+  {
+    "id": "PAY-80263",
+    "name": "Payment PAY-80263",
+    "asset_kind": "payment",
+    "amount_eur": 8452.46,
+    "authorised_at": "2026-07-01T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2051"
+  },
+  {
+    "id": "PAY-80264",
+    "name": "Payment PAY-80264",
+    "asset_kind": "payment",
+    "amount_eur": 167920.77,
+    "authorised_at": "2026-08-08T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu",
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2052"
+  },
+  {
+    "id": "PAY-80265",
+    "name": "Payment PAY-80265",
+    "asset_kind": "payment",
+    "amount_eur": 21303.47,
+    "authorised_at": "2026-07-15T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2053"
+  },
+  {
+    "id": "PAY-80266",
+    "name": "Payment PAY-80266",
+    "asset_kind": "payment",
+    "amount_eur": 17805.88,
+    "authorised_at": "2026-07-25T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2054"
+  },
+  {
+    "id": "PAY-80267",
+    "name": "Payment PAY-80267",
+    "asset_kind": "payment",
+    "amount_eur": 44725.34,
+    "authorised_at": "2026-07-21T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2055"
+  },
+  {
+    "id": "PAY-80268",
+    "name": "Payment PAY-80268",
+    "asset_kind": "payment",
+    "amount_eur": 17437.92,
+    "authorised_at": "2026-08-28T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2056"
+  },
+  {
+    "id": "PAY-80269",
+    "name": "Payment PAY-80269",
+    "asset_kind": "payment",
+    "amount_eur": 7021.97,
+    "authorised_at": "2026-08-08T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2057"
+  },
+  {
+    "id": "PAY-80270",
+    "name": "Payment PAY-80270",
+    "asset_kind": "payment",
+    "amount_eur": 15295.96,
+    "authorised_at": "2026-08-11T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2058"
+  },
+  {
+    "id": "PAY-80271",
+    "name": "Payment PAY-80271",
+    "asset_kind": "payment",
+    "amount_eur": 28268.26,
+    "authorised_at": "2026-08-11T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2059"
+  },
+  {
+    "id": "PAY-80272",
+    "name": "Payment PAY-80272",
+    "asset_kind": "payment",
+    "amount_eur": 130607.81,
+    "authorised_at": "2026-07-29T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu",
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2060"
+  },
+  {
+    "id": "PAY-80273",
+    "name": "Payment PAY-80273",
+    "asset_kind": "payment",
+    "amount_eur": 17852.78,
+    "authorised_at": "2026-08-01T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2061"
+  },
+  {
+    "id": "PAY-80274",
+    "name": "Payment PAY-80274",
+    "asset_kind": "payment",
+    "amount_eur": 45690.04,
+    "authorised_at": "2026-07-26T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2062"
+  },
+  {
+    "id": "PAY-80275",
+    "name": "Payment PAY-80275",
+    "asset_kind": "payment",
+    "amount_eur": 13266.85,
+    "authorised_at": "2026-08-23T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2063"
+  },
+  {
+    "id": "PAY-80276",
+    "name": "Payment PAY-80276",
+    "asset_kind": "payment",
+    "amount_eur": 9524.39,
+    "authorised_at": "2026-07-12T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2064"
+  },
+  {
+    "id": "PAY-80277",
+    "name": "Payment PAY-80277",
+    "asset_kind": "payment",
+    "amount_eur": 47096.43,
+    "authorised_at": "2026-07-29T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2065"
+  },
+  {
+    "id": "PAY-80278",
+    "name": "Payment PAY-80278",
+    "asset_kind": "payment",
+    "amount_eur": 486.1,
+    "authorised_at": "2026-08-16T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2066"
+  },
+  {
+    "id": "PAY-80279",
+    "name": "Payment PAY-80279",
+    "asset_kind": "payment",
+    "amount_eur": 9811.55,
+    "authorised_at": "2026-07-23T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2067"
+  },
+  {
+    "id": "PAY-80280",
+    "name": "Payment PAY-80280",
+    "asset_kind": "payment",
+    "amount_eur": 117383.12,
+    "authorised_at": "2026-07-20T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu",
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2068"
+  },
+  {
+    "id": "PAY-80281",
+    "name": "Payment PAY-80281",
+    "asset_kind": "payment",
+    "amount_eur": 5967.31,
+    "authorised_at": "2026-07-28T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2069"
+  },
+  {
+    "id": "PAY-80282",
+    "name": "Payment PAY-80282",
+    "asset_kind": "payment",
+    "amount_eur": 25215.99,
+    "authorised_at": "2026-08-08T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2070"
+  },
+  {
+    "id": "PAY-80283",
+    "name": "Payment PAY-80283",
+    "asset_kind": "payment",
+    "amount_eur": 44231.92,
+    "authorised_at": "2026-08-11T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2071"
+  },
+  {
+    "id": "PAY-80284",
+    "name": "Payment PAY-80284",
+    "asset_kind": "payment",
+    "amount_eur": 31507.03,
+    "authorised_at": "2026-07-22T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2072"
+  },
+  {
+    "id": "PAY-80285",
+    "name": "Payment PAY-80285",
+    "asset_kind": "payment",
+    "amount_eur": 25293.59,
+    "authorised_at": "2026-07-18T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2073"
+  },
+  {
+    "id": "PAY-80286",
+    "name": "Payment PAY-80286",
+    "asset_kind": "payment",
+    "amount_eur": 30370.3,
+    "authorised_at": "2026-08-16T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2074"
+  },
+  {
+    "id": "PAY-80287",
+    "name": "Payment PAY-80287",
+    "asset_kind": "payment",
+    "amount_eur": 1610.63,
+    "authorised_at": "2026-08-16T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2075"
+  },
+  {
+    "id": "PAY-80288",
+    "name": "Payment PAY-80288",
+    "asset_kind": "payment",
+    "amount_eur": 416721.85,
+    "authorised_at": "2026-06-29T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu",
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2076"
+  },
+  {
+    "id": "PAY-80289",
+    "name": "Payment PAY-80289",
+    "asset_kind": "payment",
+    "amount_eur": 48886.02,
+    "authorised_at": "2026-06-11T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2077"
+  },
+  {
+    "id": "PAY-80290",
+    "name": "Payment PAY-80290",
+    "asset_kind": "payment",
+    "amount_eur": 16840.09,
+    "authorised_at": "2026-08-02T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2078"
+  },
+  {
+    "id": "PAY-80291",
+    "name": "Payment PAY-80291",
+    "asset_kind": "payment",
+    "amount_eur": 45684.09,
+    "authorised_at": "2026-08-08T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2079"
+  },
+  {
+    "id": "PAY-80292",
+    "name": "Payment PAY-80292",
+    "asset_kind": "payment",
+    "amount_eur": 10462.59,
+    "authorised_at": "2026-08-11T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2080"
+  },
+  {
+    "id": "PAY-80293",
+    "name": "Payment PAY-80293",
+    "asset_kind": "payment",
+    "amount_eur": 17134.52,
+    "authorised_at": "2026-06-26T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2081"
+  },
+  {
+    "id": "PAY-80294",
+    "name": "Payment PAY-80294",
+    "asset_kind": "payment",
+    "amount_eur": 45087.5,
+    "authorised_at": "2026-07-25T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2082"
+  },
+  {
+    "id": "PAY-80295",
+    "name": "Payment PAY-80295",
+    "asset_kind": "payment",
+    "amount_eur": 47881.3,
+    "authorised_at": "2026-08-20T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2083"
+  },
+  {
+    "id": "PAY-80296",
+    "name": "Payment PAY-80296",
+    "asset_kind": "payment",
+    "amount_eur": 239433.66,
+    "authorised_at": "2026-08-16T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu",
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2084"
+  },
+  {
+    "id": "PAY-80297",
+    "name": "Payment PAY-80297",
+    "asset_kind": "payment",
+    "amount_eur": 7069.36,
+    "authorised_at": "2026-07-02T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2085"
+  },
+  {
+    "id": "PAY-80298",
+    "name": "Payment PAY-80298",
+    "asset_kind": "payment",
+    "amount_eur": 5661.18,
+    "authorised_at": "2026-08-02T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2086"
+  },
+  {
+    "id": "PAY-80299",
+    "name": "Payment PAY-80299",
+    "asset_kind": "payment",
+    "amount_eur": 25835.99,
+    "authorised_at": "2026-08-13T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2087"
+  },
+  {
+    "id": "PAY-80300",
+    "name": "Payment PAY-80300",
+    "asset_kind": "payment",
+    "amount_eur": 32269.13,
+    "authorised_at": "2026-07-13T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2088"
+  },
+  {
+    "id": "PAY-80301",
+    "name": "Payment PAY-80301",
+    "asset_kind": "payment",
+    "amount_eur": 1361.73,
+    "authorised_at": "2026-08-13T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2089"
+  },
+  {
+    "id": "PAY-80302",
+    "name": "Payment PAY-80302",
+    "asset_kind": "payment",
+    "amount_eur": 10120.85,
+    "authorised_at": "2026-07-04T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2090"
+  },
+  {
+    "id": "PAY-80303",
+    "name": "Payment PAY-80303",
+    "asset_kind": "payment",
+    "amount_eur": 27448.72,
+    "authorised_at": "2026-08-01T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2091"
+  },
+  {
+    "id": "PAY-80304",
+    "name": "Payment PAY-80304",
+    "asset_kind": "payment",
+    "amount_eur": 466684.8,
+    "authorised_at": "2026-08-24T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu",
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2092"
+  },
+  {
+    "id": "PAY-80305",
+    "name": "Payment PAY-80305",
+    "asset_kind": "payment",
+    "amount_eur": 524.76,
+    "authorised_at": "2026-07-23T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2093"
+  },
+  {
+    "id": "PAY-80306",
+    "name": "Payment PAY-80306",
+    "asset_kind": "payment",
+    "amount_eur": 45004.71,
+    "authorised_at": "2026-08-30T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2094"
+  },
+  {
+    "id": "PAY-80307",
+    "name": "Payment PAY-80307",
+    "asset_kind": "payment",
+    "amount_eur": 47193.93,
+    "authorised_at": "2026-07-24T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2095"
+  },
+  {
+    "id": "PAY-80308",
+    "name": "Payment PAY-80308",
+    "asset_kind": "payment",
+    "amount_eur": 9687.35,
+    "authorised_at": "2026-07-04T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2096"
+  },
+  {
+    "id": "PAY-80309",
+    "name": "Payment PAY-80309",
+    "asset_kind": "payment",
+    "amount_eur": 456.99,
+    "authorised_at": "2026-08-20T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2097"
+  },
+  {
+    "id": "PAY-80310",
+    "name": "Payment PAY-80310",
+    "asset_kind": "payment",
+    "amount_eur": 7679.01,
+    "authorised_at": "2026-08-27T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2098"
+  },
+  {
+    "id": "PAY-80311",
+    "name": "Payment PAY-80311",
+    "asset_kind": "payment",
+    "amount_eur": 36766.9,
+    "authorised_at": "2026-08-12T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2099"
+  },
+  {
+    "id": "PAY-80312",
+    "name": "Payment PAY-80312",
+    "asset_kind": "payment",
+    "amount_eur": 289847.91,
+    "authorised_at": "2026-08-13T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu",
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2100"
+  },
+  {
+    "id": "PAY-80313",
+    "name": "Payment PAY-80313",
+    "asset_kind": "payment",
+    "amount_eur": 12860.08,
+    "authorised_at": "2026-07-18T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2101"
+  },
+  {
+    "id": "PAY-80314",
+    "name": "Payment PAY-80314",
+    "asset_kind": "payment",
+    "amount_eur": 15886.86,
+    "authorised_at": "2026-07-19T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2102"
+  },
+  {
+    "id": "PAY-80315",
+    "name": "Payment PAY-80315",
+    "asset_kind": "payment",
+    "amount_eur": 14107.2,
+    "authorised_at": "2026-08-10T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2103"
+  },
+  {
+    "id": "PAY-80316",
+    "name": "Payment PAY-80316",
+    "asset_kind": "payment",
+    "amount_eur": 31344.7,
+    "authorised_at": "2026-08-17T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2104"
+  },
+  {
+    "id": "PAY-80317",
+    "name": "Payment PAY-80317",
+    "asset_kind": "payment",
+    "amount_eur": 2775.25,
+    "authorised_at": "2026-08-08T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2105"
+  },
+  {
+    "id": "PAY-80318",
+    "name": "Payment PAY-80318",
+    "asset_kind": "payment",
+    "amount_eur": 5399.28,
+    "authorised_at": "2026-07-27T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2106"
+  },
+  {
+    "id": "PAY-80319",
+    "name": "Payment PAY-80319",
+    "asset_kind": "payment",
+    "amount_eur": 16269.63,
+    "authorised_at": "2026-08-17T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2107"
+  },
+  {
+    "id": "PAY-80320",
+    "name": "Payment PAY-80320",
+    "asset_kind": "payment",
+    "amount_eur": 302633.99,
+    "authorised_at": "2026-08-16T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu",
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2108"
+  },
+  {
+    "id": "PAY-80321",
+    "name": "Payment PAY-80321",
+    "asset_kind": "payment",
+    "amount_eur": 46214.82,
+    "authorised_at": "2026-08-13T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2109"
+  },
+  {
+    "id": "PAY-80322",
+    "name": "Payment PAY-80322",
+    "asset_kind": "payment",
+    "amount_eur": 43984.3,
+    "authorised_at": "2026-08-19T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2110"
+  },
+  {
+    "id": "PAY-80323",
+    "name": "Payment PAY-80323",
+    "asset_kind": "payment",
+    "amount_eur": 4999.1,
+    "authorised_at": "2026-07-04T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2111"
+  },
+  {
+    "id": "PAY-80324",
+    "name": "Payment PAY-80324",
+    "asset_kind": "payment",
+    "amount_eur": 42374.5,
+    "authorised_at": "2026-08-25T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2112"
+  },
+  {
+    "id": "PAY-80325",
+    "name": "Payment PAY-80325",
+    "asset_kind": "payment",
+    "amount_eur": 16413.86,
+    "authorised_at": "2026-08-11T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2113"
+  },
+  {
+    "id": "PAY-80326",
+    "name": "Payment PAY-80326",
+    "asset_kind": "payment",
+    "amount_eur": 24491.13,
+    "authorised_at": "2026-07-29T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2114"
+  },
+  {
+    "id": "PAY-80327",
+    "name": "Payment PAY-80327",
+    "asset_kind": "payment",
+    "amount_eur": 1319.85,
+    "authorised_at": "2026-08-12T11:05:00Z",
+    "initiator": "g.hartmann@kestrelpay.eu",
+    "authorisers": [
+      "g.hartmann@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2115"
+  },
+  {
+    "id": "PAY-80328",
+    "name": "Payment PAY-80328",
+    "asset_kind": "payment",
+    "amount_eur": 386595.57,
+    "authorised_at": "2026-07-26T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu",
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2116"
+  },
+  {
+    "id": "PAY-80329",
+    "name": "Payment PAY-80329",
+    "asset_kind": "payment",
+    "amount_eur": 37548.02,
+    "authorised_at": "2026-06-15T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2117"
+  },
+  {
+    "id": "PAY-80330",
+    "name": "Payment PAY-80330",
+    "asset_kind": "payment",
+    "amount_eur": 20177.88,
+    "authorised_at": "2026-08-08T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2118"
+  },
+  {
+    "id": "PAY-80331",
+    "name": "Payment PAY-80331",
+    "asset_kind": "payment",
+    "amount_eur": 47212.18,
+    "authorised_at": "2026-08-28T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2119"
+  },
+  {
+    "id": "PAY-80332",
+    "name": "Payment PAY-80332",
+    "asset_kind": "payment",
+    "amount_eur": 43868.39,
+    "authorised_at": "2026-08-24T11:05:00Z",
+    "initiator": "n.fitzgerald@kestrelpay.eu",
+    "authorisers": [
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2120"
+  },
+  {
+    "id": "PAY-80333",
+    "name": "Payment PAY-80333",
+    "asset_kind": "payment",
+    "amount_eur": 9561.8,
+    "authorised_at": "2026-08-28T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2121"
+  },
+  {
+    "id": "PAY-80334",
+    "name": "Payment PAY-80334",
+    "asset_kind": "payment",
+    "amount_eur": 24453.17,
+    "authorised_at": "2026-07-27T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2122"
+  },
+  {
+    "id": "PAY-80335",
+    "name": "Payment PAY-80335",
+    "asset_kind": "payment",
+    "amount_eur": 7608.75,
+    "authorised_at": "2026-07-15T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2123"
+  },
+  {
+    "id": "PAY-80336",
+    "name": "Payment PAY-80336",
+    "asset_kind": "payment",
+    "amount_eur": 282780.46,
+    "authorised_at": "2026-08-09T11:05:00Z",
+    "initiator": "k.zielinska@kestrelpay.eu",
+    "authorisers": [
+      "k.zielinska@kestrelpay.eu",
+      "n.fitzgerald@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2124"
+  },
+  {
+    "id": "PAY-80337",
+    "name": "Payment PAY-80337",
+    "asset_kind": "payment",
+    "amount_eur": 41174.36,
+    "authorised_at": "2026-07-03T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2125"
+  },
+  {
+    "id": "PAY-80338",
+    "name": "Payment PAY-80338",
+    "asset_kind": "payment",
+    "amount_eur": 21190.53,
+    "authorised_at": "2026-08-12T11:05:00Z",
+    "initiator": "a.brennan@kestrelpay.eu",
+    "authorisers": [
+      "a.brennan@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2126"
+  },
+  {
+    "id": "PAY-80339",
+    "name": "Payment PAY-80339",
+    "asset_kind": "payment",
+    "amount_eur": 14359.05,
+    "authorised_at": "2026-08-25T11:05:00Z",
+    "initiator": "d.ferreira@kestrelpay.eu",
+    "authorisers": [
+      "d.ferreira@kestrelpay.eu"
+    ],
+    "counterparty": "CP-2127"
+  }
+]

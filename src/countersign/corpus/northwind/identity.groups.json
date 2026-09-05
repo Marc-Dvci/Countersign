@@ -1,0 +1,16 @@
+[
+  {
+    "id": "ng_admin",
+    "name": "production-admins",
+    "asset_kind": "group",
+    "privileged": true,
+    "description": "Production infrastructure administrators"
+  },
+  {
+    "id": "ng_eng",
+    "name": "engineering",
+    "asset_kind": "group",
+    "privileged": false,
+    "description": "All engineers"
+  }
+]

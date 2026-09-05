@@ -1,0 +1,24 @@
+[
+  {
+    "id": "northwind/northwind-api",
+    "name": "northwind-api",
+    "asset_kind": "repository",
+    "private": true,
+    "default_branch": "main",
+    "archived": false,
+    "pushed_at": "2026-08-31",
+    "language": "Python",
+    "production": true
+  },
+  {
+    "id": "northwind/northwind-web",
+    "name": "northwind-web",
+    "asset_kind": "repository",
+    "private": true,
+    "default_branch": "main",
+    "archived": false,
+    "pushed_at": "2026-08-30",
+    "language": "TypeScript",
+    "production": true
+  }
+]

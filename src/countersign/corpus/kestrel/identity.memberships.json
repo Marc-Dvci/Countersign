@@ -1,0 +1,192 @@
+[
+  {
+    "id": "g_pay:u_abrennan",
+    "name": "payments-operators / a.brennan@kestrelpay.eu",
+    "asset_kind": "membership",
+    "group": "payments-operators",
+    "group_id": "g_pay",
+    "user_id": "u_abrennan",
+    "email": "a.brennan@kestrelpay.eu",
+    "granted_at": "2025-06-01"
+  },
+  {
+    "id": "g_pay:u_kzielinska",
+    "name": "payments-operators / k.zielinska@kestrelpay.eu",
+    "asset_kind": "membership",
+    "group": "payments-operators",
+    "group_id": "g_pay",
+    "user_id": "u_kzielinska",
+    "email": "k.zielinska@kestrelpay.eu",
+    "granted_at": "2025-06-01"
+  },
+  {
+    "id": "g_pay:u_rdelacroix",
+    "name": "payments-operators / r.delacroix@kestrelpay.eu",
+    "asset_kind": "membership",
+    "group": "payments-operators",
+    "group_id": "g_pay",
+    "user_id": "u_rdelacroix",
+    "email": "r.delacroix@kestrelpay.eu",
+    "granted_at": "2025-06-01"
+  },
+  {
+    "id": "g_pay:u_ghartmann",
+    "name": "payments-operators / g.hartmann@kestrelpay.eu",
+    "asset_kind": "membership",
+    "group": "payments-operators",
+    "group_id": "g_pay",
+    "user_id": "u_ghartmann",
+    "email": "g.hartmann@kestrelpay.eu",
+    "granted_at": "2025-06-01"
+  },
+  {
+    "id": "g_pay:u_dferreira",
+    "name": "payments-operators / d.ferreira@kestrelpay.eu",
+    "asset_kind": "membership",
+    "group": "payments-operators",
+    "group_id": "g_pay",
+    "user_id": "u_dferreira",
+    "email": "d.ferreira@kestrelpay.eu",
+    "granted_at": "2025-06-01"
+  },
+  {
+    "id": "g_ledger:u_plindqvist",
+    "name": "ledger-admins / p.lindqvist@kestrelpay.eu",
+    "asset_kind": "membership",
+    "group": "ledger-admins",
+    "group_id": "g_ledger",
+    "user_id": "u_plindqvist",
+    "email": "p.lindqvist@kestrelpay.eu",
+    "granted_at": "2025-06-01"
+  },
+  {
+    "id": "g_ledger:u_mnowak",
+    "name": "ledger-admins / m.nowak@kestrelpay.eu",
+    "asset_kind": "membership",
+    "group": "ledger-admins",
+    "group_id": "g_ledger",
+    "user_id": "u_mnowak",
+    "email": "m.nowak@kestrelpay.eu",
+    "granted_at": "2025-06-01"
+  },
+  {
+    "id": "g_ledger:u_okelly",
+    "name": "ledger-admins / o.kelly@kestrelpay.eu",
+    "asset_kind": "membership",
+    "group": "ledger-admins",
+    "group_id": "g_ledger",
+    "user_id": "u_okelly",
+    "email": "o.kelly@kestrelpay.eu",
+    "granted_at": "2025-06-01"
+  },
+  {
+    "id": "g_eng:u_tbrennan",
+    "name": "engineering / t.brennan@kestrelpay.eu",
+    "asset_kind": "membership",
+    "group": "engineering",
+    "group_id": "g_eng",
+    "user_id": "u_tbrennan",
+    "email": "t.brennan@kestrelpay.eu",
+    "granted_at": "2025-06-01"
+  },
+  {
+    "id": "g_eng:u_mnowak",
+    "name": "engineering / m.nowak@kestrelpay.eu",
+    "asset_kind": "membership",
+    "group": "engineering",
+    "group_id": "g_eng",
+    "user_id": "u_mnowak",
+    "email": "m.nowak@kestrelpay.eu",
+    "granted_at": "2025-06-01"
+  },
+  {
+    "id": "g_eng:u_dvarga",
+    "name": "engineering / d.varga@kestrelpay.eu",
+    "asset_kind": "membership",
+    "group": "engineering",
+    "group_id": "g_eng",
+    "user_id": "u_dvarga",
+    "email": "d.varga@kestrelpay.eu",
+    "granted_at": "2025-06-01"
+  },
+  {
+    "id": "g_eng:u_balmeida",
+    "name": "engineering / b.almeida@kestrelpay.eu",
+    "asset_kind": "membership",
+    "group": "engineering",
+    "group_id": "g_eng",
+    "user_id": "u_balmeida",
+    "email": "b.almeida@kestrelpay.eu",
+    "granted_at": "2025-06-01"
+  },
+  {
+    "id": "g_eng:u_okelly",
+    "name": "engineering / o.kelly@kestrelpay.eu",
+    "asset_kind": "membership",
+    "group": "engineering",
+    "group_id": "g_eng",
+    "user_id": "u_okelly",
+    "email": "o.kelly@kestrelpay.eu",
+    "granted_at": "2025-06-01"
+  },
+  {
+    "id": "g_eng:u_akowalski",
+    "name": "engineering / a.kowalski@kestrelpay.eu",
+    "asset_kind": "membership",
+    "group": "engineering",
+    "group_id": "g_eng",
+    "user_id": "u_akowalski",
+    "email": "a.kowalski@kestrelpay.eu",
+    "granted_at": "2025-06-01"
+  },
+  {
+    "id": "g_eng:u_sbyrne",
+    "name": "engineering / s.byrne@kestrelpay.eu",
+    "asset_kind": "membership",
+    "group": "engineering",
+    "group_id": "g_eng",
+    "user_id": "u_sbyrne",
+    "email": "s.byrne@kestrelpay.eu",
+    "granted_at": "2025-06-01"
+  },
+  {
+    "id": "g_support:u_dferreira",
+    "name": "support / d.ferreira@kestrelpay.eu",
+    "asset_kind": "membership",
+    "group": "support",
+    "group_id": "g_support",
+    "user_id": "u_dferreira",
+    "email": "d.ferreira@kestrelpay.eu",
+    "granted_at": "2025-06-01"
+  },
+  {
+    "id": "g_support:u_hnovak",
+    "name": "support / h.novak@kestrelpay.eu",
+    "asset_kind": "membership",
+    "group": "support",
+    "group_id": "g_support",
+    "user_id": "u_hnovak",
+    "email": "h.novak@kestrelpay.eu",
+    "granted_at": "2025-06-01"
+  },
+  {
+    "id": "g_finance:u_nfitzgerald",
+    "name": "finance / n.fitzgerald@kestrelpay.eu",
+    "asset_kind": "membership",
+    "group": "finance",
+    "group_id": "g_finance",
+    "user_id": "u_nfitzgerald",
+    "email": "n.fitzgerald@kestrelpay.eu",
+    "granted_at": "2025-06-01"
+  },
+  {
+    "id": "g_finance:u_ghartmann",
+    "name": "finance / g.hartmann@kestrelpay.eu",
+    "asset_kind": "membership",
+    "group": "finance",
+    "group_id": "g_finance",
+    "user_id": "u_ghartmann",
+    "email": "g.hartmann@kestrelpay.eu",
+    "granted_at": "2025-06-01"
+  }
+]

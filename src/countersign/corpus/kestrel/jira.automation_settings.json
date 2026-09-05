@@ -1,0 +1,9 @@
+[
+  {
+    "id": "INC",
+    "name": "Incident Management",
+    "regulator_notification_target_hours": 24,
+    "declared_source": "POL-IRP-004 section 7.2",
+    "last_changed": "2026-02-11"
+  }
+]

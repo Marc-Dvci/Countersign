@@ -1,0 +1,90 @@
+[
+  {
+    "id": "nu_praman",
+    "name": "p.raman@northwindsystems.com",
+    "asset_kind": "user",
+    "email": "p.raman@northwindsystems.com",
+    "display_name": "Priya Raman",
+    "status": "ACTIVE",
+    "created_at": "2021-02-01",
+    "last_login": "2026-08-28",
+    "deactivated_at": ""
+  },
+  {
+    "id": "nu_jweber",
+    "name": "j.weber@northwindsystems.com",
+    "asset_kind": "user",
+    "email": "j.weber@northwindsystems.com",
+    "display_name": "Jonas Weber",
+    "status": "ACTIVE",
+    "created_at": "2022-04-11",
+    "last_login": "2026-08-26",
+    "deactivated_at": ""
+  },
+  {
+    "id": "nu_mchen",
+    "name": "m.chen@northwindsystems.com",
+    "asset_kind": "user",
+    "email": "m.chen@northwindsystems.com",
+    "display_name": "Maya Chen",
+    "status": "ACTIVE",
+    "created_at": "2023-08-21",
+    "last_login": "2026-08-30",
+    "deactivated_at": ""
+  },
+  {
+    "id": "nu_tlund",
+    "name": "t.lund@northwindsystems.com",
+    "asset_kind": "user",
+    "email": "t.lund@northwindsystems.com",
+    "display_name": "Tobias Lund",
+    "status": "ACTIVE",
+    "created_at": "2022-01-17",
+    "last_login": "2026-08-29",
+    "deactivated_at": ""
+  },
+  {
+    "id": "nu_adiallo",
+    "name": "a.diallo@northwindsystems.com",
+    "asset_kind": "user",
+    "email": "a.diallo@northwindsystems.com",
+    "display_name": "Amara Diallo",
+    "status": "ACTIVE",
+    "created_at": "2023-03-06",
+    "last_login": "2026-09-01",
+    "deactivated_at": ""
+  },
+  {
+    "id": "nu_rkavanagh",
+    "name": "r.kavanagh@northwindsystems.com",
+    "asset_kind": "user",
+    "email": "r.kavanagh@northwindsystems.com",
+    "display_name": "Ryan Kavanagh",
+    "status": "ACTIVE",
+    "created_at": "2021-09-13",
+    "last_login": "2026-08-28",
+    "deactivated_at": ""
+  },
+  {
+    "id": "nu_edemir",
+    "name": "e.demir@northwindsystems.com",
+    "asset_kind": "user",
+    "email": "e.demir@northwindsystems.com",
+    "display_name": "Elif Demir",
+    "status": "ACTIVE",
+    "created_at": "2024-01-08",
+    "last_login": "2026-08-28",
+    "deactivated_at": ""
+  },
+  {
+    "id": "nu_mhall",
+    "name": "m.hall@northwindsystems.com",
+    "asset_kind": "user",
+    "email": "m.hall@northwindsystems.com",
+    "display_name": "Marcus Hall",
+    "status": "ACTIVE",
+    "created_at": "2022-06-27",
+    "last_login": "2026-07-19",
+    "deactivated_at": ""
+  }
+]

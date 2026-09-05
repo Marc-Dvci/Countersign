@@ -1,0 +1,594 @@
+[
+  {
+    "id": "kestrelpay/kestrel-ledger#382",
+    "name": "Update audit logging",
+    "asset_kind": "pull_request",
+    "repository": "kestrel-ledger",
+    "author": "t.brennan",
+    "merged_by": "m.nowak",
+    "merged_at": "2026-07-05T10:15:00Z",
+    "base": "main",
+    "approvals": [
+      "m.nowak"
+    ],
+    "labels": [],
+    "body": "",
+    "url": "https://github.com/kestrelpay/kestrel-ledger/pull/382"
+  },
+  {
+    "id": "kestrelpay/kestrel-gateway#384",
+    "name": "Update idempotency keys",
+    "asset_kind": "pull_request",
+    "repository": "kestrel-gateway",
+    "author": "m.nowak",
+    "merged_by": "t.brennan",
+    "merged_at": "2026-07-21T10:15:00Z",
+    "base": "main",
+    "approvals": [
+      "t.brennan"
+    ],
+    "labels": [],
+    "body": "",
+    "url": "https://github.com/kestrelpay/kestrel-gateway/pull/384"
+  },
+  {
+    "id": "kestrelpay/kestrel-console#385",
+    "name": "Harden settlement batching",
+    "asset_kind": "pull_request",
+    "repository": "kestrel-console",
+    "author": "d.varga",
+    "merged_by": "t.brennan",
+    "merged_at": "2026-08-20T10:15:00Z",
+    "base": "main",
+    "approvals": [
+      "t.brennan"
+    ],
+    "labels": [],
+    "body": "",
+    "url": "https://github.com/kestrelpay/kestrel-console/pull/385"
+  },
+  {
+    "id": "kestrelpay/kestrel-ledger#388",
+    "name": "Update audit logging",
+    "asset_kind": "pull_request",
+    "repository": "kestrel-ledger",
+    "author": "b.almeida",
+    "merged_by": "t.brennan",
+    "merged_at": "2026-06-12T10:15:00Z",
+    "base": "main",
+    "approvals": [
+      "t.brennan"
+    ],
+    "labels": [],
+    "body": "",
+    "url": "https://github.com/kestrelpay/kestrel-ledger/pull/388"
+  },
+  {
+    "id": "kestrelpay/kestrel-gateway#390",
+    "name": "Add settlement batching",
+    "asset_kind": "pull_request",
+    "repository": "kestrel-gateway",
+    "author": "o.kelly",
+    "merged_by": "t.brennan",
+    "merged_at": "2026-08-20T10:15:00Z",
+    "base": "main",
+    "approvals": [
+      "t.brennan"
+    ],
+    "labels": [],
+    "body": "",
+    "url": "https://github.com/kestrelpay/kestrel-gateway/pull/390"
+  },
+  {
+    "id": "kestrelpay/kestrel-console#392",
+    "name": "Update rate limiter",
+    "asset_kind": "pull_request",
+    "repository": "kestrel-console",
+    "author": "a.kowalski",
+    "merged_by": "t.brennan",
+    "merged_at": "2026-06-03T10:15:00Z",
+    "base": "main",
+    "approvals": [
+      "t.brennan"
+    ],
+    "labels": [],
+    "body": "",
+    "url": "https://github.com/kestrelpay/kestrel-console/pull/392"
+  },
+  {
+    "id": "kestrelpay/kestrel-ledger#395",
+    "name": "Update audit logging",
+    "asset_kind": "pull_request",
+    "repository": "kestrel-ledger",
+    "author": "t.brennan",
+    "merged_by": "m.nowak",
+    "merged_at": "2026-06-13T10:15:00Z",
+    "base": "main",
+    "approvals": [
+      "m.nowak"
+    ],
+    "labels": [],
+    "body": "",
+    "url": "https://github.com/kestrelpay/kestrel-ledger/pull/395"
+  },
+  {
+    "id": "kestrelpay/kestrel-gateway#397",
+    "name": "Refactor webhook signing",
+    "asset_kind": "pull_request",
+    "repository": "kestrel-gateway",
+    "author": "m.nowak",
+    "merged_by": "t.brennan",
+    "merged_at": "2026-07-17T10:15:00Z",
+    "base": "main",
+    "approvals": [
+      "t.brennan"
+    ],
+    "labels": [],
+    "body": "",
+    "url": "https://github.com/kestrelpay/kestrel-gateway/pull/397"
+  },
+  {
+    "id": "kestrelpay/kestrel-console#399",
+    "name": "Harden idempotency keys",
+    "asset_kind": "pull_request",
+    "repository": "kestrel-console",
+    "author": "d.varga",
+    "merged_by": "t.brennan",
+    "merged_at": "2026-08-28T10:15:00Z",
+    "base": "main",
+    "approvals": [
+      "t.brennan"
+    ],
+    "labels": [],
+    "body": "",
+    "url": "https://github.com/kestrelpay/kestrel-console/pull/399"
+  },
+  {
+    "id": "kestrelpay/kestrel-ledger#401",
+    "name": "Refactor webhook signing",
+    "asset_kind": "pull_request",
+    "repository": "kestrel-ledger",
+    "author": "b.almeida",
+    "merged_by": "t.brennan",
+    "merged_at": "2026-06-17T10:15:00Z",
+    "base": "main",
+    "approvals": [
+      "t.brennan"
+    ],
+    "labels": [],
+    "body": "",
+    "url": "https://github.com/kestrelpay/kestrel-ledger/pull/401"
+  },
+  {
+    "id": "kestrelpay/kestrel-gateway#402",
+    "name": "Harden audit logging",
+    "asset_kind": "pull_request",
+    "repository": "kestrel-gateway",
+    "author": "o.kelly",
+    "merged_by": "t.brennan",
+    "merged_at": "2026-06-16T10:15:00Z",
+    "base": "main",
+    "approvals": [
+      "t.brennan"
+    ],
+    "labels": [],
+    "body": "",
+    "url": "https://github.com/kestrelpay/kestrel-gateway/pull/402"
+  },
+  {
+    "id": "kestrelpay/kestrel-console#403",
+    "name": "Harden idempotency keys",
+    "asset_kind": "pull_request",
+    "repository": "kestrel-console",
+    "author": "a.kowalski",
+    "merged_by": "t.brennan",
+    "merged_at": "2026-06-05T10:15:00Z",
+    "base": "main",
+    "approvals": [
+      "t.brennan"
+    ],
+    "labels": [],
+    "body": "",
+    "url": "https://github.com/kestrelpay/kestrel-console/pull/403"
+  },
+  {
+    "id": "kestrelpay/kestrel-ledger#405",
+    "name": "Harden retry policy",
+    "asset_kind": "pull_request",
+    "repository": "kestrel-ledger",
+    "author": "t.brennan",
+    "merged_by": "m.nowak",
+    "merged_at": "2026-07-28T10:15:00Z",
+    "base": "main",
+    "approvals": [
+      "m.nowak"
+    ],
+    "labels": [],
+    "body": "",
+    "url": "https://github.com/kestrelpay/kestrel-ledger/pull/405"
+  },
+  {
+    "id": "kestrelpay/kestrel-gateway#407",
+    "name": "Fix audit logging",
+    "asset_kind": "pull_request",
+    "repository": "kestrel-gateway",
+    "author": "m.nowak",
+    "merged_by": "t.brennan",
+    "merged_at": "2026-08-20T10:15:00Z",
+    "base": "main",
+    "approvals": [
+      "t.brennan"
+    ],
+    "labels": [],
+    "body": "",
+    "url": "https://github.com/kestrelpay/kestrel-gateway/pull/407"
+  },
+  {
+    "id": "kestrelpay/kestrel-console#408",
+    "name": "Fix retry policy",
+    "asset_kind": "pull_request",
+    "repository": "kestrel-console",
+    "author": "d.varga",
+    "merged_by": "t.brennan",
+    "merged_at": "2026-08-12T10:15:00Z",
+    "base": "main",
+    "approvals": [
+      "t.brennan"
+    ],
+    "labels": [],
+    "body": "",
+    "url": "https://github.com/kestrelpay/kestrel-console/pull/408"
+  },
+  {
+    "id": "kestrelpay/kestrel-ledger#411",
+    "name": "Harden retry policy",
+    "asset_kind": "pull_request",
+    "repository": "kestrel-ledger",
+    "author": "b.almeida",
+    "merged_by": "t.brennan",
+    "merged_at": "2026-08-24T10:15:00Z",
+    "base": "main",
+    "approvals": [
+      "t.brennan"
+    ],
+    "labels": [],
+    "body": "",
+    "url": "https://github.com/kestrelpay/kestrel-ledger/pull/411"
+  },
+  {
+    "id": "kestrelpay/kestrel-gateway#413",
+    "name": "Harden retry policy",
+    "asset_kind": "pull_request",
+    "repository": "kestrel-gateway",
+    "author": "o.kelly",
+    "merged_by": "t.brennan",
+    "merged_at": "2026-07-16T10:15:00Z",
+    "base": "main",
+    "approvals": [
+      "t.brennan"
+    ],
+    "labels": [],
+    "body": "",
+    "url": "https://github.com/kestrelpay/kestrel-gateway/pull/413"
+  },
+  {
+    "id": "kestrelpay/kestrel-console#416",
+    "name": "Fix retry policy",
+    "asset_kind": "pull_request",
+    "repository": "kestrel-console",
+    "author": "a.kowalski",
+    "merged_by": "t.brennan",
+    "merged_at": "2026-06-13T10:15:00Z",
+    "base": "main",
+    "approvals": [
+      "t.brennan"
+    ],
+    "labels": [],
+    "body": "",
+    "url": "https://github.com/kestrelpay/kestrel-console/pull/416"
+  },
+  {
+    "id": "kestrelpay/kestrel-ledger#418",
+    "name": "Harden webhook signing",
+    "asset_kind": "pull_request",
+    "repository": "kestrel-ledger",
+    "author": "t.brennan",
+    "merged_by": "m.nowak",
+    "merged_at": "2026-08-24T10:15:00Z",
+    "base": "main",
+    "approvals": [
+      "m.nowak"
+    ],
+    "labels": [],
+    "body": "",
+    "url": "https://github.com/kestrelpay/kestrel-ledger/pull/418"
+  },
+  {
+    "id": "kestrelpay/kestrel-gateway#421",
+    "name": "Add rate limiter",
+    "asset_kind": "pull_request",
+    "repository": "kestrel-gateway",
+    "author": "m.nowak",
+    "merged_by": "t.brennan",
+    "merged_at": "2026-08-28T10:15:00Z",
+    "base": "main",
+    "approvals": [
+      "t.brennan"
+    ],
+    "labels": [],
+    "body": "",
+    "url": "https://github.com/kestrelpay/kestrel-gateway/pull/421"
+  },
+  {
+    "id": "kestrelpay/kestrel-console#423",
+    "name": "Refactor rate limiter",
+    "asset_kind": "pull_request",
+    "repository": "kestrel-console",
+    "author": "d.varga",
+    "merged_by": "t.brennan",
+    "merged_at": "2026-07-22T10:15:00Z",
+    "base": "main",
+    "approvals": [
+      "t.brennan"
+    ],
+    "labels": [],
+    "body": "",
+    "url": "https://github.com/kestrelpay/kestrel-console/pull/423"
+  },
+  {
+    "id": "kestrelpay/kestrel-ledger#424",
+    "name": "Update idempotency keys",
+    "asset_kind": "pull_request",
+    "repository": "kestrel-ledger",
+    "author": "b.almeida",
+    "merged_by": "t.brennan",
+    "merged_at": "2026-08-17T10:15:00Z",
+    "base": "main",
+    "approvals": [
+      "t.brennan"
+    ],
+    "labels": [],
+    "body": "",
+    "url": "https://github.com/kestrelpay/kestrel-ledger/pull/424"
+  },
+  {
+    "id": "kestrelpay/kestrel-gateway#426",
+    "name": "Refactor webhook signing",
+    "asset_kind": "pull_request",
+    "repository": "kestrel-gateway",
+    "author": "o.kelly",
+    "merged_by": "t.brennan",
+    "merged_at": "2026-07-22T10:15:00Z",
+    "base": "main",
+    "approvals": [
+      "t.brennan"
+    ],
+    "labels": [],
+    "body": "",
+    "url": "https://github.com/kestrelpay/kestrel-gateway/pull/426"
+  },
+  {
+    "id": "kestrelpay/kestrel-console#427",
+    "name": "Harden audit logging",
+    "asset_kind": "pull_request",
+    "repository": "kestrel-console",
+    "author": "a.kowalski",
+    "merged_by": "t.brennan",
+    "merged_at": "2026-08-22T10:15:00Z",
+    "base": "main",
+    "approvals": [
+      "t.brennan"
+    ],
+    "labels": [],
+    "body": "",
+    "url": "https://github.com/kestrelpay/kestrel-console/pull/427"
+  },
+  {
+    "id": "kestrelpay/kestrel-ledger#430",
+    "name": "Refactor webhook signing",
+    "asset_kind": "pull_request",
+    "repository": "kestrel-ledger",
+    "author": "t.brennan",
+    "merged_by": "m.nowak",
+    "merged_at": "2026-08-26T10:15:00Z",
+    "base": "main",
+    "approvals": [
+      "m.nowak"
+    ],
+    "labels": [],
+    "body": "",
+    "url": "https://github.com/kestrelpay/kestrel-ledger/pull/430"
+  },
+  {
+    "id": "kestrelpay/kestrel-gateway#433",
+    "name": "Update webhook signing",
+    "asset_kind": "pull_request",
+    "repository": "kestrel-gateway",
+    "author": "m.nowak",
+    "merged_by": "t.brennan",
+    "merged_at": "2026-07-22T10:15:00Z",
+    "base": "main",
+    "approvals": [
+      "t.brennan"
+    ],
+    "labels": [],
+    "body": "",
+    "url": "https://github.com/kestrelpay/kestrel-gateway/pull/433"
+  },
+  {
+    "id": "kestrelpay/kestrel-console#434",
+    "name": "Fix rate limiter",
+    "asset_kind": "pull_request",
+    "repository": "kestrel-console",
+    "author": "d.varga",
+    "merged_by": "t.brennan",
+    "merged_at": "2026-06-10T10:15:00Z",
+    "base": "main",
+    "approvals": [
+      "t.brennan"
+    ],
+    "labels": [],
+    "body": "",
+    "url": "https://github.com/kestrelpay/kestrel-console/pull/434"
+  },
+  {
+    "id": "kestrelpay/kestrel-ledger#435",
+    "name": "Harden settlement batching",
+    "asset_kind": "pull_request",
+    "repository": "kestrel-ledger",
+    "author": "b.almeida",
+    "merged_by": "t.brennan",
+    "merged_at": "2026-07-16T10:15:00Z",
+    "base": "main",
+    "approvals": [
+      "t.brennan"
+    ],
+    "labels": [],
+    "body": "",
+    "url": "https://github.com/kestrelpay/kestrel-ledger/pull/435"
+  },
+  {
+    "id": "kestrelpay/kestrel-gateway#437",
+    "name": "Add rate limiter",
+    "asset_kind": "pull_request",
+    "repository": "kestrel-gateway",
+    "author": "o.kelly",
+    "merged_by": "t.brennan",
+    "merged_at": "2026-07-10T10:15:00Z",
+    "base": "main",
+    "approvals": [
+      "t.brennan"
+    ],
+    "labels": [],
+    "body": "",
+    "url": "https://github.com/kestrelpay/kestrel-gateway/pull/437"
+  },
+  {
+    "id": "kestrelpay/kestrel-console#438",
+    "name": "Update audit logging",
+    "asset_kind": "pull_request",
+    "repository": "kestrel-console",
+    "author": "a.kowalski",
+    "merged_by": "t.brennan",
+    "merged_at": "2026-08-02T10:15:00Z",
+    "base": "main",
+    "approvals": [
+      "t.brennan"
+    ],
+    "labels": [],
+    "body": "",
+    "url": "https://github.com/kestrelpay/kestrel-console/pull/438"
+  },
+  {
+    "id": "kestrelpay/kestrel-ledger#440",
+    "name": "Refactor audit logging",
+    "asset_kind": "pull_request",
+    "repository": "kestrel-ledger",
+    "author": "t.brennan",
+    "merged_by": "m.nowak",
+    "merged_at": "2026-08-29T10:15:00Z",
+    "base": "main",
+    "approvals": [
+      "m.nowak"
+    ],
+    "labels": [],
+    "body": "",
+    "url": "https://github.com/kestrelpay/kestrel-ledger/pull/440"
+  },
+  {
+    "id": "kestrelpay/kestrel-gateway#441",
+    "name": "Harden audit logging",
+    "asset_kind": "pull_request",
+    "repository": "kestrel-gateway",
+    "author": "m.nowak",
+    "merged_by": "t.brennan",
+    "merged_at": "2026-06-24T10:15:00Z",
+    "base": "main",
+    "approvals": [
+      "t.brennan"
+    ],
+    "labels": [],
+    "body": "",
+    "url": "https://github.com/kestrelpay/kestrel-gateway/pull/441"
+  },
+  {
+    "id": "kestrelpay/kestrel-console#444",
+    "name": "Harden schema migration",
+    "asset_kind": "pull_request",
+    "repository": "kestrel-console",
+    "author": "d.varga",
+    "merged_by": "t.brennan",
+    "merged_at": "2026-08-04T10:15:00Z",
+    "base": "main",
+    "approvals": [
+      "t.brennan"
+    ],
+    "labels": [],
+    "body": "",
+    "url": "https://github.com/kestrelpay/kestrel-console/pull/444"
+  },
+  {
+    "id": "kestrelpay/kestrel-ledger#447",
+    "name": "Harden webhook signing",
+    "asset_kind": "pull_request",
+    "repository": "kestrel-ledger",
+    "author": "b.almeida",
+    "merged_by": "t.brennan",
+    "merged_at": "2026-06-05T10:15:00Z",
+    "base": "main",
+    "approvals": [
+      "t.brennan"
+    ],
+    "labels": [],
+    "body": "",
+    "url": "https://github.com/kestrelpay/kestrel-ledger/pull/447"
+  },
+  {
+    "id": "kestrelpay/kestrel-ledger#412",
+    "name": "Emergency hotfix: rounding error on multi-currency settlement",
+    "asset_kind": "pull_request",
+    "repository": "kestrel-ledger",
+    "author": "d.varga",
+    "merged_by": "d.varga",
+    "merged_at": "2026-07-15T02:41:00Z",
+    "base": "main",
+    "approvals": [],
+    "labels": [
+      "emergency"
+    ],
+    "body": "Merged under the emergency procedure during the settlement window. CAB ticket CHG-2210.",
+    "url": "https://github.com/kestrelpay/kestrel-ledger/pull/412"
+  },
+  {
+    "id": "kestrelpay/kestrel-gateway#398",
+    "name": "Raise the per-merchant rate limit",
+    "asset_kind": "pull_request",
+    "repository": "kestrel-gateway",
+    "author": "m.nowak",
+    "merged_by": "m.nowak",
+    "merged_at": "2026-06-27T16:02:00Z",
+    "base": "main",
+    "approvals": [
+      "m.nowak"
+    ],
+    "labels": [],
+    "body": "",
+    "url": "https://github.com/kestrelpay/kestrel-gateway/pull/398"
+  },
+  {
+    "id": "kestrelpay/kestrel-ledger#421",
+    "name": "Skip reconciliation for zero-value adjustments",
+    "asset_kind": "pull_request",
+    "repository": "kestrel-ledger",
+    "author": "t.brennan",
+    "merged_by": "t.brennan",
+    "merged_at": "2026-08-11T11:37:00Z",
+    "base": "main",
+    "approvals": [
+      "t.brennan"
+    ],
+    "labels": [],
+    "body": "",
+    "url": "https://github.com/kestrelpay/kestrel-ledger/pull/421"
+  }
+]

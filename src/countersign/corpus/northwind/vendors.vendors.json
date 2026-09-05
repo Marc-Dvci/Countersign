@@ -1,0 +1,41 @@
+[
+  {
+    "id": "nv_01",
+    "name": "Cirrus Object Storage",
+    "asset_kind": "vendor",
+    "service": "Customer file storage",
+    "critical": true,
+    "supports_critical_function": true,
+    "processes_personal_data": true,
+    "last_due_diligence": "2026-04-14",
+    "exit_plan_reference": "EXIT-CIR",
+    "dpa_reference": "DPA-CIR-2025",
+    "contract_reference": "CTR-NV01"
+  },
+  {
+    "id": "nv_02",
+    "name": "Loomis Email Delivery",
+    "asset_kind": "vendor",
+    "service": "Transactional email",
+    "critical": false,
+    "supports_critical_function": false,
+    "processes_personal_data": true,
+    "last_due_diligence": "2026-06-02",
+    "exit_plan_reference": "",
+    "dpa_reference": "",
+    "contract_reference": "CTR-NV02"
+  },
+  {
+    "id": "nv_03",
+    "name": "Pinehurst Analytics",
+    "asset_kind": "vendor",
+    "service": "Product analytics",
+    "critical": false,
+    "supports_critical_function": false,
+    "processes_personal_data": true,
+    "last_due_diligence": "2026-01-09",
+    "exit_plan_reference": "",
+    "dpa_reference": "DPA-PIN-2024",
+    "contract_reference": "CTR-NV03"
+  }
+]

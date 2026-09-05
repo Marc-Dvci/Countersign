@@ -1,0 +1,26 @@
+[
+  {
+    "id": "bv_01",
+    "name": "Stahlwerk Ostheim",
+    "asset_kind": "vendor",
+    "service": "Steel supply",
+    "critical": true,
+    "supports_critical_function": true,
+    "processes_personal_data": false,
+    "last_due_diligence": "2026-03-02",
+    "exit_plan_reference": "EXIT-STO",
+    "contract_reference": "CTR-BV01"
+  },
+  {
+    "id": "bv_02",
+    "name": "Rhein Logistik",
+    "asset_kind": "vendor",
+    "service": "Outbound freight",
+    "critical": true,
+    "supports_critical_function": true,
+    "processes_personal_data": false,
+    "last_due_diligence": "2026-05-19",
+    "exit_plan_reference": "EXIT-RHL",
+    "contract_reference": "CTR-BV02"
+  }
+]

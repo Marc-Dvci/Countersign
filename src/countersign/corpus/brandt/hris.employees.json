@@ -1,0 +1,38 @@
+[
+  {
+    "id": "b_001",
+    "name": "Anke Reinhardt",
+    "asset_kind": "employee",
+    "email": "a.reinhardt@brandtwerke.de",
+    "job_title": "Head of HSE",
+    "department": "HSE",
+    "start_date": "2018-05-02",
+    "termination_date": "",
+    "employment_status": "active",
+    "entity": "Brandt Werke GmbH"
+  },
+  {
+    "id": "b_002",
+    "name": "Jurgen Klose",
+    "asset_kind": "employee",
+    "email": "j.klose@brandtwerke.de",
+    "job_title": "Trade Compliance Manager",
+    "department": "Legal",
+    "start_date": "2019-10-14",
+    "termination_date": "",
+    "employment_status": "active",
+    "entity": "Brandt Werke GmbH"
+  },
+  {
+    "id": "b_003",
+    "name": "Ilse Vogt",
+    "asset_kind": "employee",
+    "email": "i.vogt@brandtwerke.de",
+    "job_title": "Sustainability Lead",
+    "department": "Group Sustainability",
+    "start_date": "2022-02-21",
+    "termination_date": "",
+    "employment_status": "active",
+    "entity": "Brandt Werke GmbH"
+  }
+]

@@ -1,0 +1,146 @@
+[
+  {
+    "id": "HSE-881",
+    "key": "HSE-881",
+    "name": "Press shop line 2 inspection",
+    "asset_kind": "issue",
+    "project": "HSE",
+    "issue_type": "Inspection",
+    "status": "Done",
+    "priority": "Normal",
+    "created_at": "2026-08-19T09:00:00Z",
+    "resolved_at": "2026-08-19T09:00:00Z",
+    "work_area": "Press shop line 2",
+    "inspected_at": "2026-08-19",
+    "labels": [
+      "high-hazard"
+    ],
+    "url": "https://brandtwerke.atlassian.net/browse/HSE-881"
+  },
+  {
+    "id": "HSE-884",
+    "key": "HSE-884",
+    "name": "Coating bay inspection",
+    "asset_kind": "issue",
+    "project": "HSE",
+    "issue_type": "Inspection",
+    "status": "Done",
+    "priority": "Normal",
+    "created_at": "2026-08-26T09:00:00Z",
+    "resolved_at": "2026-08-26T09:00:00Z",
+    "work_area": "Coating bay",
+    "inspected_at": "2026-08-26",
+    "labels": [
+      "high-hazard"
+    ],
+    "url": "https://brandtwerke.atlassian.net/browse/HSE-884"
+  },
+  {
+    "id": "HSE-889",
+    "key": "HSE-889",
+    "name": "Furnace hall inspection",
+    "asset_kind": "issue",
+    "project": "HSE",
+    "issue_type": "Inspection",
+    "status": "Done",
+    "priority": "Normal",
+    "created_at": "2026-08-28T09:00:00Z",
+    "resolved_at": "2026-08-28T09:00:00Z",
+    "work_area": "Furnace hall",
+    "inspected_at": "2026-08-28",
+    "labels": [
+      "high-hazard"
+    ],
+    "url": "https://brandtwerke.atlassian.net/browse/HSE-889"
+  },
+  {
+    "id": "HSE-860",
+    "key": "HSE-860",
+    "name": "Solvent store inspection",
+    "asset_kind": "issue",
+    "project": "HSE",
+    "issue_type": "Inspection",
+    "status": "Done",
+    "priority": "Normal",
+    "created_at": "2026-07-08T09:00:00Z",
+    "resolved_at": "2026-07-08T09:00:00Z",
+    "work_area": "Solvent store",
+    "inspected_at": "2026-07-08",
+    "labels": [
+      "high-hazard"
+    ],
+    "url": "https://brandtwerke.atlassian.net/browse/HSE-860"
+  },
+  {
+    "id": "EXP-3301",
+    "key": "EXP-3301",
+    "name": "Precision spindle assembly to Ankara",
+    "asset_kind": "issue",
+    "project": "EXP",
+    "issue_type": "Shipment",
+    "status": "Dispatched",
+    "priority": "Normal",
+    "created_at": "2026-08-05T09:00:00Z",
+    "resolved_at": "2026-08-06T09:00:00Z",
+    "dual_use_listed": true,
+    "export_authorisation": "EXA-2026-0114",
+    "labels": [
+      "export"
+    ],
+    "url": "https://brandtwerke.atlassian.net/browse/EXP-3301"
+  },
+  {
+    "id": "EXP-3308",
+    "key": "EXP-3308",
+    "name": "Standard bearing set to Lyon",
+    "asset_kind": "issue",
+    "project": "EXP",
+    "issue_type": "Shipment",
+    "status": "Dispatched",
+    "priority": "Normal",
+    "created_at": "2026-08-05T09:00:00Z",
+    "resolved_at": "2026-08-06T09:00:00Z",
+    "dual_use_listed": false,
+    "export_authorisation": "",
+    "labels": [
+      "export"
+    ],
+    "url": "https://brandtwerke.atlassian.net/browse/EXP-3308"
+  },
+  {
+    "id": "EXP-3312",
+    "key": "EXP-3312",
+    "name": "High-accuracy measurement head to Dubai",
+    "asset_kind": "issue",
+    "project": "EXP",
+    "issue_type": "Shipment",
+    "status": "Dispatched",
+    "priority": "Normal",
+    "created_at": "2026-08-05T09:00:00Z",
+    "resolved_at": "2026-08-06T09:00:00Z",
+    "dual_use_listed": true,
+    "export_authorisation": "",
+    "labels": [
+      "export"
+    ],
+    "url": "https://brandtwerke.atlassian.net/browse/EXP-3312"
+  },
+  {
+    "id": "EXP-3319",
+    "key": "EXP-3319",
+    "name": "Spare motor housings to Porto",
+    "asset_kind": "issue",
+    "project": "EXP",
+    "issue_type": "Shipment",
+    "status": "Dispatched",
+    "priority": "Normal",
+    "created_at": "2026-08-05T09:00:00Z",
+    "resolved_at": "2026-08-06T09:00:00Z",
+    "dual_use_listed": false,
+    "export_authorisation": "",
+    "labels": [
+      "export"
+    ],
+    "url": "https://brandtwerke.atlassian.net/browse/EXP-3319"
+  }
+]

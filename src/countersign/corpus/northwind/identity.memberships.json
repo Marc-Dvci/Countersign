@@ -1,0 +1,32 @@
+[
+  {
+    "id": "ng_admin:nu_praman",
+    "name": "production-admins / p.raman",
+    "asset_kind": "membership",
+    "group": "production-admins",
+    "group_id": "ng_admin",
+    "user_id": "nu_praman",
+    "email": "p.raman@northwindsystems.com",
+    "granted_at": "2025-09-01"
+  },
+  {
+    "id": "ng_admin:nu_rkavanagh",
+    "name": "production-admins / r.kavanagh",
+    "asset_kind": "membership",
+    "group": "production-admins",
+    "group_id": "ng_admin",
+    "user_id": "nu_rkavanagh",
+    "email": "r.kavanagh@northwindsystems.com",
+    "granted_at": "2025-09-01"
+  },
+  {
+    "id": "ng_admin:nu_adiallo",
+    "name": "production-admins / a.diallo",
+    "asset_kind": "membership",
+    "group": "production-admins",
+    "group_id": "ng_admin",
+    "user_id": "nu_adiallo",
+    "email": "a.diallo@northwindsystems.com",
+    "granted_at": "2025-09-01"
+  }
+]

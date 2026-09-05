@@ -1,0 +1,35 @@
+[
+  {
+    "id": "HSE-STD-002",
+    "name": "Health and Safety Standard",
+    "asset_kind": "policy",
+    "owner": "hse@brandtwerke.de",
+    "review_cycle_months": 12,
+    "last_reviewed": "2026-04-19",
+    "approved_by": "Vorstand",
+    "mandated": true,
+    "content": "Section 5 High-hazard areas are inspected at least every 30 days."
+  },
+  {
+    "id": "TRD-STD-001",
+    "name": "Trade Compliance Standard",
+    "asset_kind": "policy",
+    "owner": "trade@brandtwerke.de",
+    "review_cycle_months": 12,
+    "last_reviewed": "2025-03-11",
+    "approved_by": "Vorstand",
+    "mandated": true,
+    "content": "Listed items require a recorded export authorisation before dispatch."
+  },
+  {
+    "id": "ESG-STD-003",
+    "name": "Sustainability Reporting Standard",
+    "asset_kind": "policy",
+    "owner": "esg@brandtwerke.de",
+    "review_cycle_months": 12,
+    "last_reviewed": "2026-06-25",
+    "approved_by": "Vorstand",
+    "mandated": true,
+    "content": "Scope 1 and 2 emissions are reported with a stated boundary."
+  }
+]

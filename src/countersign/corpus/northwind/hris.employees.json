@@ -1,0 +1,98 @@
+[
+  {
+    "id": "n_001",
+    "name": "Priya Raman",
+    "asset_kind": "employee",
+    "email": "p.raman@northwindsystems.com",
+    "job_title": "VP Engineering",
+    "department": "Engineering",
+    "start_date": "2021-02-01",
+    "termination_date": "",
+    "employment_status": "active",
+    "entity": "Northwind Systems Ltd"
+  },
+  {
+    "id": "n_002",
+    "name": "Jonas Weber",
+    "asset_kind": "employee",
+    "email": "j.weber@northwindsystems.com",
+    "job_title": "Staff Engineer",
+    "department": "Engineering",
+    "start_date": "2022-04-11",
+    "termination_date": "",
+    "employment_status": "active",
+    "entity": "Northwind Systems Ltd"
+  },
+  {
+    "id": "n_003",
+    "name": "Maya Chen",
+    "asset_kind": "employee",
+    "email": "m.chen@northwindsystems.com",
+    "job_title": "Engineer",
+    "department": "Engineering",
+    "start_date": "2023-08-21",
+    "termination_date": "",
+    "employment_status": "active",
+    "entity": "Northwind Systems Ltd"
+  },
+  {
+    "id": "n_004",
+    "name": "Tobias Lund",
+    "asset_kind": "employee",
+    "email": "t.lund@northwindsystems.com",
+    "job_title": "Engineer",
+    "department": "Engineering",
+    "start_date": "2022-01-17",
+    "termination_date": "",
+    "employment_status": "active",
+    "entity": "Northwind Systems Ltd"
+  },
+  {
+    "id": "n_005",
+    "name": "Amara Diallo",
+    "asset_kind": "employee",
+    "email": "a.diallo@northwindsystems.com",
+    "job_title": "Security Engineer",
+    "department": "Engineering",
+    "start_date": "2023-03-06",
+    "termination_date": "",
+    "employment_status": "active",
+    "entity": "Northwind Systems Ltd"
+  },
+  {
+    "id": "n_006",
+    "name": "Ryan Kavanagh",
+    "asset_kind": "employee",
+    "email": "r.kavanagh@northwindsystems.com",
+    "job_title": "SRE",
+    "department": "Engineering",
+    "start_date": "2021-09-13",
+    "termination_date": "",
+    "employment_status": "active",
+    "entity": "Northwind Systems Ltd"
+  },
+  {
+    "id": "n_007",
+    "name": "Elif Demir",
+    "asset_kind": "employee",
+    "email": "e.demir@northwindsystems.com",
+    "job_title": "Data Engineer",
+    "department": "Engineering",
+    "start_date": "2024-01-08",
+    "termination_date": "",
+    "employment_status": "active",
+    "entity": "Northwind Systems Ltd"
+  },
+  {
+    "id": "n_008",
+    "name": "Marcus Hall",
+    "asset_kind": "employee",
+    "email": "m.hall@northwindsystems.com",
+    "job_title": "Support Engineer",
+    "department": "Engineering",
+    "start_date": "2022-06-27",
+    "termination_date": "2026-07-18",
+    "employment_status": "terminated",
+    "entity": "Northwind Systems Ltd"
+  }
+]

@@ -1,0 +1,37 @@
+[
+  {
+    "id": "g_pay",
+    "name": "payments-operators",
+    "asset_kind": "group",
+    "privileged": true,
+    "description": "Can release payment batches"
+  },
+  {
+    "id": "g_ledger",
+    "name": "ledger-admins",
+    "asset_kind": "group",
+    "privileged": true,
+    "description": "Administrative access to the core ledger"
+  },
+  {
+    "id": "g_eng",
+    "name": "engineering",
+    "asset_kind": "group",
+    "privileged": false,
+    "description": "All engineers"
+  },
+  {
+    "id": "g_support",
+    "name": "support",
+    "asset_kind": "group",
+    "privileged": false,
+    "description": "Customer support"
+  },
+  {
+    "id": "g_finance",
+    "name": "finance",
+    "asset_kind": "group",
+    "privileged": false,
+    "description": "Finance team"
+  }
+]

@@ -1,0 +1,46 @@
+[
+  {
+    "id": "kestrelpay/kestrel-ledger",
+    "name": "kestrel-ledger",
+    "asset_kind": "repository",
+    "private": true,
+    "default_branch": "main",
+    "archived": false,
+    "pushed_at": "2026-08-30",
+    "language": "Kotlin",
+    "production": true
+  },
+  {
+    "id": "kestrelpay/kestrel-gateway",
+    "name": "kestrel-gateway",
+    "asset_kind": "repository",
+    "private": true,
+    "default_branch": "main",
+    "archived": false,
+    "pushed_at": "2026-08-29",
+    "language": "Go",
+    "production": true
+  },
+  {
+    "id": "kestrelpay/kestrel-console",
+    "name": "kestrel-console",
+    "asset_kind": "repository",
+    "private": true,
+    "default_branch": "main",
+    "archived": false,
+    "pushed_at": "2026-08-27",
+    "language": "TypeScript",
+    "production": true
+  },
+  {
+    "id": "kestrelpay/kestrel-docs",
+    "name": "kestrel-docs",
+    "asset_kind": "repository",
+    "private": true,
+    "default_branch": "main",
+    "archived": false,
+    "pushed_at": "2026-07-19",
+    "language": "MDX",
+    "production": false
+  }
+]

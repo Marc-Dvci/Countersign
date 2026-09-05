@@ -1,0 +1,68 @@
+[
+  {
+    "id": "v_01",
+    "name": "Northgate Cloud Infrastructure",
+    "asset_kind": "vendor",
+    "service": "Cloud hosting for the ledger and gateway",
+    "critical": true,
+    "supports_critical_function": true,
+    "last_due_diligence": "2026-02-10",
+    "exit_plan_reference": "EXIT-NGC-2026",
+    "contract_reference": "CTR-V_01"
+  },
+  {
+    "id": "v_02",
+    "name": "Aurora Card Processing",
+    "asset_kind": "vendor",
+    "service": "Card authorisation and clearing",
+    "critical": true,
+    "supports_critical_function": true,
+    "last_due_diligence": "2025-07-05",
+    "exit_plan_reference": "",
+    "contract_reference": "CTR-V_02"
+  },
+  {
+    "id": "v_03",
+    "name": "Sable KYC Screening",
+    "asset_kind": "vendor",
+    "service": "Sanctions and PEP screening",
+    "critical": true,
+    "supports_critical_function": true,
+    "last_due_diligence": "2026-05-22",
+    "exit_plan_reference": "EXIT-SAB-2025",
+    "contract_reference": "CTR-V_03"
+  },
+  {
+    "id": "v_04",
+    "name": "Halewood Print Services",
+    "asset_kind": "vendor",
+    "service": "Card personalisation and dispatch",
+    "critical": false,
+    "supports_critical_function": false,
+    "last_due_diligence": "2026-03-18",
+    "exit_plan_reference": "",
+    "contract_reference": "CTR-V_04"
+  },
+  {
+    "id": "v_05",
+    "name": "Merrion Legal",
+    "asset_kind": "vendor",
+    "service": "Outside counsel",
+    "critical": false,
+    "supports_critical_function": false,
+    "last_due_diligence": "2026-01-12",
+    "exit_plan_reference": "",
+    "contract_reference": "CTR-V_05"
+  },
+  {
+    "id": "v_06",
+    "name": "Beacon Analytics",
+    "asset_kind": "vendor",
+    "service": "Product analytics",
+    "critical": false,
+    "supports_critical_function": false,
+    "last_due_diligence": "2025-12-01",
+    "exit_plan_reference": "",
+    "contract_reference": "CTR-V_06"
+  }
+]
