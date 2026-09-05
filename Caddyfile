@@ -1,0 +1,4 @@
+{$COUNTERSIGN_DOMAIN} {
+    encode zstd gzip
+    reverse_proxy countersign:8080
+}

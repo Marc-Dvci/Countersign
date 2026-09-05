@@ -346,7 +346,8 @@ src/countersign/
   corpus/            three synthetic estates and the answer key
 scripts/build_corpus.py   regenerates the estates and the key together
 tools/ui_smoke.py         drives the real console
-demo_video/               the recorded demonstration
+tools/narrate.py          synthesises the narration from the product's captions
+tools/record.py           records the demonstration and muxes the narration
 ```
 
 ## Licence

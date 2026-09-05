@@ -1,0 +1,38 @@
+# The public console, behind Caddy for automatic TLS.
+#
+# One application container owns the SQLite file, which is what the
+# single-writer boundary in database.py assumes. Port 8080 is never published;
+# the only network caller is Caddy.
+
+services:
+  countersign:
+    build: .
+    env_file:
+      - ${COUNTERSIGN_ENV_FILE:-.env.production}
+    expose:
+      - "8080"
+    volumes:
+      - countersign-data:/app/data
+    restart: unless-stopped
+
+  caddy:
+    image: caddy:2.11.4-alpine
+    env_file:
+      - ${COUNTERSIGN_ENV_FILE:-.env.production}
+    depends_on:
+      countersign:
+        condition: service_healthy
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    restart: unless-stopped
+
+volumes:
+  countersign-data:
+  caddy-data:
+  caddy-config:
