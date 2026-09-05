@@ -3,6 +3,13 @@
 # One application container owns the SQLite file, which is what the
 # single-writer boundary in database.py assumes. Port 8080 is never published;
 # the only network caller is Caddy.
+#
+# The schedule runs inside this container: the console starts a background task
+# that runs every control that has fallen due, on its own cadence, with nobody
+# pressing anything. It lives in the same process precisely because that process
+# is the one SQLite writer; a separate worker container would break that. Set
+# COUNTERSIGN_SCHEDULER_ENABLED=0 to turn it off, or
+# COUNTERSIGN_SCHEDULER_INTERVAL_SECONDS to change how often it wakes.
 
 services:
   countersign:

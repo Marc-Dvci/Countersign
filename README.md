@@ -226,9 +226,11 @@ raised that the key does not account for.
 
 ## How Strands is used
 
-Six agents in two graphs.
+Six agent roles across two pipelines: a sequential onboarding workflow and a
+review graph.
 
-**Onboarding**, once per tenant: `discovery` → `taxonomy` → `control_designer`.
+**Onboarding**, once per tenant, runs three agents in order: `discovery` →
+`taxonomy` → `control_designer`.
 Each is a Strands `Agent` with `structured_output_model` set to a Pydantic type
 that refuses vague work. `ProposedRiskDomain.why_this_company` rejects anything
 under fifty characters, so "cyber risk is a significant threat to all
@@ -255,6 +257,18 @@ a deterministic session id, so a retry resumes rather than duplicating.
 
 Model choice is a deployment decision. `COUNTERSIGN_MODEL_MODE` selects `demo`
 (deterministic, what the seeded demonstration uses), `bedrock`, or `agentcore`.
+
+### The schedule
+
+A control carries a `next_due` date, set when a person approves it. The console
+runs a background task that wakes every `COUNTERSIGN_SCHEDULER_INTERVAL_SECONDS`
+and runs every control that has fallen due, for every onboarded tenant, over the
+full population, with nobody pressing anything. It runs inside the console
+process because that process owns the single SQLite writer, so the schedule needs
+no second container that could race it; set `COUNTERSIGN_SCHEDULER_ENABLED=0` to
+turn it off. `countersign due` and the authenticated `/run-due` endpoint run the
+same sweep on demand. A run grants nothing: findings it raises land `open` and
+wait for a person, which is why the schedule can run unattended.
 
 ### AgentCore
 
@@ -293,8 +307,10 @@ most has to get right.
 
 ## Quality gate
 
+The same lint and test steps run in CI on every push (`.github/workflows/ci.yml`).
+
 ```bash
-.venv/Scripts/python -m pytest -q                 # 91 passed
+.venv/Scripts/python -m pytest -q                 # 97 passed
 .venv/Scripts/python -m ruff check src tests tools scripts
 .venv/Scripts/python tools/ui_smoke.py            # drives the real console in Chromium
 .venv/Scripts/python -m countersign.cli score     # marks the run against the answer key
@@ -341,12 +357,12 @@ src/countersign/
   connectors/        read-only sources: corpus and live adapters
   control_tests.py   ten deterministic tests. Every outcome is decided here
   catalogue.py       what the agents propose in demo mode
-  workflow.py        six Strands agents in two graphs
+  workflow.py        six agent roles: a sequential onboarding workflow, a review graph
   injection.py       seven detectors, run in every model mode
   narrative.py       the deterministic report composer
   database.py        canonical state, the three gates, the hash-chained audit
-  service.py         onboard, run, seed
-  api.py             open reads, gated writes
+  service.py         onboard, run, run everything due, seed
+  api.py             open reads, gated writes, the background scheduler
   agentcore.py       the Bedrock AgentCore runtime
   web/               the console
   corpus/            three synthetic estates and the answer key

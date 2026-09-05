@@ -58,6 +58,25 @@ class Settings(BaseSettings):
     console_password: str = "countersign"
     public_base_url: str = ""
 
+    # -- scheduler --------------------------------------------------------
+    scheduler_enabled: bool = Field(
+        default=True,
+        description=(
+            "Run every control that has fallen due in the background, without a person "
+            "pressing anything. The console process owns the one SQLite writer, so the "
+            "scheduler runs inside that process; a second container would break the "
+            "single-writer boundary. It is a no-op when nothing is due."
+        ),
+    )
+    scheduler_interval_seconds: int = Field(
+        default=3600,
+        description=(
+            "How often the background scheduler wakes to run everything that has fallen due. "
+            "Each control still runs on its own cadence; this only sets how often the schedule "
+            "is checked."
+        ),
+    )
+
     # -- behaviour --------------------------------------------------------
     max_evidence_rows_per_prompt: int = Field(
         default=60,

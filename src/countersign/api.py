@@ -14,6 +14,9 @@ evidence, and evidence is not a decision.
 
 from __future__ import annotations
 
+import asyncio
+import logging
+from contextlib import asynccontextmanager, suppress
 from importlib import resources
 from typing import Any
 
@@ -313,6 +316,27 @@ class Api:
         return FileResponse(str(_web_root() / "index.html"))
 
 
+async def _run_scheduler(api: Api) -> None:
+    """Run every control that has fallen due, forever, on a fixed tick.
+
+    The work is synchronous and touches SQLite, so each tick runs in a worker
+    thread to keep the event loop free. A failing tick is logged and the loop
+    continues: a scheduler must never take the console down.
+    """
+    log = logging.getLogger("countersign.scheduler")
+    interval = max(1, api.settings.scheduler_interval_seconds)
+    while True:
+        await asyncio.sleep(interval)
+        try:
+            results = await asyncio.to_thread(api.app.run_all_due, api.settings.as_of, None)
+        except Exception as error:  # noqa: BLE001 - a tick must never crash the loop
+            log.warning("scheduler tick failed: %s", error)
+            continue
+        ran = sum(len(runs) for runs in results.values())
+        if ran:
+            log.info("scheduler ran %d control(s) that had fallen due", ran)
+
+
 def build_app(settings: Settings | None = None) -> Starlette:
     settings = settings or load_settings()
     api = Api(settings)
@@ -365,10 +389,24 @@ def build_app(settings: Settings | None = None) -> Starlette:
         )
         return response
 
+    @asynccontextmanager
+    async def lifespan(_app: Starlette):
+        task = None
+        if settings.scheduler_enabled:
+            task = asyncio.create_task(_run_scheduler(api))
+        try:
+            yield
+        finally:
+            if task is not None:
+                task.cancel()
+                with suppress(asyncio.CancelledError):
+                    await task
+
     app = Starlette(
         routes=routes,
         middleware=[Middleware(BaseHTTPMiddleware, dispatch=security_headers)],
         exception_handlers={HTTPException: http_error},
+        lifespan=lifespan,
     )
     app.state.countersign = api.app
     app.state.settings = settings

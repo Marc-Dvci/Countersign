@@ -174,6 +174,21 @@ class Countersign:
             for control in self.store.due_controls(tenant, as_of)
         ]
 
+    def run_all_due(
+        self, as_of: date | None = None, lookback: int | None = None
+    ) -> dict[str, list[dict[str, Any]]]:
+        """Run everything due for every onboarded tenant.
+
+        This is what the background scheduler calls on each tick. ``lookback``
+        defaults to each control's own cadence, so the schedule runs the controls
+        on the periods they were approved with.
+        """
+        as_of = as_of or self.settings.as_of
+        return {
+            tenant["id"]: self.run_due(tenant["id"], as_of, lookback)
+            for tenant in self.store.tenants()
+        }
+
     # ----------------------------------------------------------------
     # Seeded demonstration
     # ----------------------------------------------------------------
