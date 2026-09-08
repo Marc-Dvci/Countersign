@@ -33,7 +33,22 @@ class Settings(BaseSettings):
     )
     bedrock_model_id: str = "eu.anthropic.claude-sonnet-4-5-20250929-v1:0"
     bedrock_region: str = "eu-west-1"
-    agentcore_arn: str = ""
+    agentcore_arn: str = Field(
+        default="",
+        description=(
+            "The deployed runtime's ARN. Required by model_mode=agentcore: with it the console "
+            "invokes the runtime over InvokeAgentRuntime and builds no local model at all."
+        ),
+    )
+    agentcore_region: str = Field(
+        default="",
+        description="Region of the deployed runtime. Defaults to bedrock_region.",
+    )
+    agentcore_qualifier: str = Field(
+        default="DEFAULT",
+        description="Runtime version alias to invoke. DEFAULT is the live version.",
+    )
+    agentcore_timeout_seconds: int = 300
     model_temperature: float = 0.2
     model_max_tokens: int = 4096
 
@@ -42,6 +57,15 @@ class Settings(BaseSettings):
     session_path: Path = Path("data/sessions")
     tenant: str = "kestrel"
     allow_live_connectors: bool = True
+    allow_source_mixing: bool = Field(
+        default=False,
+        description=(
+            "Whether an uncredentialed source may fall back to the seeded corpus while another "
+            "source is live. Off, because a control that joins real evidence to invented evidence "
+            "publishes one outcome over both. Turn it on only to demonstrate a single live "
+            "adapter against the seeded estate."
+        ),
+    )
     as_of: date = Field(
         default=date(2026, 9, 1),
         description=(
@@ -90,12 +114,23 @@ class Settings(BaseSettings):
     def uses_model(self) -> bool:
         return self.model_mode != "demo"
 
+    @property
+    def uses_runtime(self) -> bool:
+        """Whether the model work leaves this process for the deployed runtime."""
+        return self.model_mode == "agentcore"
+
+    @property
+    def runtime_region(self) -> str:
+        return self.agentcore_region or self.bedrock_region
+
     def describe_mode(self) -> str:
         if self.model_mode == "demo":
             return "deterministic, no model is invoked"
         if self.model_mode == "bedrock":
             return f"Strands agents on Bedrock ({self.bedrock_model_id})"
-        return f"Strands agents on AgentCore ({self.agentcore_arn or 'runtime not configured'})"
+        if not self.agentcore_arn:
+            return "AgentCore runtime not configured (COUNTERSIGN_AGENTCORE_ARN is unset)"
+        return f"Strands agents on the AgentCore runtime ({self.agentcore_arn})"
 
 
 def load_settings() -> Settings:

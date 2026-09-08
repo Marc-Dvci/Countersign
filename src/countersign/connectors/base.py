@@ -126,6 +126,42 @@ class CorpusConnector:
         return [row for row in rows if _row_date(row) is None or _row_date(row) >= since]
 
 
+class DisconnectedConnector:
+    """A source kind that is in the model but has nothing behind it.
+
+    This exists so that a real deployment cannot join genuine evidence to
+    invented evidence. Once any source is live, a kind with no live adapter
+    resolves to this rather than to the seeded corpus, and every dataset it is
+    asked for raises. A control that needed it records untested population and
+    reports inconclusive, which is the truth: nobody connected the system.
+
+    The alternative, falling back to the corpus, would let a change-approval
+    control read real merges from GitHub and fictional leavers from a JSON file
+    and publish one outcome over both. There is no error message that makes that
+    acceptable, so the fallback is removed rather than warned about.
+    """
+
+    mode = "disconnected"
+
+    def __init__(self, kind: SourceKind, reason: str = ""):
+        self.kind = kind
+        self.reason = reason or (
+            f"{kind} is not connected. Live evidence is in use for other sources, so this one "
+            f"will not be served from the seeded corpus: a control may not mix real evidence with "
+            f"invented evidence. Set credentials for {kind}, or set "
+            f"COUNTERSIGN_ALLOW_SOURCE_MIXING=true if you are demonstrating."
+        )
+
+    def available(self) -> tuple[str, ...]:
+        return ()
+
+    def inventory(self) -> list[DiscoveredAsset]:
+        return []
+
+    def fetch(self, dataset: str, since: date | None = None) -> list[dict[str, Any]]:
+        raise ConnectorError(self.reason)
+
+
 def _row_date(row: dict[str, Any]) -> date | None:
     """The date a row is bounded by, if it carries one."""
     for field in ("merged_at", "created_at", "occurred_at", "authorised_at", "date"):

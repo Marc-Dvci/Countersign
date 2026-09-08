@@ -4,6 +4,19 @@
 resolves to its live adapter when the environment carries credentials for it,
 and to the seeded corpus otherwise. Nothing above this line knows which it got,
 which is the property that lets the same control run in both places.
+
+That property has one hard boundary. **The corpus is a fallback only while every
+source is a fallback.** As soon as one kind is live, an uncredentialed kind
+resolves to :class:`DisconnectedConnector` rather than to the corpus, so a
+control cannot join real GitHub merges to a fictional leaver list and publish a
+single outcome over both. The escape hatch, ``COUNTERSIGN_ALLOW_SOURCE_MIXING``,
+exists for demonstrating one live adapter against the seeded estate; it is off
+by default, and the console shows which mode each source is in either way.
+
+Three kinds have live adapters today: ``github``, ``jira`` and ``identity``. The
+rest are corpus-only, which is a coverage gap rather than a hidden one: the
+console names it, and in a live deployment those sources are disconnected rather
+than quietly synthetic.
 """
 
 from __future__ import annotations
@@ -16,6 +29,7 @@ from countersign.connectors.base import (
     Connector,
     ConnectorError,
     CorpusConnector,
+    DisconnectedConnector,
     digest,
     evidence_for,
 )
@@ -29,6 +43,7 @@ __all__ = [
     "Connector",
     "ConnectorError",
     "CorpusConnector",
+    "DisconnectedConnector",
     "GitHubConnector",
     "JiraConnector",
     "OktaConnector",
@@ -83,16 +98,37 @@ def live_kinds() -> set[str]:
 
 
 def build_connectors(
-    tenant: str, corpus_root: Path | None = None, allow_live: bool = True
+    tenant: str,
+    corpus_root: Path | None = None,
+    allow_live: bool = True,
+    allow_mixed_sources: bool = False,
 ) -> dict[SourceKind, Connector]:
-    """One connector per source kind, live where credentialed, corpus otherwise."""
+    """One connector per source kind, live where credentialed.
+
+    A kind with no live adapter falls back to the seeded corpus only while
+    nothing else is live. Once any source is real, the fallback becomes a
+    :class:`DisconnectedConnector`, so the estate a control walks is either
+    entirely synthetic or entirely real. ``allow_mixed_sources`` turns that off
+    deliberately, for demonstrating a single live adapter against the seeded
+    estate.
+    """
     root = corpus_root or CORPUS_ROOT
+    live: dict[SourceKind, Connector] = {}
+    if allow_live:
+        for kind, builder in LIVE_BUILDERS.items():
+            connector = builder()
+            if connector is not None:
+                live[kind] = connector
+
+    mixing = bool(live) and not allow_mixed_sources
     connectors: dict[SourceKind, Connector] = {}
     for kind in ALL_KINDS:
-        connector = None
-        if allow_live and kind in LIVE_BUILDERS:
-            connector = LIVE_BUILDERS[kind]()
-        connectors[kind] = connector or CorpusConnector(kind, root, tenant)
+        if kind in live:
+            connectors[kind] = live[kind]
+        elif mixing:
+            connectors[kind] = DisconnectedConnector(kind)
+        else:
+            connectors[kind] = CorpusConnector(kind, root, tenant)
     return connectors
 
 
@@ -106,7 +142,9 @@ def describe_live_state(connectors: dict[SourceKind, Connector]) -> list[dict[st
     described: list[dict[str, object]] = []
     for kind, connector in connectors.items():
         available: list[str]
-        if isinstance(connector, CorpusConnector):
+        if isinstance(connector, DisconnectedConnector):
+            available = []
+        elif isinstance(connector, CorpusConnector):
             available = list(connector.available())
         else:
             available = list(DATASETS.get(kind, ()))
@@ -116,6 +154,7 @@ def describe_live_state(connectors: dict[SourceKind, Connector]) -> list[dict[st
                 "mode": connector.mode,
                 "datasets": available,
                 "connected": bool(available),
+                "note": getattr(connector, "reason", ""),
             }
         )
     return described

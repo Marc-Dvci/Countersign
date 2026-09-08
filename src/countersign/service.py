@@ -45,7 +45,9 @@ class Countersign:
     def connectors(self, tenant: str) -> dict:
         if tenant not in self._connectors:
             self._connectors[tenant] = build_connectors(
-                tenant, allow_live=self.settings.allow_live_connectors
+                tenant,
+                allow_live=self.settings.allow_live_connectors,
+                allow_mixed_sources=self.settings.allow_source_mixing,
             )
         return self._connectors[tenant]
 
@@ -143,7 +145,9 @@ class Countersign:
         trace = InvocationTrace()
 
         result = run_test(control.test_kind, connectors, control.parameters, period_start, as_of)
-        report, challenges = run_review(self.settings, connectors, control, result, trace)
+        report, challenges = run_review(
+            self.settings, connectors, control, result, trace, tenant=tenant
+        )
 
         run_id = self.store.record_run(
             tenant,
