@@ -182,20 +182,27 @@
 
   const beats = [
     {
-      say: "Countersign. A second line of defence that runs itself.",
+      say:
+        "Countersign builds a company's second line of defence, or strengthens the one it has. " +
+        "It creates the controls, and it runs them.",
       run: async () => {
-        await showCard("Countersign", "A second line of defence that runs itself");
+        await showCard(
+          "Countersign",
+          "Builds a company's second line of defence, or strengthens the one it has: it creates the controls, and runs them"
+        );
         await sleep(600);
       },
     },
     {
       say:
-        "In a regulated firm, the first line does the work and asserts it followed the rules. " +
-        "The second line is the function that checks.",
+        "The first line runs the business and owns its risks. Most firms never build a real second " +
+        "line over them. In the ACFE's global fraud study, the most common weakness behind a fraud " +
+        "was a control that was never there, about one case in three. The second line makes those " +
+        "controls and runs them.",
       run: async () => {
         await showCard(
           "The second line",
-          "The function that checks whether the controls a company promised are the controls it runs"
+          "It makes the controls over the first line's risks and runs them. In the ACFE's fraud study, a missing control was the most common weakness behind a fraud, about one case in three"
         );
       },
     },
