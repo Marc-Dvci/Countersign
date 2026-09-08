@@ -1,26 +1,42 @@
 """The Strands agent layer.
 
-Six agents, arranged into two graphs.
+Six agent roles, across a sequential onboarding workflow and one review graph.
 
-**Onboarding** runs once per tenant, when the sources are first connected::
+**Onboarding** runs once per tenant, when the sources are first connected. It is
+sequential Python, because each step needs the previous step's typed output::
 
-    discovery ─▶ taxonomy ─▶ control_designer
+    discovery ─▶ taxonomy ─▶ control_designer   (once per accepted domain)
 
-**Review** runs on every scheduled control execution, *after* the deterministic
-test has already produced its result::
+**Review** is a Strands ``GraphBuilder`` graph, and it runs on every scheduled
+control execution, *after* the deterministic test has already produced its
+result::
 
     evidence_reader ─▶ narrator ─▶ challenger
 
-The ordering of the second graph is the whole governance argument. By the time
-any model is invoked, the population has been walked, the exceptions counted and
-the outcome decided by :mod:`countersign.control_tests`. The agents explain a
-result they cannot move, and the challenger then argues against the findings the
+The ordering of the graph is the whole governance argument. By the time any model
+is invoked, the population has been walked, the exceptions counted and the
+outcome decided by :mod:`countersign.control_tests`. The agents explain a result
+they cannot move, and the challenger then argues against the findings the
 narrator proposed before a person is asked to sign anything.
 
 Every agent gets tools that read, and no agent gets a tool that writes. There is
 no ``approve``, no ``schedule``, no ``close``. Those verbs exist only on the API,
 behind a human identity, which is why a prompt injection in a policy document
 can waste a reviewer's time but cannot change an outcome.
+
+Three model modes, one behaviour:
+
+``demo``       nothing is invoked. :mod:`countersign.narrative` composes the
+               report from the settled result.
+``bedrock``    the agents above run in this process against Amazon Bedrock.
+``agentcore``  the same work runs in the deployed AgentCore runtime. This
+               process builds no model at all: it calls
+               :func:`countersign.agentcore_client.invoke` and validates what
+               comes back. See :mod:`countersign.agentcore_client` for why that
+               is safe across a trust boundary.
+
+The published outcome is identical in all three, because the count decided it
+before any of this ran.
 """
 
 from __future__ import annotations
@@ -36,6 +52,8 @@ from strands.multiagent import GraphBuilder
 from strands.session import FileSessionManager
 
 from countersign import catalogue, narrative
+from countersign.agentcore_client import AgentCoreUnavailable
+from countersign.agentcore_client import invoke as invoke_runtime
 from countersign.config import Settings
 from countersign.connectors import ConnectorError, describe_live_state
 from countersign.control_tests import describe_registry
@@ -394,10 +412,51 @@ def run_control_design(
     )
 
 
+def onboarding_via_runtime(
+    settings: Settings, tenant: str, trace: InvocationTrace
+) -> tuple[EnterpriseProfile, RiskDomainProposal, list[ControlProposal]]:
+    """Run the whole onboarding workflow inside the deployed AgentCore runtime.
+
+    Nothing arrives with authority. Every control that comes back is validated
+    against the deterministic test registry and preflighted against this
+    tenant's connectors before a person is offered the approve button, which is
+    the same path a locally-proposed control takes. A runtime that invented a
+    test kind produces a control that cannot be scheduled, and says so on the
+    page.
+
+    Unlike a review, this fails loudly rather than degrading. A review has a
+    settled outcome to protect and prose is the only thing at risk; an
+    onboarding has nothing to fall back to except a hand-written catalogue for
+    three demonstration tenants, and quietly serving that as the runtime's work
+    would be a lie about where the proposals came from.
+    """
+    trace.note("agentcore", f"runtime.invoke.onboard tenant={tenant}")
+    document = invoke_runtime(
+        settings, "onboard", {"tenant": tenant}, session_key=f"onboard-{tenant}"
+    )
+    try:
+        profile = EnterpriseProfile.model_validate(document["profile"])
+        taxonomy = RiskDomainProposal.model_validate(document["taxonomy"])
+        proposals = [
+            ControlProposal.model_validate(item) for item in document.get("controls", [])
+        ]
+    except (KeyError, ValueError) as error:
+        raise AgentCoreUnavailable(
+            f"the runtime's onboarding answer did not validate: {type(error).__name__}: {error}"
+        ) from error
+
+    for event in document.get("trace", []):
+        trace.events.append({**event, "location": "agentcore"})
+    trace.note("agentcore", f"runtime.completed.onboard controls={sum(len(p.controls) for p in proposals)}")
+    return profile, taxonomy, proposals
+
+
 def run_onboarding(
     settings: Settings, connectors: dict, tenant: str, trace: InvocationTrace
 ) -> tuple[EnterpriseProfile, RiskDomainProposal, list[ControlProposal]]:
     """Discovery, then taxonomy, then one control design pass per accepted domain."""
+    if settings.uses_runtime:
+        return onboarding_via_runtime(settings, tenant, trace)
     profile = run_discovery(settings, connectors, tenant, trace)
     taxonomy = run_taxonomy(settings, connectors, tenant, profile, trace)
     proposals = [
@@ -521,28 +580,77 @@ def _evidence_brief(control: ProposedControl, result: TestResult, connectors: di
     )
 
 
-def run_review(
+def review_via_runtime(
+    settings: Settings,
+    tenant: str,
+    control: ProposedControl,
+    result: TestResult,
+    trace: InvocationTrace,
+) -> tuple[ReviewNarrative | None, ChallengeSet | None]:
+    """Ask the deployed runtime to write the report, and check its arithmetic.
+
+    The runtime is sent the control and the period, never the result. It runs the
+    same deterministic test over the same connectors on its own side, so what
+    comes back is a second independent count of the population. The two are
+    compared here. A disagreement is written onto the run as an observation and
+    into the trace, and the console's count is the one that is published: this
+    process owns the database, so this process owns the number.
+
+    Returns ``(None, None)`` when the runtime cannot be reached, which the caller
+    turns into a deterministic report rather than into a failed run.
+    """
+    trace.note("agentcore", f"runtime.invoke.review control={control.code}")
+    try:
+        document = invoke_runtime(
+            settings,
+            "review",
+            {
+                "tenant": tenant,
+                "control": control.model_dump(mode="json"),
+                "period_start": result.period_start.isoformat(),
+                "period_end": result.period_end.isoformat(),
+            },
+            session_key=f"review-{tenant}-{control.code}-{result.period_end.isoformat()}",
+        )
+        report = ReviewNarrative.model_validate(document["report"])
+        challenges = ChallengeSet.model_validate(document.get("challenges", {}))
+    except (AgentCoreUnavailable, KeyError, ValueError) as error:
+        trace.note("agentcore", f"runtime.unavailable.degraded {type(error).__name__}: {error}")
+        return None, None
+
+    for event in document.get("trace", []):
+        trace.events.append({**event, "location": "agentcore"})
+
+    settled = result.outcome(control.tolerance)
+    remote = (
+        document.get("outcome"),
+        document.get("population_size"),
+        document.get("exception_count"),
+    )
+    local = (settled, result.population_size, result.exception_count)
+    if remote != local:
+        trace.note("agentcore", f"runtime.count.disagreed remote={remote} local={local}")
+        report.observations.append(
+            f"The runtime re-ran this control independently and counted {remote[1]} items with "
+            f"{remote[2]} exceptions, concluding {remote[0]!r}. This console counted {local[1]} "
+            f"items with {local[2]} exceptions, concluding {local[0]!r}. The console's count is "
+            f"the one published; the disagreement is recorded so it can be investigated."
+        )
+    else:
+        trace.note("agentcore", "runtime.count.agreed")
+
+    trace.note("agentcore", "runtime.completed.review")
+    return report, challenges
+
+
+def review_via_agents(
     settings: Settings,
     connectors: dict,
     control: ProposedControl,
     result: TestResult,
     trace: InvocationTrace,
-) -> tuple[ReviewNarrative, ChallengeSet]:
-    """Explain a settled result, then argue against the findings it produced.
-
-    The injection scan runs in both model modes, on the same evidence, before the
-    graph is built. Containment is a property of the pipeline, not something a
-    model has to be clever enough to notice.
-    """
-    signals = scan_documents(relevant_documents(control, result, connectors))
-
-    if not settings.uses_model:
-        trace.note("evidence_reader", "deterministic.scan")
-        trace.note("narrator", "deterministic.compose")
-        trace.note("challenger", "deterministic.challenge")
-        report = narrative.compose(control, result, signals)
-        return report, narrative.challenge(report, result)
-
+) -> tuple[ReviewNarrative | None, ChallengeSet | None]:
+    """The three-agent review graph, in this process, against Bedrock."""
     model = build_model(settings)
     session = _session(settings, f"review-{control.code}-{result.period_end.isoformat()}")
 
@@ -585,15 +693,47 @@ def run_review(
 
     report = _structured_from(outcome, "narrator", ReviewNarrative)
     challenges = _structured_from(outcome, "challenger", ChallengeSet)
+    if report is None:
+        # A model that fails to produce a valid report does not stop the run. The
+        # outcome is already known; the caller falls back to the deterministic
+        # composer and the trace records that the model path did not complete.
+        trace.note("narrator", "structured_output.unavailable.fell_back")
+    elif challenges is None:
+        trace.note("challenger", "structured_output.unavailable.fell_back")
+    return report, challenges
+
+
+def run_review(
+    settings: Settings,
+    connectors: dict,
+    control: ProposedControl,
+    result: TestResult,
+    trace: InvocationTrace,
+    tenant: str = "",
+) -> tuple[ReviewNarrative, ChallengeSet]:
+    """Explain a settled result, then argue against the findings it produced.
+
+    One shape for all three model modes. Whichever path produced the report, the
+    same two reconciliations run over it afterwards: the injection scan is
+    authoritative, and the count is authoritative. Neither is something a model
+    has to be clever enough to get right, which is why the scan happens here, on
+    the same evidence, before any of this is dispatched.
+    """
+    signals = scan_documents(relevant_documents(control, result, connectors))
+
+    report: ReviewNarrative | None = None
+    challenges: ChallengeSet | None = None
+    if settings.uses_runtime:
+        report, challenges = review_via_runtime(settings, tenant, control, result, trace)
+    elif settings.uses_model:
+        report, challenges = review_via_agents(settings, connectors, control, result, trace)
 
     if report is None:
-        # A model that fails to produce a valid report does not stop the run.
-        # The outcome is already known; the deterministic composer writes it up
-        # and the trace records that the model path did not complete.
-        trace.note("narrator", "structured_output.unavailable.fell_back")
+        trace.note("evidence_reader", "deterministic.scan")
+        trace.note("narrator", "deterministic.compose")
+        trace.note("challenger", "deterministic.challenge")
         report = narrative.compose(control, result, signals)
     if challenges is None:
-        trace.note("challenger", "structured_output.unavailable.fell_back")
         challenges = narrative.challenge(report, result)
 
     # The scan is authoritative. A model that missed the injection does not get
@@ -609,8 +749,8 @@ def run_review(
     if report.proposed_outcome != settled:
         trace.note("narrator", f"outcome.disagreed.proposed={report.proposed_outcome}")
         report.observations.append(
-            f"The narrating agent proposed '{report.proposed_outcome}'. The outcome is "
-            f"'{settled}', counted from the population. The proposal is recorded and not applied."
+            f"The narrating agent proposed {report.proposed_outcome!r}. The outcome is "
+            f"{settled!r}, counted from the population. The proposal is recorded and not applied."
         )
         report.proposed_outcome = settled
 

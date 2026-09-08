@@ -7,6 +7,7 @@
     countersign due             execute everything that has fallen due
     countersign score           mark the seeded run against the answer key
     countersign verify          recompute the audit chain
+    countersign runtime         call the deployed AgentCore runtime and print what answered
 """
 
 from __future__ import annotations
@@ -42,6 +43,8 @@ def main(argv: list[str] | None = None) -> int:
     score = sub.add_parser("score")
     score.add_argument("--tenant", default=None)
 
+    sub.add_parser("runtime")
+
     args = parser.parse_args(argv)
     settings = load_settings()
     tenant = getattr(args, "tenant", None) or settings.tenant
@@ -58,6 +61,19 @@ def main(argv: list[str] | None = None) -> int:
             reload=args.reload,
             log_level="info",
         )
+        return 0
+
+    if args.command == "runtime":
+        # Deliberately not a mode-gated command. The question "is the ARN I have
+        # configured a runtime that answers" is the one worth being able to ask
+        # before switching the console over to it.
+        from countersign.agentcore_client import AgentCoreUnavailable, status
+
+        try:
+            print(json.dumps(status(settings), indent=2, default=str))
+        except AgentCoreUnavailable as error:
+            print(f"unreachable: {error}", file=sys.stderr)
+            return 1
         return 0
 
     app = Countersign(settings)

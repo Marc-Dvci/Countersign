@@ -11,12 +11,15 @@ control or write a report. The deterministic test still decides the outcome and
 a person still signs, and both of those happen in the application, on the other
 side of this boundary.
 
-Two operations are accepted:
+Three operations are accepted:
 
 ``onboard``   given a tenant's inventory, propose the profile, the risk domains
               and the controls.
-``review``    given a settled test result, write the report and challenge the
-              findings it proposes.
+``review``    given a control and a period, re-run the deterministic test, write
+              the report and challenge the findings it proposes.
+``status``    what this runtime is, without spending a model call. It exists so
+              that "the console is wired to the runtime" is a thing a person, or
+              a CI job, can check in one command.
 
 The application sends a deterministic session id so a retry resumes rather than
 duplicating, and always re-runs the injection scan and the outcome check on its
@@ -34,17 +37,22 @@ from starlette.responses import JSONResponse
 from starlette.routing import Route
 
 from countersign.config import Settings
-from countersign.connectors import build_connectors
-from countersign.control_tests import run_test
+from countersign.connectors import build_connectors, describe_live_state
+from countersign.control_tests import REGISTRY, run_test
 from countersign.domain import ProposedControl
 from countersign.workflow import InvocationTrace, run_onboarding, run_review
 
 
 def _settings() -> Settings:
-    """Force the model path on. An AgentCore runtime that ran the deterministic
-    composer would be an expensive way to do nothing."""
+    """Force the local model path on, whatever the environment says.
+
+    Two reasons, and both are load-bearing. A runtime running the deterministic
+    composer would be an expensive way to do nothing. A runtime left in
+    ``agentcore`` mode would call *itself* through InvokeAgentRuntime, which is a
+    loop that ends in a bill.
+    """
     settings = Settings()
-    if settings.model_mode == "demo":
+    if settings.model_mode != "bedrock":
         settings = settings.model_copy(update={"model_mode": "bedrock"})
     return settings
 
@@ -58,10 +66,33 @@ async def invocations(request: Request) -> JSONResponse:
     operation = payload.get("operation", "review")
     tenant = payload.get("tenant", "kestrel")
     settings = _settings()
-    connectors = build_connectors(tenant, allow_live=settings.allow_live_connectors)
+    connectors = build_connectors(
+        tenant,
+        allow_live=settings.allow_live_connectors,
+        allow_mixed_sources=settings.allow_source_mixing,
+    )
     trace = InvocationTrace()
 
     try:
+        if operation == "status":
+            return JSONResponse(
+                {
+                    "operation": "status",
+                    "service": "countersign-agentcore",
+                    "healthy": True,
+                    "model_mode": settings.model_mode,
+                    "model_id": settings.bedrock_model_id,
+                    "region": settings.bedrock_region,
+                    "test_kinds": sorted(REGISTRY),
+                    "sources": describe_live_state(connectors),
+                    "grants": (
+                        "This runtime proposes and explains. It holds no database, it cannot "
+                        "accept a domain, approve a control or close a finding, and the outcome "
+                        "of every control is counted by the console that called it."
+                    ),
+                }
+            )
+
         if operation == "onboard":
             profile, taxonomy, proposals = run_onboarding(settings, connectors, tenant, trace)
             return JSONResponse(
@@ -86,7 +117,9 @@ async def invocations(request: Request) -> JSONResponse:
             result = run_test(
                 control.test_kind, connectors, control.parameters, period_start, period_end
             )
-            report, challenges = run_review(settings, connectors, control, result, trace)
+            report, challenges = run_review(
+                settings, connectors, control, result, trace, tenant=tenant
+            )
             return JSONResponse(
                 {
                     "operation": "review",
@@ -95,6 +128,7 @@ async def invocations(request: Request) -> JSONResponse:
                     "outcome": result.outcome(control.tolerance),
                     "population_size": result.population_size,
                     "exception_count": result.exception_count,
+                    "not_tested": result.not_tested,
                     "report": report.model_dump(mode="json"),
                     "challenges": challenges.model_dump(mode="json"),
                     "trace": trace.events,
@@ -102,7 +136,10 @@ async def invocations(request: Request) -> JSONResponse:
                 }
             )
 
-        return JSONResponse({"error": f"unknown operation {operation!r}"}, status_code=400)
+        return JSONResponse(
+            {"error": f"unknown operation {operation!r}; expected onboard, review or status"},
+            status_code=400,
+        )
 
     except Exception as error:  # the runtime reports failure; it never invents a result
         return JSONResponse(
