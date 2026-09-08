@@ -1,11 +1,27 @@
+# Countersign CI.
+#
+# The rule this file follows: every claim the README makes should fail here if
+# it stops being true. So the suite runs against the committed lock rather than
+# a fresh resolution, both container images are built and started, the AgentCore
+# runtime is invoked and asked what it is, the answer keys are marked, and the
+# dependency set is audited. The two credentialed jobs at the end run only where
+# the secrets exist, and say so when they do not.
+
 name: CI
 
 on:
   push:
   pull_request:
 
+permissions:
+  contents: read
+
+env:
+  PIP_DISABLE_PIP_VERSION_CHECK: "1"
+
 jobs:
   test:
+    name: Lint, test and mark the answer keys
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -14,13 +30,227 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install
+      - name: Install the locked runtime
+        # --require-hashes, so a dependency that changed under us fails here and
+        # not in the container build. This is the same install the images do.
         run: |
           python -m pip install --upgrade pip
-          pip install -e ".[dev]"
+          python -m pip install --require-hashes -r requirements.lock
+          python -m pip install --no-deps -e .
+
+      - name: Install the test tools
+        run: python -m pip install pytest pytest-asyncio ruff
 
       - name: Lint
         run: ruff check src tests tools scripts
 
       - name: Test
         run: pytest -q
+
+      - name: Mark every tenant against its answer key
+        # The suite proves the code does what it says. This proves the control
+        # programme reaches the conditions planted in the estate: raising
+        # everything scores the same as raising nothing.
+        run: |
+          for tenant in kestrel northwind brandt; do
+            python -m countersign.cli seed --tenant "$tenant" > /dev/null
+            python -m countersign.cli score --tenant "$tenant"
+          done
+
+      - name: Recompute the audit chain
+        run: python -m countersign.cli verify
+
+  audit:
+    name: Audit the locked dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install pip-audit==2.10.1
+      - name: pip-audit
+        run: pip-audit --disable-pip -r requirements.lock
+
+  console-image:
+    name: The console image builds and serves
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build
+        run: docker build -t countersign:ci .
+
+      - name: Start
+        run: |
+          docker run -d --name console -p 8080:8080 \
+            -e COUNTERSIGN_SCHEDULER_ENABLED=false countersign:ci
+          for _ in $(seq 1 60); do
+            curl -fsS http://127.0.0.1:8080/api/state > /dev/null && break
+            sleep 2
+          done
+
+      - name: The console answers, and says which mode it is in
+        run: |
+          state=$(curl -fsS http://127.0.0.1:8080/api/state)
+          echo "$state" | python -c "
+          import json, sys
+          state = json.load(sys.stdin)
+          assert state['model_mode'] == 'demo', state['model_mode']
+          assert state['audit']['intact'], state['audit']
+          print(state['model_description'])
+          "
+
+      - name: Logs on failure
+        if: failure()
+        run: docker logs console
+
+  runtime-image:
+    name: The AgentCore runtime image builds on ARM64 and answers
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: docker/setup-qemu-action@v3
+      - uses: docker/setup-buildx-action@v3
+
+      - name: Build for linux/arm64, which is what AgentCore runs
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: Dockerfile.agentcore
+          platforms: linux/arm64
+          tags: countersign-agentcore:ci
+          load: true
+
+      - name: Start it under emulation
+        run: |
+          docker run -d --name runtime --platform linux/arm64 -p 8081:8080 \
+            countersign-agentcore:ci
+          for _ in $(seq 1 90); do
+            curl -fsS http://127.0.0.1:8081/ping > /dev/null && break
+            sleep 2
+          done
+
+      - name: /ping and /invocations answer the way AgentCore requires
+        run: |
+          test "$(curl -fsS http://127.0.0.1:8081/ping)" = '{"status":"healthy"}'
+          curl -fsS -X POST http://127.0.0.1:8081/invocations \
+            -H 'content-type: application/json' \
+            -d '{"operation":"status"}' | python -c "
+          import json, sys
+          payload = json.load(sys.stdin)
+          assert payload['service'] == 'countersign-agentcore', payload
+          assert payload['model_mode'] == 'bedrock', payload['model_mode']
+          assert 'leaver_access_revocation' in payload['test_kinds'], payload['test_kinds']
+          print(len(payload['test_kinds']), 'deterministic test kinds registered')
+          "
+
+      - name: An unknown operation is refused, not improvised
+        run: |
+          status=$(curl -s -o /dev/null -w '%{http_code}' -X POST \
+            http://127.0.0.1:8081/invocations \
+            -H 'content-type: application/json' -d '{"operation":"approve"}')
+          test "$status" = "400"
+
+      - name: Logs on failure
+        if: failure()
+        run: docker logs runtime
+
+  credentials:
+    name: Check for AWS credentials
+    runs-on: ubuntu-latest
+    outputs:
+      aws: ${{ steps.check.outputs.aws }}
+      runtime: ${{ steps.check.outputs.runtime }}
+    steps:
+      - id: check
+        env:
+          ROLE: ${{ secrets.AWS_ROLE_ARN }}
+          ARN: ${{ secrets.COUNTERSIGN_AGENTCORE_ARN }}
+        run: |
+          aws=false; runtime=false
+          if [ -n "$ROLE" ]; then aws=true; fi
+          if [ -n "$ARN" ]; then runtime=true; fi
+          echo "aws=$aws" >> "$GITHUB_OUTPUT"
+          echo "runtime=$runtime" >> "$GITHUB_OUTPUT"
+          {
+            echo "Credentialed jobs are skipped unless the repository holds the secrets."
+            echo "- AWS role configured: $aws"
+            echo "- AgentCore runtime ARN configured: $runtime"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  bedrock:
+    name: A credentialed Bedrock run reaches the same outcome
+    needs: [test, credentials]
+    if: needs.credentials.outputs.aws == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    env:
+      COUNTERSIGN_BEDROCK_REGION: ${{ vars.COUNTERSIGN_BEDROCK_REGION || 'eu-west-1' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ vars.COUNTERSIGN_BEDROCK_REGION || 'eu-west-1' }}
+      - run: |
+          python -m pip install --require-hashes -r requirements.lock
+          python -m pip install --no-deps -e .
+
+      - name: Seed deterministically, then re-run one control against Bedrock
+        # The whole governance claim in one assertion: the agents write the
+        # report and the count writes the outcome, so turning the agents on
+        # cannot change the answer.
+        run: |
+          python -m countersign.cli seed --tenant kestrel > /dev/null
+          COUNTERSIGN_MODEL_MODE=demo python -m countersign.cli run IAM-JML-01 \
+            --tenant kestrel --lookback 91 > demo.json
+          COUNTERSIGN_MODEL_MODE=bedrock python -m countersign.cli run IAM-JML-01 \
+            --tenant kestrel --lookback 91 > bedrock.json
+          python - <<'EOF'
+          import json
+          demo = json.load(open("demo.json"))
+          live = json.load(open("bedrock.json"))
+          for field in ("outcome", "population", "exceptions"):
+              assert demo[field] == live[field], (field, demo[field], live[field])
+          print("identical under both model modes:", demo["outcome"], demo["population"], "items")
+          EOF
+
+  agentcore:
+    name: The deployed runtime answers the console
+    needs: [test, credentials]
+    if: needs.credentials.outputs.runtime == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    env:
+      COUNTERSIGN_MODEL_MODE: agentcore
+      COUNTERSIGN_AGENTCORE_ARN: ${{ secrets.COUNTERSIGN_AGENTCORE_ARN }}
+      COUNTERSIGN_BEDROCK_REGION: ${{ vars.COUNTERSIGN_BEDROCK_REGION || 'eu-west-1' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ vars.COUNTERSIGN_BEDROCK_REGION || 'eu-west-1' }}
+      - run: |
+          python -m pip install --require-hashes -r requirements.lock
+          python -m pip install --no-deps -e .
+
+      - name: Ask the deployed runtime what it is
+        run: python -m countersign.cli runtime
+
+      - name: Run a control with the review dispatched to the runtime
+        run: |
+          COUNTERSIGN_MODEL_MODE=demo python -m countersign.cli seed --tenant kestrel > /dev/null
+          python -m countersign.cli run IAM-JML-01 --tenant kestrel --lookback 91
