@@ -49,6 +49,14 @@ class Settings(BaseSettings):
         description="Runtime version alias to invoke. DEFAULT is the live version.",
     )
     agentcore_timeout_seconds: int = 300
+    agentcore_endpoint_url: str = Field(
+        default="",
+        description=(
+            "Override the AgentCore data-plane endpoint. Set it to a locally running runtime "
+            "container to exercise the whole invocation path without an AWS account; leave it "
+            "empty for a deployed runtime, which is the normal case."
+        ),
+    )
     model_temperature: float = 0.2
     model_max_tokens: int = 4096
 

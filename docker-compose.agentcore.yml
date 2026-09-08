@@ -1,0 +1,69 @@
+# The AgentCore invocation path, on one machine, with no AWS account.
+#
+#   docker compose -f docker-compose.agentcore.yml up --build
+#   open http://127.0.0.1:8080
+#
+# Two containers, which is the deployed topology: the console owns the database
+# and counts every outcome, the runtime holds the agents and holds nothing else.
+# The console runs in `agentcore` mode and builds no model of its own. Its boto3
+# client is pointed at the runtime container with COUNTERSIGN_AGENTCORE_ENDPOINT,
+# so the InvokeAgentRuntime call, its signing and its request shape are the ones
+# used against AWS.
+#
+# What this demonstrates: that `agentcore` mode is a real routing, that the
+# runtime re-runs the deterministic test on its own side, and that the console
+# compares the two counts and publishes its own. Watch the Trace tab of any
+# control: `runtime.count.agreed` is the two halves agreeing about a population
+# they walked independently.
+#
+# What it does not demonstrate: anything about a model. The runtime is started
+# with COUNTERSIGN_RUNTIME_DETERMINISTIC so it composes reports deterministically
+# instead of calling Bedrock, and it reports `invokes_a_model: false` in its own
+# status. A deployed runtime is started without that variable and refuses any
+# mode but `bedrock`.
+
+services:
+  runtime:
+    build:
+      context: .
+      dockerfile: Dockerfile.agentcore
+      args:
+        # Built natively here. AgentCore itself runs ARM64, which is the default
+        # in the Dockerfile and what deployment/deploy_agentcore.py publishes.
+        RUNTIME_PLATFORM: linux/amd64
+    environment:
+      COUNTERSIGN_MODEL_MODE: demo
+      COUNTERSIGN_RUNTIME_DETERMINISTIC: "true"
+      COUNTERSIGN_AS_OF: "2026-09-01"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/ping', timeout=2)"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+      start_period: 5s
+
+  console:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      runtime:
+        condition: service_healthy
+    ports:
+      - "8080:8080"
+    environment:
+      COUNTERSIGN_MODEL_MODE: agentcore
+      COUNTERSIGN_AGENTCORE_ENDPOINT_URL: http://runtime:8080
+      # No account is involved, so the ARN only has to be well formed: it is the
+      # path segment the data-plane call addresses.
+      COUNTERSIGN_AGENTCORE_ARN: arn:aws:bedrock-agentcore:eu-west-1:000000000000:runtime/countersign-local
+      COUNTERSIGN_SCHEDULER_ENABLED: "false"
+      COUNTERSIGN_AS_OF: "2026-09-01"
+      # boto3 signs every request and needs credentials to do it. Nothing at the
+      # other end checks them.
+      AWS_ACCESS_KEY_ID: local
+      AWS_SECRET_ACCESS_KEY: local
+      AWS_DEFAULT_REGION: eu-west-1
+    # Onboarding runs through the runtime, so the console opens on a control
+    # programme the runtime proposed and the console approved and counted.
+    command: ["sh", "-c", "python -m countersign.cli seed --tenant kestrel >/dev/null && python -m countersign.cli serve"]

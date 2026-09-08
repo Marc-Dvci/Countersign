@@ -62,6 +62,7 @@ def _client(settings: Settings) -> Any:
     return boto3.client(
         "bedrock-agentcore",
         region_name=settings.runtime_region,
+        endpoint_url=settings.agentcore_endpoint_url or None,
         config=Config(
             read_timeout=settings.agentcore_timeout_seconds,
             connect_timeout=10,

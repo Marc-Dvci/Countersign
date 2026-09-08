@@ -5,10 +5,15 @@
 # model invocation and telemetry only, so a compromised runtime cannot reach a
 # tenant's canonical state.
 #
-# AgentCore runs ARM64. Build with:
+# AgentCore runs ARM64, which is the default here. Build for deployment with:
 #   docker buildx build --platform linux/arm64 -f Dockerfile.agentcore -t <ecr>:<tag> --push .
+#
+# RUNTIME_PLATFORM exists so the same image can be built natively on an x86
+# machine for local evaluation, where emulating ARM to run a demonstration would
+# be a slow way to prove nothing extra. Deployment always uses the default.
+ARG RUNTIME_PLATFORM=linux/arm64
 
-FROM --platform=linux/arm64 python:3.12-slim AS builder
+FROM --platform=${RUNTIME_PLATFORM} python:3.12-slim AS builder
 
 ENV PIP_NO_CACHE_DIR=1
 WORKDIR /build
@@ -19,7 +24,7 @@ COPY pyproject.toml README.md LICENSE ./
 COPY src ./src
 RUN python -m pip wheel --no-deps --no-build-isolation . --wheel-dir /wheels
 
-FROM --platform=linux/arm64 python:3.12-slim AS runtime
+FROM --platform=${RUNTIME_PLATFORM} python:3.12-slim AS runtime
 
 ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 PIP_NO_CACHE_DIR=1 \
     COUNTERSIGN_MODEL_MODE=bedrock \

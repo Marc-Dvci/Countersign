@@ -58,10 +58,33 @@ taxonomy is health and safety, export control and sustainability disclosure,
 because discovery read a different estate. Kestrel Pay's is financial crime,
 payment integrity and ICT resilience.
 
+## 3b. The AgentCore path, if you want to see it (3 minutes)
+
+The claim worth being sceptical about is that `COUNTERSIGN_MODEL_MODE=agentcore`
+routes to a deployed runtime rather than being a flag over the same code. You can
+run it without an AWS account:
+
+```bash
+docker compose -f docker-compose.agentcore.yml up --build
+# http://127.0.0.1:8080
+```
+
+Two containers, the deployed topology: the console owns the database and counts
+the outcomes, the runtime holds the agents and holds nothing else. The console
+builds no model; its boto3 client is pointed at the runtime container, so the
+`InvokeAgentRuntime` call and its signing are the ones used against AWS. Open any
+control, then the **Trace** tab. `runtime.count.agreed` is the console and the
+runtime agreeing about a population each of them walked on its own side.
+
+The runtime here composes reports deterministically rather than calling Bedrock,
+and says so in its own status (`invokes_a_model: false`). So this shows you the
+routing, the trust boundary and the cross-check, and it shows you nothing about
+model quality. A deployed runtime refuses any mode but `bedrock`.
+
 ## 4. Check the claims (2 minutes)
 
 ```bash
-.venv/Scripts/python -m pytest -q                 # 137 passed
+.venv/Scripts/python -m pytest -q                 # 142 passed
 .venv/Scripts/python -m countersign.cli verify    # recomputes the audit chain
 .venv/Scripts/python tools/ui_smoke.py            # drives the console in Chromium
 ```

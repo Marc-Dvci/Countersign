@@ -363,6 +363,40 @@ local model, that a runtime returning the wrong outcome changes the trace and
 nothing else, and that a runtime left in agentcore mode cannot invoke itself.
 See `deployment/README.md`.
 
+#### Run the AgentCore path yourself, without an AWS account
+
+The awkward thing about an AgentCore integration is that the reader normally has
+to take it on trust, because checking it needs an account, a deployed runtime and
+model access. This one does not.
+
+```bash
+docker compose -f docker-compose.agentcore.yml up --build
+# http://127.0.0.1:8080
+```
+
+Two containers, which is the deployed topology: the console owns the database and
+counts every outcome, the runtime holds the agents and holds nothing else. The
+console runs in `agentcore` mode and builds no model. Its boto3 client is pointed
+at the runtime container with `COUNTERSIGN_AGENTCORE_ENDPOINT_URL`, so the
+`InvokeAgentRuntime` call, its SigV4 signing and its request shape are the ones
+used against AWS. Onboarding runs through the runtime, so the console opens on a
+control programme the runtime proposed. Open any control and read the **Trace**
+tab: `runtime.count.agreed` is the console and the runtime agreeing about a
+population they walked independently.
+
+What that demonstrates is the routing, the boundary and the cross-check. What it
+does not demonstrate is anything about a model: the runtime is started with
+`COUNTERSIGN_RUNTIME_DETERMINISTIC` so it composes reports deterministically
+instead of calling Bedrock, and it reports `invokes_a_model: false` in its own
+`status`. A deployed runtime is started without that variable and refuses any
+mode but `bedrock`.
+
+`tests/test_agentcore_over_http.py` is the same thing in the suite, so it runs in
+CI on every push: a real boto3 client, real signing, a real socket, the runtime's
+real handler, and the degradation path checked by pointing the console at a port
+nothing is listening on.
+
+
 ## Connectors
 
 Each source has two implementations behind one interface with two verbs,
@@ -417,6 +451,7 @@ claims live on, not only the suite:
 | Audit the locked dependencies | `pip-audit` over the lock. |
 | The console image builds and serves | The image is built, started, and has to answer `/api/state` with an intact audit chain. |
 | The AgentCore runtime builds on ARM64 and answers | Built for `linux/arm64`, which is what AgentCore runs, and started under emulation: `/ping` healthy, `/invocations` serving `status` with the full test registry, and an operation it does not have refused with a 400. |
+| The AgentCore invocation path, over a socket | Part of the suite. A real boto3 client with real SigV4 signing calls the runtime's own handler over HTTP, the two sides' counts have to agree, and pointing the console at a dead port has to degrade rather than fail. |
 
 Everything in that table runs without credentials, which is the same property
 the product has: a judge with no AWS account runs all of it. The two checks that
@@ -427,7 +462,7 @@ claim in a single assertion; the other calls the deployed runtime and runs a
 control with the review dispatched to it.
 
 ```bash
-.venv/Scripts/python -m pytest -q                 # 137 passed
+.venv/Scripts/python -m pytest -q                 # 142 passed
 .venv/Scripts/python -m ruff check src tests tools scripts
 .venv/Scripts/python tools/ui_smoke.py            # drives the real console in Chromium
 .venv/Scripts/python -m countersign.cli score     # marks the run against the answer key

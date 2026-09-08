@@ -46,15 +46,28 @@ from countersign.workflow import InvocationTrace, run_onboarding, run_review
 def _settings() -> Settings:
     """Force the local model path on, whatever the environment says.
 
-    Two reasons, and both are load-bearing. A runtime running the deterministic
-    composer would be an expensive way to do nothing. A runtime left in
-    ``agentcore`` mode would call *itself* through InvokeAgentRuntime, which is a
-    loop that ends in a bill.
+    A runtime left in ``agentcore`` mode would call *itself* through
+    InvokeAgentRuntime, which is a loop that ends in a bill, so that mode is
+    refused unconditionally. ``demo`` is refused too, because a deployed runtime
+    running the deterministic composer would be an expensive way to do nothing.
+
+    ``COUNTERSIGN_RUNTIME_DETERMINISTIC`` lifts only the second of those, and
+    exists for one reason: it lets somebody with no AWS account run this
+    container, point a console at it and exercise the entire invocation path.
+    What that proves is the transport, the handler, the independent re-run of the
+    deterministic test and the console's cross-check of the two counts. It
+    proves nothing about a model, and the runtime says so in its own status.
     """
     settings = Settings()
+    if settings.model_mode == "demo" and _deterministic_runtime():
+        return settings
     if settings.model_mode != "bedrock":
         settings = settings.model_copy(update={"model_mode": "bedrock"})
     return settings
+
+
+def _deterministic_runtime() -> bool:
+    return os.environ.get("COUNTERSIGN_RUNTIME_DETERMINISTIC", "").lower() in {"1", "true", "yes"}
 
 
 async def ping(request: Request) -> JSONResponse:
@@ -81,6 +94,7 @@ async def invocations(request: Request) -> JSONResponse:
                     "service": "countersign-agentcore",
                     "healthy": True,
                     "model_mode": settings.model_mode,
+                    "invokes_a_model": settings.uses_model,
                     "model_id": settings.bedrock_model_id,
                     "region": settings.bedrock_region,
                     "test_kinds": sorted(REGISTRY),
@@ -152,6 +166,12 @@ app = Starlette(
     routes=[
         Route("/ping", ping),
         Route("/invocations", invocations, methods=["POST"]),
+        # The path AgentCore's own data plane exposes. Serving it here means the
+        # console's client can be pointed straight at this container with
+        # COUNTERSIGN_AGENTCORE_ENDPOINT and reach it through the same boto3
+        # call, the same signing and the same request shape it uses against AWS.
+        # That is what makes the invocation path runnable without an account.
+        Route("/runtimes/{arn:path}/invocations", invocations, methods=["POST"]),
     ]
 )
 
