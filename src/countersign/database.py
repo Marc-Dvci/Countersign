@@ -250,8 +250,12 @@ class Store:
         self.path = path
         self.path.parent.mkdir(parents=True, exist_ok=True)
         with self.connect() as connection:
-            connection.executescript(SCHEMA)
+            # Before the schema, not after it: the schema indexes one of these
+            # columns, and a database written by an earlier version has the
+            # table without the column. A database that does not exist yet has
+            # neither, and the schema below creates both.
             self._add_missing_columns(connection)
+            connection.executescript(SCHEMA)
 
     @staticmethod
     def _add_missing_columns(connection: sqlite3.Connection) -> None:
@@ -260,11 +264,16 @@ class Store:
         Additive only. Nothing here drops or rewrites a column, so a store that
         already holds findings keeps them, and the defaults are the values those
         rows would have been written with.
+
+        Runs before the schema script rather than after it, because an index in
+        that script names a column added here.
         """
         for table, columns in ADDED_COLUMNS.items():
             present = {
                 row["name"] for row in connection.execute(f"PRAGMA table_info({table})").fetchall()
             }
+            if not present:
+                continue  # the table does not exist yet, so the schema will create it complete
             for name, definition in columns:
                 if name not in present:
                     connection.execute(f"ALTER TABLE {table} ADD COLUMN {name} {definition}")
