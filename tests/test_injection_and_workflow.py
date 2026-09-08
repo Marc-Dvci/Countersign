@@ -132,8 +132,14 @@ def test_suppressed_items_are_reported_as_considered_not_hidden(settings, connec
     assert considered and "CHG-2210" in considered[0]
 
 
-def test_a_challenger_that_defeats_a_finding_stops_it_being_raised(seeded, monkeypatch):
-    """A withdrawn finding is recorded as an observation, not silently dropped."""
+def test_a_defeated_challenge_marks_a_finding_and_does_not_remove_it(seeded, monkeypatch):
+    """A challenge is an argument beside a finding, never a veto over it.
+
+    The finding under test rests on a deterministic exception. If a challenger
+    saying `survives=False` could keep it out of the queue, a probabilistic
+    agent would decide what a person is shown, which is the one thing this
+    product is built not to allow.
+    """
 
     control_row = seeded.store.control("kestrel", "GOV-POLREV-01")
     result = run_test(
@@ -164,15 +170,23 @@ def test_a_challenger_that_defeats_a_finding_stops_it_being_raised(seeded, monke
         ]
     )
     before = len(seeded.store.findings("kestrel"))
-    run_id = seeded.store.record_run(
+    seeded.store.record_run(
         "kestrel", control_row, result, report, challenges, [], "demo", date(2026, 9, 1)
     )
-    assert len(seeded.store.findings("kestrel")) == before, "a withdrawn finding is not raised"
-    run = seeded.store.run("kestrel", run_id)
-    assert any("did not survive challenge" in o for o in run["observations"])
+
+    after = seeded.store.findings("kestrel")
+    assert len(after) == before + 1, "a challenged finding is still raised"
+    raised = next(f for f in after if f["title"] == "A finding that will not survive")
+    assert raised["status"] == "open", "it waits for a person like any other finding"
+    assert raised["challenge_survives"] == 0, "and it is marked as challenged"
+    assert "register row is stale" in raised["challenge"]["reason"]
+
+    intact, detail = seeded.store.audit_intact()
+    assert intact, detail
 
 
-def test_a_downgrade_is_applied_to_the_recorded_finding(seeded):
+def test_a_downgrade_is_recorded_as_a_suggestion_not_applied(seeded):
+    """Severity comes from the control, not from the agent arguing about it."""
     control_row = seeded.store.control("kestrel", "IAM-DORM-01")
     result = run_test(
         control_row["test_kind"], seeded.connectors("kestrel"), control_row["parameters"], *QUARTER
@@ -201,8 +215,12 @@ def test_a_downgrade_is_applied_to_the_recorded_finding(seeded):
     run_id = seeded.store.record_run(
         "kestrel", control_row, result, report, challenges, [], "demo", date(2026, 9, 1)
     )
-    raised = [f for f in seeded.store.run("kestrel", run_id)["findings"] if f["title"] == "Downgrade me"]
-    assert raised and raised[0]["severity"] == "medium"
+    raised = [
+        f for f in seeded.store.run("kestrel", run_id)["findings"] if f["title"] == "Downgrade me"
+    ]
+    assert raised, "the finding is raised"
+    assert raised[0]["severity"] == "critical", "the recorded severity is the one it was raised at"
+    assert raised[0]["suggested_severity"] == "medium", "the challenger's view is kept beside it"
 
 
 # ------------------------------------------------------ what a model may do

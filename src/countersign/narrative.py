@@ -285,6 +285,23 @@ COMPOSERS = {
 # --------------------------------------------------------------------------
 
 
+def compose_findings(control, result: TestResult) -> list[ProposedFinding]:
+    """Findings for a result, written from the result rather than about it.
+
+    Called twice for different reasons. In demo mode it writes the whole report's
+    findings. In every mode it is also the fallback the review pipeline uses for
+    exceptions a model did not represent, which is why it takes a result rather
+    than reading one: the caller passes a result narrowed to the exceptions still
+    needing cover.
+    """
+    composer = COMPOSERS.get(result.test_kind, _finding_generic)
+    finding = composer(control, result)
+    if finding is None:
+        return []
+    finding.origin = "deterministic"
+    return [finding]
+
+
 def compose(control, result: TestResult, signals: list[InjectionSignal]) -> ReviewNarrative:
     """A report for one control run, written from the result it cannot change."""
     outcome = result.outcome(control.tolerance)
@@ -331,12 +348,7 @@ def compose(control, result: TestResult, signals: list[InjectionSignal]) -> Revi
             + "."
         )
 
-    findings: list[ProposedFinding] = []
-    if outcome == "ineffective":
-        composer = COMPOSERS.get(result.test_kind, _finding_generic)
-        finding = composer(control, result)
-        if finding is not None:
-            findings.append(finding)
+    findings = compose_findings(control, result) if outcome == "ineffective" else []
 
     return ReviewNarrative(
         summary=summary,

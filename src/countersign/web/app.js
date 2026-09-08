@@ -703,12 +703,23 @@
     return run.findings.map(findingBlock).join("");
   }
 
+  // A challenged finding is still a finding. The mark says an agent argued
+  // against it; it never hides it, and it never changes its severity.
+  const challengedPill = (finding) =>
+    finding.challenge_survives === 0 ? statusPill("neutral", "Challenged") : "";
+
+  const originNote = (finding) =>
+    finding.origin === "deterministic"
+      ? '<span class="tiny">Composed from the test result</span>'
+      : '<span class="tiny">Written by the review agents</span>';
+
   function findingBlock(finding) {
     return `<div class="finding-block">
       <div class="finding-head">
         <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
           ${severityPill(finding.severity)}
           <strong>${esc(finding.title)}</strong>
+          ${challengedPill(finding)}
         </div>
         <div style="display:flex;align-items:center;gap:8px">
           ${statusPill(FINDING_STATUS[finding.status], FINDING_LABEL[finding.status])}
@@ -744,13 +755,17 @@
     const challenges = run.challenges || [];
     if (!challenges.length)
       return empty("Nothing was raised, so there was nothing to argue against.");
-    return `<p class="tiny" style="margin-bottom:12px">Each finding is argued against before a person is asked to sign it. A finding that cannot survive the strongest case against it should not reach a committee.</p>
+    return `<p class="tiny" style="margin-bottom:12px">Each finding is argued against before a person is asked to sign it, so that a reviewer is never shown only the case for it. A challenge is an argument recorded beside a finding: it does not withdraw the finding and it does not change its severity, because whether a deterministic exception reaches you is not an agent's decision.</p>
       ${challenges
         .map(
           (c) => `<div class="finding-block">
         <div class="finding-head">
           <strong>${esc(c.finding_title)}</strong>
-          ${c.survives ? statusPill("neg", "Survives challenge") : statusPill("neutral", "Withdrawn")}
+          ${
+            c.survives
+              ? statusPill("neg", "Survives challenge")
+              : statusPill("neutral", "Argued against, still raised")
+          }
         </div>
         <div class="finding-grid">
           <div class="finding-part"><div class="label">Strongest counterargument</div><p>${esc(
@@ -832,8 +847,12 @@
     const rows = findings
       .map(
         (f) => `<tr class="clickable" data-href="#finding/${f.id}">
-        <td>${severityPill(f.severity)}</td>
-        <td><span class="primary">${esc(f.title)}</span>
+        <td>${severityPill(f.severity)}${
+          f.suggested_severity && f.suggested_severity !== f.severity
+            ? `<div class="tiny">challenger suggests ${esc(f.suggested_severity)}</div>`
+            : ""
+        }</td>
+        <td><span class="primary">${esc(f.title)} ${challengedPill(f)}</span>
             <span class="secondary">${esc(f.condition_text).slice(0, 150)}…</span></td>
         <td><span class="code">${esc(f.control_code)}</span></td>
         <td>${esc(f.proposed_owner || "–")}</td>
@@ -876,20 +895,43 @@
       ${card(
         `${finding.severity.toUpperCase()} · ${FINDING_LABEL[finding.status]}`,
         finding.proposed_owner ? `Proposed owner: ${finding.proposed_owner}` : "",
-        `<div class="card-body">${findingBlock(finding)}</div>`
+        `<div class="card-body">${findingBlock(finding)}
+          <div style="height:10px"></div>${originNote(finding)}</div>`
       )}
 
       ${
         challenge
           ? card(
-              "Challenged before it reached you",
-              challenge.survives ? "It survived" : "It was withdrawn",
+              "Argued against before it reached you",
+              challenge.survives
+                ? "The argument was made and the finding stands"
+                : "The agents argued this finding is not material. It is in front of you anyway",
               `<div class="card-body">
                 <p class="eyebrow">Strongest counterargument</p>
                 <p style="margin-top:5px">${esc(challenge.strongest_counterargument)}</p>
                 <div style="height:12px"></div>
-                <p class="eyebrow">Why it ${challenge.survives ? "still stands" : "does not stand"}</p>
+                <p class="eyebrow">Why it ${
+                  challenge.survives ? "still stands" : "was argued against"
+                }</p>
                 <p style="margin-top:5px">${esc(challenge.reason)}</p>
+                ${
+                  finding.suggested_severity &&
+                  finding.suggested_severity !== finding.severity
+                    ? `<div style="height:12px"></div>
+                       <p class="eyebrow">Suggested severity</p>
+                       <p style="margin-top:5px">${esc(
+                         finding.suggested_severity
+                       )}, against ${esc(
+                        finding.severity
+                      )} recorded. A suggestion, not applied: the severity is the one the control was approved with.</p>`
+                    : ""
+                }
+                ${
+                  challenge.survives
+                    ? ""
+                    : `<div style="height:12px"></div>
+                       <p class="tiny">This finding rests on an exception the deterministic test counted. An argument against it is recorded here and in the audit chain; it does not remove the finding, and only you can dispose of it.</p>`
+                }
               </div>`
             )
           : ""

@@ -50,6 +50,12 @@ RunOutcome = Literal["effective", "ineffective", "inconclusive", "not_run"]
 ControlStatus = Literal["proposed", "scheduled", "suspended", "retired"]
 FindingStatus = Literal["draft", "open", "risk_accepted", "remediation_agreed", "closed"]
 
+# Who wrote a finding. Set by the pipeline, never by the thing that produced it:
+# `deterministic` means the finding was composed from the test result by code,
+# which is what happens in demo mode and whenever a model left an exception
+# unrepresented.
+FindingOrigin = Literal["agent", "deterministic"]
+
 # Severity ordering, used wherever two severities are compared.
 SEVERITY_RANK: dict[str, int] = {"low": 0, "medium": 1, "high": 2, "critical": 3}
 
@@ -341,7 +347,13 @@ class InjectionSignal(BaseModel):
 
 
 class ProposedFinding(BaseModel):
-    """A candidate finding, in the four parts a control committee expects."""
+    """A candidate finding, in the four parts a control committee expects.
+
+    *Candidate* describes the wording, not the existence. Whether an exception
+    reaches the findings queue is decided by the count, not here: every
+    exception of an ineffective run is represented by one of these before the
+    run is stored, and a model that omitted one has it composed for it.
+    """
 
     title: str
     severity: Severity
@@ -355,6 +367,14 @@ class ProposedFinding(BaseModel):
     )
     proposed_remediation: str = ""
     proposed_owner: str = ""
+    origin: FindingOrigin = Field(
+        default="agent",
+        description=(
+            "Whether this finding was written by an agent or composed from the test result by "
+            "code. Overwritten by the pipeline, so a model cannot claim to be the deterministic "
+            "half."
+        ),
+    )
 
 
 class ReviewNarrative(BaseModel):
@@ -372,7 +392,17 @@ class ReviewNarrative(BaseModel):
 
 
 class Challenge(BaseModel):
-    """The challenger agent's attempt to knock a finding down before a person sees it."""
+    """The challenger agent's attempt to knock a finding down before a person sees it.
+
+    A challenge is an argument attached to a finding, and that is all it is. It
+    cannot delete the finding and it cannot change its severity. ``survives`` is
+    the challenger's opinion of whether the finding should stand, recorded
+    beside the finding so a reviewer can weigh both; ``suggested_downgrade`` is a
+    recommendation, stored as one. Removing the only first-class record of a
+    deterministic exception because a probabilistic agent argued well is exactly
+    the failure this product exists to prevent, so the store raises the finding
+    either way and marks it challenged.
+    """
 
     finding_title: str
     strongest_counterargument: str

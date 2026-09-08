@@ -728,6 +728,11 @@ def run_review(
     elif settings.uses_model:
         report, challenges = review_via_agents(settings, connectors, control, result, trace)
 
+    # Whether a model actually wrote this report, which is not the same question
+    # as which mode was configured: a degraded run in agentcore mode reaches the
+    # deterministic composer, and its findings are the deterministic half.
+    from_model = report is not None
+
     if report is None:
         trace.note("evidence_reader", "deterministic.scan")
         trace.note("narrator", "deterministic.compose")
@@ -743,6 +748,10 @@ def run_review(
         if (signal.detector, signal.locator) not in known:
             report.injection_signals.append(signal)
 
+    # The exceptions decide what reaches the queue. A model chooses how a
+    # finding is worded; it does not choose whether an exception gets one.
+    cover_every_exception(report, control, result, trace, from_model=from_model)
+
     # The count decides. A model that proposed a different outcome has its
     # disagreement recorded, not honoured.
     settled = result.outcome(control.tolerance)
@@ -755,6 +764,56 @@ def run_review(
         report.proposed_outcome = settled
 
     return report, challenges
+
+
+def cover_every_exception(
+    report: ReviewNarrative,
+    control: ProposedControl,
+    result: TestResult,
+    trace: InvocationTrace,
+    from_model: bool = True,
+) -> None:
+    """Every exception of an ineffective run must be on the page, in writing.
+
+    The outcome has been protected from the model since the first commit in this
+    repository. The findings were not, and they are what a person actually acts
+    on: a review that concluded "ineffective" and then wrote about two of the
+    three exceptions would leave the third with no first-class record anywhere,
+    and nobody downstream would know to look for it.
+
+    So the subjects are reconciled the same way the count and the injection scan
+    are. Anything the review left uncovered gets a finding composed from the test
+    result, marked ``deterministic`` so a reviewer can see which half of the
+    system wrote it, and the omission is stated in the observations rather than
+    quietly repaired.
+
+    ``origin`` is stamped here rather than trusted, so a model cannot present its
+    own prose as the deterministic record. ``from_model`` says whether a model
+    wrote this report at all; in demo mode, and in a degraded run that fell back
+    to the composer, the findings already are the deterministic half.
+    """
+    if from_model:
+        for finding in report.findings:
+            finding.origin = "agent"
+
+    if result.outcome(control.tolerance) != "ineffective":
+        return
+
+    covered = {subject for finding in report.findings for subject in finding.subjects}
+    missing = [item for item in result.exceptions if item.subject not in covered]
+    if not missing:
+        return
+
+    trace.note("narrator", f"findings.uncovered_exceptions={len(missing)}.composed")
+    narrowed = result.model_copy(update={"population": missing})
+    report.findings.extend(narrative.compose_findings(control, narrowed))
+    report.observations.append(
+        f"{len(missing)} of {result.exception_count} exception(s) were not represented in the "
+        f"findings this review produced: "
+        + ", ".join(item.subject for item in missing[:10])
+        + ". A finding was composed for them from the test result. Whether an exception reaches "
+        "the findings queue is decided by the count, not by the review."
+    )
 
 
 def _structured_from(outcome: Any, node: str, model_type: type) -> Any | None:

@@ -161,6 +161,9 @@ CREATE TABLE IF NOT EXISTS findings (
     proposed_remediation  TEXT NOT NULL DEFAULT '',
     proposed_owner        TEXT NOT NULL DEFAULT '',
     challenge             TEXT NOT NULL DEFAULT '{}',
+    challenge_survives    INTEGER NOT NULL DEFAULT 1,
+    suggested_severity    TEXT NOT NULL DEFAULT '',
+    origin                TEXT NOT NULL DEFAULT 'deterministic',
     status                TEXT NOT NULL DEFAULT 'open',
     decided_by            TEXT,
     decided_at            TEXT,
@@ -196,9 +199,21 @@ BEFORE DELETE ON audit
 BEGIN SELECT RAISE(ABORT, 'the audit log is append-only'); END;
 
 CREATE INDEX IF NOT EXISTS runs_by_control ON runs (control_code, period_end);
+CREATE INDEX IF NOT EXISTS findings_by_challenge ON findings (tenant_id, challenge_survives);
 CREATE INDEX IF NOT EXISTS findings_by_status ON findings (tenant_id, status);
 CREATE INDEX IF NOT EXISTS population_by_run ON population (run_id);
 """
+
+# Columns added after the first release. SQLite has no "ADD COLUMN IF NOT
+# EXISTS", and the schema above only runs for a database that does not exist
+# yet, so an already-deployed volume needs these applied by name.
+ADDED_COLUMNS: dict[str, list[tuple[str, str]]] = {
+    "findings": [
+        ("challenge_survives", "INTEGER NOT NULL DEFAULT 1"),
+        ("suggested_severity", "TEXT NOT NULL DEFAULT ''"),
+        ("origin", "TEXT NOT NULL DEFAULT 'deterministic'"),
+    ]
+}
 
 AGENT_PREFIX = "agent:"
 
@@ -236,6 +251,23 @@ class Store:
         self.path.parent.mkdir(parents=True, exist_ok=True)
         with self.connect() as connection:
             connection.executescript(SCHEMA)
+            self._add_missing_columns(connection)
+
+    @staticmethod
+    def _add_missing_columns(connection: sqlite3.Connection) -> None:
+        """Bring a database written by an earlier version up to this schema.
+
+        Additive only. Nothing here drops or rewrites a column, so a store that
+        already holds findings keeps them, and the defaults are the values those
+        rows would have been written with.
+        """
+        for table, columns in ADDED_COLUMNS.items():
+            present = {
+                row["name"] for row in connection.execute(f"PRAGMA table_info({table})").fetchall()
+            }
+            for name, definition in columns:
+                if name not in present:
+                    connection.execute(f"ALTER TABLE {table} ADD COLUMN {name} {definition}")
 
     @contextmanager
     def connect(self) -> Iterator[sqlite3.Connection]:
@@ -697,40 +729,28 @@ class Store:
                     ),
                 )
 
+            # Every finding is raised. A challenge is an argument recorded
+            # beside a finding, not a veto over it: a challenger that argued
+            # well would otherwise be able to delete the only first-class
+            # record of a deterministic exception, and the fact that a
+            # reviewer never saw it would itself be invisible. Severity is the
+            # control's, and a suggested downgrade is stored as a suggestion.
             challenge_by_title = {c.finding_title: c for c in challenges.challenges}
             for finding in report.findings:
                 challenge = challenge_by_title.get(finding.title)
-                if challenge is not None and not challenge.survives:
-                    # A finding the challenger defeated is recorded as an
-                    # observation on the run, not raised. It is still visible.
-                    connection.execute(
-                        "UPDATE runs SET observations = ? WHERE id = ?",
-                        (
-                            _canonical(
-                                report.observations
-                                + [
-                                    f"Not raised. '{finding.title}' did not survive challenge: "
-                                    f"{challenge.reason}"
-                                ]
-                            ),
-                            run_id,
-                        ),
-                    )
-                    continue
-                severity = finding.severity
-                if challenge is not None and challenge.suggested_downgrade:
-                    severity = challenge.suggested_downgrade
+                survives = challenge is None or challenge.survives
                 connection.execute(
                     "INSERT INTO findings (tenant_id, run_id, control_code, title, severity, "
                     "condition_text, criterion_text, cause_text, effect_text, evidence, subjects, "
-                    "proposed_remediation, proposed_owner, challenge, status, created_at) "
-                    "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,'open',?)",
+                    "proposed_remediation, proposed_owner, challenge, challenge_survives, "
+                    "suggested_severity, origin, status, created_at) "
+                    "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'open',?)",
                     (
                         tenant,
                         run_id,
                         control["code"],
                         finding.title,
-                        severity,
+                        finding.severity,
                         finding.condition,
                         finding.criterion,
                         finding.cause,
@@ -740,9 +760,28 @@ class Store:
                         finding.proposed_remediation,
                         finding.proposed_owner,
                         _canonical(challenge.model_dump(mode="json") if challenge else {}),
+                        1 if survives else 0,
+                        (challenge.suggested_downgrade or "") if challenge else "",
+                        finding.origin,
                         _now(),
                     ),
                 )
+                if not survives:
+                    self._append_audit(
+                        connection,
+                        f"{AGENT_PREFIX}challenger",
+                        "finding.challenged",
+                        f"control:{tenant}/{control['code']}",
+                        {
+                            "run": run_id,
+                            "finding": finding.title,
+                            "reason": challenge.reason,
+                            "note": (
+                                "Recorded as an argument against the finding. The finding is "
+                                "raised regardless and waits for a person."
+                            ),
+                        },
+                    )
 
             connection.execute(
                 "UPDATE controls SET next_due = ? WHERE id = ?",
