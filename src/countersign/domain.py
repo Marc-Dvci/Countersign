@@ -8,9 +8,11 @@ Three ideas carry the whole model.
    binds to one. A model may choose which one and parameterise it; a model may
    not invent one, because a control whose ``test_kind`` is not in the registry
    cannot be scheduled.
-3. An *outcome* is counted, never written. ``effective`` means the exception
-   count over the tested population was within the control's tolerance. No
-   sentence a model produces can move it.
+3. An *outcome* is counted, never written. ``effective`` means the whole
+   population was tested and the exception count was within the control's
+   tolerance. A run that could not test part of its population is
+   ``inconclusive``, never ``effective``: untested is not passing. No sentence a
+   model produces can move either of those.
 """
 
 from __future__ import annotations
@@ -285,11 +287,49 @@ class TestResult(BaseModel):
     def exception_count(self) -> int:
         return len(self.exceptions)
 
+    @property
+    def coverage_complete(self) -> bool:
+        """Whether every member the test set out to walk was actually walked.
+
+        ``not_tested`` holds the members a connector could not serve evidence
+        for. They are not passes and they are not exceptions; they are the part
+        of the population this run has nothing to say about.
+        """
+        return not self.not_tested
+
+    def coverage_note(self) -> str:
+        """One line naming the coverage gap, empty when there is none."""
+        if self.coverage_complete:
+            return ""
+        return (
+            f"{len(self.not_tested)} member(s) of the population could not be tested, so the "
+            f"control cannot be concluded over the whole population."
+        )
+
     def outcome(self, tolerance: int) -> RunOutcome:
-        """The only place a run outcome is ever decided."""
-        if self.population_size == 0:
+        """The only place a run outcome is ever decided.
+
+        Three questions, in this order, and nothing else is consulted:
+
+        1. did more members fail than the tolerance allows? Then ``ineffective``.
+           An incomplete run that already failed is still a failed run; missing
+           coverage cannot rescue it.
+        2. was any member left untested, or was the population empty? Then
+           ``inconclusive``. This is the coverage rule: a run that walked only
+           part of its population has not shown the control operating over the
+           population, and an unqualified pass would be a claim the evidence does
+           not support.
+        3. otherwise ``effective``.
+
+        The consequence that matters elsewhere: ``effective`` implies both a
+        non-empty population and complete coverage, which is why closing a
+        finding on a later effective run is safe.
+        """
+        if self.exception_count > tolerance:
+            return "ineffective"
+        if self.population_size == 0 or not self.coverage_complete:
             return "inconclusive"
-        return "effective" if self.exception_count <= tolerance else "ineffective"
+        return "effective"
 
 
 class InjectionSignal(BaseModel):

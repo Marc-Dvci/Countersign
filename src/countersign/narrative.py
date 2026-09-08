@@ -298,11 +298,20 @@ def compose(control, result: TestResult, signals: list[InjectionSignal]) -> Revi
     if signals:
         observations.append(contained_statement(signals))
 
-    if outcome == "inconclusive":
+    if outcome == "inconclusive" and result.population_size == 0:
         summary = (
             f"{control.code} could not be concluded: the population for "
             f"{result.period_start.isoformat()} to {result.period_end.isoformat()} was empty. "
             f"An empty population is not a pass, and the control is reported as inconclusive."
+        )
+    elif outcome == "inconclusive":
+        summary = (
+            f"{control.code} could not be concluded over "
+            f"{result.period_start.isoformat()} to {result.period_end.isoformat()}. "
+            f"{result.population_size} item(s) were tested and none failed, but "
+            f"{len(result.not_tested)} further item(s) could not be tested at all. A control "
+            f"that has walked part of its population has not shown the control operating over "
+            f"the population, so the run is reported as inconclusive rather than effective."
         )
     elif outcome == "effective":
         summary = (
@@ -310,7 +319,7 @@ def compose(control, result: TestResult, signals: list[InjectionSignal]) -> Revi
             f"population for {result.period_start.isoformat()} to {result.period_end.isoformat()} "
             f"satisfied the control"
             + (f", with {len(suppressed)} suppressed for a stated reason" if suppressed else "")
-            + ". No finding is raised."
+            + ". Every member of the population was tested. No finding is raised."
         )
     else:
         summary = (

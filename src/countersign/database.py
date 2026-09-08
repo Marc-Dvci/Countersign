@@ -881,8 +881,16 @@ class Store:
         """Close open findings whose control has just come back clean.
 
         The closing evidence is a later run of the same control, over a fresh
-        population, that produced no exceptions. Nobody's assertion closes a
-        finding, including the assertion of the person who fixed it.
+        population, that produced no exceptions and left nothing untested.
+        Nobody's assertion closes a finding, including the assertion of the
+        person who fixed it.
+
+        Both conditions are checked here. ``effective`` already implies complete
+        coverage, because :meth:`TestResult.outcome` refuses to return it
+        otherwise, but the stored ``not_tested`` list is read rather than
+        inferred: closing a finding on a run that never looked at the thing the
+        finding was about is the one error in this system that nobody would ever
+        notice afterwards.
         """
         closed: list[int] = []
         with self.write() as connection:
@@ -890,6 +898,8 @@ class Store:
                 "SELECT * FROM runs WHERE id = ? AND tenant_id = ?", (run_id, tenant)
             ).fetchone()
             if run is None or run["outcome"] != "effective":
+                return []
+            if json.loads(run["not_tested"] or "[]"):
                 return []
             # Ordered by run id rather than by timestamp. Timestamps here have
             # one-second resolution, so a finding raised and remediated inside

@@ -139,10 +139,14 @@
       .join("");
 
     const mode = $("#mode-pill");
-    mode.textContent =
-      info.model_mode === "demo" ? "Deterministic mode" : `Strands · ${info.model_mode}`;
-    mode.className = "shell-pill" + (info.model_mode === "demo" ? "" : " is-live");
-    mode.title = info.model_description;
+    if (info.model_mode === "demo") {
+      mode.hidden = true;
+    } else {
+      mode.hidden = false;
+      mode.textContent = `Strands · ${info.model_mode}`;
+      mode.className = "shell-pill is-live";
+      mode.title = info.model_description;
+    }
 
     const chain = $("#chain-pill");
     chain.textContent = info.audit.intact ? "Evidence chain intact" : "Chain broken";
@@ -328,12 +332,16 @@
 
     const sources = info.sources
       .map(
-        (s) => `<div class="source-tile">
+        (s) => `<div class="source-tile" title="${esc(s.note || s.mode)}">
           <span class="source-dot${s.connected ? "" : " off"}"></span>
           <div>
             <div class="name">${esc(s.source)}</div>
             <div class="meta">${esc(s.mode)} · ${
-          s.datasets.length ? esc(s.datasets.join(", ")) : "no datasets"
+          s.datasets.length
+            ? esc(s.datasets.join(", "))
+            : s.mode === "disconnected"
+            ? "not connected, so not testable"
+            : "no datasets"
         }</div>
           </div>
         </div>`
@@ -649,7 +657,15 @@
       ${
         run.not_tested && run.not_tested.length
           ? `<div style="height:14px"></div>
-             <div class="callout warn"><div class="callout-title">Not tested</div>
+             <div class="callout warn"><div class="callout-title">Not tested, so not concluded</div>
+             ${esc(
+               `${plural(
+                 run.not_tested.length,
+                 "member"
+               )} of the population could not be tested. The run is reported as ` +
+                 "inconclusive rather than effective, and it cannot close an open finding."
+             )}
+             <div style="height:9px"></div>
              ${run.not_tested.map((n) => esc(n)).join("<br>")}</div>`
           : ""
       }
