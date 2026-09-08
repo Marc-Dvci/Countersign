@@ -56,10 +56,20 @@ payment integrity and ICT resilience.
 ## 4. Check the claims (2 minutes)
 
 ```bash
-.venv/Scripts/python -m pytest -q                 # 91 passed
+.venv/Scripts/python -m pytest -q                 # 130 passed
 .venv/Scripts/python -m countersign.cli verify    # recomputes the audit chain
 .venv/Scripts/python tools/ui_smoke.py            # drives the console in Chromium
 ```
+
+Three of those tests are worth opening rather than only running.
+`tests/test_coverage.py` fixes a leaver estate but deletes one directory
+account, so the run is clean over everything it could test: it has to report
+`inconclusive` and refuse to close the finding. `tests/test_agentcore.py` wires
+`invoke_agent_runtime` to the runtime's own ASGI app and drives the whole
+AgentCore path with no AWS, including a runtime that returns the wrong outcome
+and changes nothing but the trace. `tests/test_connectors.py` serves paginated
+GitHub fixtures and asserts that a seventy-repository organisation comes back as
+seventy repositories.
 
 `tools/ui_smoke.py` is the one worth running. It opens a real browser, walks the
 product the way a person would, fails on any console error or failed request,
@@ -71,7 +81,10 @@ from the UI runs it, and that the taxonomy changes between tenants.
 | Claim | File |
 |---|---|
 | The outcome is counted, never written | `src/countersign/control_tests.py`, `TestResult.outcome()` in `domain.py` |
-| Six Strands agents in two graphs | `src/countersign/workflow.py` |
+| Six agent roles: sequential onboarding, one review graph | `src/countersign/workflow.py` |
+| Untested is not passing | `TestResult.outcome()` in `domain.py`, `tests/test_coverage.py` |
+| agentcore mode really leaves the process | `src/countersign/agentcore_client.py`, `tests/test_agentcore.py` |
+| The population is walked, not sampled | `_pages()` in `connectors/github.py`, `tests/test_connectors.py` |
 | A model may only bind to a registered test | `REGISTRY` in `control_tests.py`, `validate_control()` in `workflow.py` |
 | The three gates | `_require_person()` and `close_findings_with_evidence()` in `database.py` |
 | Injection detection | `src/countersign/injection.py`, scoped by `relevant_documents()` |
@@ -86,7 +99,7 @@ gates, the write path and the audit chain. It does not invoke a model, so it
 says nothing about model quality. The console prints the mode on every run, on
 the run itself.
 
-To run the agents live:
+To run the agents live, in this process:
 
 ```bash
 export COUNTERSIGN_MODEL_MODE=bedrock
@@ -94,5 +107,17 @@ export AWS_ACCESS_KEY_ID=... AWS_SECRET_ACCESS_KEY=...
 .venv/Scripts/python -m countersign.cli run DORA-INC-01
 ```
 
-The outcome will be identical, because the count decides it. What changes is who
-wrote the paragraph.
+Or in the deployed AgentCore runtime, which is where the console sends the work
+when the ARN is set:
+
+```bash
+export COUNTERSIGN_MODEL_MODE=agentcore
+export COUNTERSIGN_AGENTCORE_ARN=arn:aws:bedrock-agentcore:...
+.venv/Scripts/python -m countersign.cli runtime      # what answered, and what it may do
+.venv/Scripts/python -m countersign.cli run DORA-INC-01
+```
+
+The outcome will be identical in all three, because the count decides it. What
+changes is who wrote the paragraph, and in the third case where they wrote it.
+The run's trace records which, including `runtime.count.agreed` when the runtime
+re-ran the test on its own side and reached the same number.

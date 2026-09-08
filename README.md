@@ -18,8 +18,9 @@ refused.
 ## The problem
 
 In a regulated firm, the first line does the work and asserts that it followed
-the rules. The second line is the function that checks. It designs the control
-programme, runs the tests, and tells the board which assertions it can stand
+the rules. The second line owns the control framework over those assertions: it
+designs the control programme, runs the tests itself rather than taking the
+first line's word for it, and tells the board which assertions it can stand
 behind.
 
 Almost none of that work is judgement. The judgement is in deciding what a
@@ -112,10 +113,26 @@ are then given that settled result and asked to explain it.
 
 So a report can be badly written, and it cannot be wrong about whether the
 control passed. `TestResult.outcome()` is the single place in the codebase where
-`effective` is decided, and it is nine lines of Python over a list.
+`effective` is decided, and it is a dozen lines of Python over a list.
 
 If the narrating agent proposes a different outcome, the disagreement is
 recorded on the run and the count stands.
+
+### Untested is not passing
+
+`outcome()` asks three questions, in order: did more members fail than the
+tolerance allows, was anything left untested or the population empty, and
+otherwise it is `effective`.
+
+The middle question is the one that is easy to leave out. A control can walk
+most of its population and be unable to test the rest: a leaver with no
+directory account, a repository with the dependency graph switched off, a source
+that answered with an error. Those members are not passes. They go to
+`not_tested`, and a run holding any of them reports `inconclusive` however clean
+the part it did walk, so it cannot report `effective` and it cannot close a
+finding. A control that walked eight of eleven members and closed the finding
+about the ninth is the failure this rule exists to prevent, and
+`tests/test_coverage.py` drives it end to end against the store.
 
 ### Three gates a model cannot open
 
@@ -273,14 +290,48 @@ wait for a person, which is why the schedule can run unattended.
 ### AgentCore
 
 `Dockerfile.agentcore` builds a stateless ARM64 runtime exposing `/ping` and
-`/invocations`. It runs the agents and returns their structured output. It holds
-no database and its IAM role grants model invocation and telemetry only, so a
-compromised runtime cannot reach canonical state, approve itself a control, or
-close a finding.
+`/invocations`, with a `status` operation that reports what the runtime is
+without spending a model call. It holds no database and its IAM role grants
+model invocation and telemetry only, so a compromised runtime cannot reach
+canonical state, approve itself a control, or close a finding.
 
-It also re-runs the deterministic test itself rather than accepting a result
-from its caller, because a settled outcome that arrived over the wire is a
-settled outcome somebody could have edited. See `deployment/README.md`.
+`COUNTERSIGN_MODEL_MODE=agentcore` routes to it for real. In that mode the
+console builds **no** local model at all: `run_onboarding` and `run_review` call
+`agentcore_client.invoke`, which is `InvokeAgentRuntime` against
+`COUNTERSIGN_AGENTCORE_ARN` with a deterministic session id, and what comes back
+is validated against the same Pydantic types a local run would have produced.
+
+Three things make that safe across a trust boundary.
+
+- **The runtime is sent the control and the period, never the result.** It
+  re-runs the deterministic test on its own side, so its answer carries a
+  second, independent count of the population. The console compares the two. A
+  disagreement is written onto the run and into the trace as
+  `runtime.count.disagreed`, and the console's count is the one published,
+  because the console owns the database.
+- **Controls it proposes carry no authority.** They are validated against the
+  test registry and preflighted locally before anyone is offered the approve
+  button, exactly as locally-proposed controls are.
+- **It is not load-bearing.** An unreachable runtime degrades a review to the
+  deterministic composer and records `runtime.unavailable.degraded`. The outcome
+  was never the model's to produce. Onboarding, which has no settled outcome to
+  protect, fails loudly instead of quietly serving a catalogue as the runtime's
+  work.
+
+The wiring can be checked in one command, before the console is switched over:
+
+```bash
+COUNTERSIGN_AGENTCORE_ARN=arn:aws:bedrock-agentcore:... \
+  .venv/Scripts/python -m countersign.cli runtime
+```
+
+`tests/test_agentcore.py` exercises the whole seam with only the transport
+stubbed: `invoke_agent_runtime` is wired to the runtime's own ASGI app, so the
+real `/invocations` handler, the real deterministic test and the real composer
+run, with no AWS and no model. It asserts that agentcore mode never builds a
+local model, that a runtime returning the wrong outcome changes the trace and
+nothing else, and that a runtime left in agentcore mode cannot invoke itself.
+See `deployment/README.md`.
 
 ## Connectors
 
@@ -292,11 +343,31 @@ credentials runs the whole product. The live adapters call the real API when
 credentials are present: `GitHubConnector` (repositories, pull requests with
 their reviews, deployments, SBOM), `JiraConnector` (projects, issues, and
 thresholds declared in a project property), `OktaConnector` (users, groups,
-memberships, following Link-header pagination).
+memberships).
 
 Set `GITHUB_ORG` and `GITHUB_TOKEN` and the change-approval control runs against
 your real organisation. Nothing else changes, because a control cannot tell the
 two apart.
+
+**Every listing is walked to the end.** All three adapters paginate to
+exhaustion, because a connector that returned the first page would make the
+central claim of this product false in the one place nobody would check: an
+organisation of seventy repositories would have forty-five of them absent from
+the population, and the control would still report `effective`. The one bound
+that exists, `max_pages`, *raises* when it is reached, so an estate larger than
+the connector was configured for produces a failed run rather than a short one.
+`tests/test_connectors.py` serves paginated fixtures carrying real Link headers
+and asserts the whole organisation comes back.
+
+**Real evidence and seeded evidence never appear in the same run.** Three kinds
+have live adapters today and the rest are corpus-only. That is a coverage gap,
+and it is a stated one rather than a hidden one: as soon as any source is live,
+a kind with no live adapter resolves to a `DisconnectedConnector` and raises
+instead of quietly serving synthetic rows. A change-approval control cannot join
+real GitHub merges to a fictional leaver list and publish one outcome over both.
+`COUNTERSIGN_ALLOW_SOURCE_MIXING=true` turns that off deliberately, for
+demonstrating one live adapter against the seeded estate, and the console names
+the mode of every source either way.
 
 Where a live adapter cannot serve a dataset it raises rather than returning an
 empty list. Okta exposes access-review campaigns only under
@@ -307,10 +378,20 @@ most has to get right.
 
 ## Quality gate
 
-The same lint and test steps run in CI on every push (`.github/workflows/ci.yml`).
+CI runs on every push (`.github/workflows/ci.yml`) and covers the surfaces these
+claims live on, not only the suite:
+
+| Job | What would break it |
+|---|---|
+| Lint, test, mark the answer keys | A failing test, a lint error, or a control programme that stopped reaching the planted conditions. It installs from `requirements.lock` with `--require-hashes`, so a dependency that moved fails here rather than inside a container build. |
+| Audit the locked dependencies | `pip-audit` over the lock. |
+| The console image builds and serves | The image is built, started, and has to answer `/api/state` with an intact audit chain. |
+| The AgentCore runtime builds on ARM64 and answers | Built for `linux/arm64`, which is what AgentCore runs, and started under emulation: `/ping` healthy, `/invocations` serving `status` with the full test registry, and an operation it does not have refused with a 400. |
+| A credentialed Bedrock run reaches the same outcome | Runs where the repository holds AWS credentials. One control is run in `demo` and again in `bedrock`, and the outcome, population and exception count have to be identical. That is the governance claim in one assertion. |
+| The deployed runtime answers the console | Runs where an AgentCore ARN is configured. Calls `countersign runtime`, then runs a control with the review dispatched to the deployed runtime. |
 
 ```bash
-.venv/Scripts/python -m pytest -q                 # 97 passed
+.venv/Scripts/python -m pytest -q                 # 130 passed
 .venv/Scripts/python -m ruff check src tests tools scripts
 .venv/Scripts/python tools/ui_smoke.py            # drives the real console in Chromium
 .venv/Scripts/python -m countersign.cli score     # marks the run against the answer key
@@ -358,12 +439,13 @@ src/countersign/
   control_tests.py   ten deterministic tests. Every outcome is decided here
   catalogue.py       what the agents propose in demo mode
   workflow.py        six agent roles: a sequential onboarding workflow, a review graph
+  agentcore_client.py the console side of the AgentCore boundary
   injection.py       seven detectors, run in every model mode
   narrative.py       the deterministic report composer
   database.py        canonical state, the three gates, the hash-chained audit
   service.py         onboard, run, run everything due, seed
   api.py             open reads, gated writes, the background scheduler
-  agentcore.py       the Bedrock AgentCore runtime
+  agentcore.py       the Bedrock AgentCore runtime: /ping, /invocations
   web/               the console
   corpus/            three synthetic estates and the answer key
 scripts/build_corpus.py   regenerates the estates and the key together

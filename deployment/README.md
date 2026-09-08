@@ -39,7 +39,22 @@ Then point the console at it:
 ```bash
 export COUNTERSIGN_MODEL_MODE=agentcore
 export COUNTERSIGN_AGENTCORE_ARN=<the ARN the deploy script printed>
+
+# What answered, and what it is allowed to do. One InvokeAgentRuntime call,
+# no model spend: the runtime's `status` operation.
+python -m countersign.cli runtime
 ```
+
+In that mode the console builds no local model. `run_onboarding` and
+`run_review` call `InvokeAgentRuntime` through
+`countersign/agentcore_client.py`, and the console re-runs the deterministic
+test on its own side, so every review carries two independent counts of the
+population. They should agree; the run's trace says `runtime.count.agreed` when
+they do and `runtime.count.disagreed` when they do not, and the console's count
+is the published one either way.
+
+A runtime that cannot be reached degrades a review to the deterministic composer
+and records it. Onboarding, which has nothing honest to fall back to, fails.
 
 ## The console
 
@@ -62,3 +77,14 @@ is not enough: the model has to be enabled in the console for the region you are
 calling, and a brand-new account may sit in verification before any of it works.
 `COUNTERSIGN_MODEL_MODE=demo` runs the whole product deterministically in the
 meantime and is what the seeded demonstration uses.
+
+## Connecting a real source
+
+Set `GITHUB_ORG` and `GITHUB_TOKEN` (read scopes) and the change-approval
+control runs against a real organisation with no other change. Note what happens
+to the rest of the estate when you do: a source with no credentials becomes
+*disconnected* rather than falling back to the seeded corpus, so a control that
+needs it records untested population and reports `inconclusive`. That is
+deliberate. A second-line product must not publish one outcome over real GitHub
+merges and a fictional leaver list. `COUNTERSIGN_ALLOW_SOURCE_MIXING=true` lifts
+it for a demonstration and should stay off anywhere else.

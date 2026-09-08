@@ -7,13 +7,17 @@
 Countersign separates what a model may produce from what is true.
 
 1. **Sources.** Eight read-only connectors. The interface has two verbs,
-   `inventory()` and `fetch()`. There is no verb that writes.
-2. **Agent interpretation.** Six Strands agents in two graphs. They propose an
-   enterprise profile, a risk taxonomy, a control programme, and the prose of a
-   control report.
+   `inventory()` and `fetch()`. There is no verb that writes. Every live adapter
+   paginates to exhaustion, and raises rather than truncating, so "the whole
+   population" is a property of the connector and not only of the test.
+2. **Agent interpretation.** Six Strands agent roles, across a sequential
+   onboarding workflow and one review graph. They propose an enterprise profile,
+   a risk taxonomy, a control programme, and the prose of a control report.
 3. **Deterministic decision.** Ten tests in `control_tests.py` walk the full
    population and count the outcome. This runs before any model is invoked on a
-   control run, and its answer is never revised.
+   control run, and its answer is never revised. A member the connectors could
+   not serve evidence for goes to `not_tested`, and a run holding any of those
+   is `inconclusive` rather than `effective`: untested is not passing.
 4. **Authority.** Three transactions carry it: accepting a risk domain,
    approving a control into the schedule, and dispositioning a finding. All
    three refuse an actor whose identity begins with `agent:`, in the store
@@ -57,9 +61,16 @@ A person can accept a risk, with a stated reason of at least a sentence, or
 agree a remediation. `closed` is refused to every human actor.
 
 `close_findings_with_evidence` closes a finding when a later run of the same
-control produced no exceptions. "Later" is ordered by run id rather than by
-timestamp, because timestamps here have one-second resolution and a finding
-raised and remediated inside the same second would never close.
+control produced no exceptions **and left nothing untested**. "Later" is ordered
+by run id rather than by timestamp, because timestamps here have one-second
+resolution and a finding raised and remediated inside the same second would
+never close.
+
+The coverage condition is the one that is easy to miss. A run that walked most
+of its population, found nothing wrong with the part it walked, and closed the
+finding about the part it did not, would be indistinguishable from a real
+remediation afterwards. `effective` already implies complete coverage, and the
+closing path re-reads the stored `not_tested` list anyway.
 
 ## Evidence
 
@@ -75,7 +86,7 @@ it.
 |---|---|---|
 | `demo` | The deterministic composer in `narrative.py` | The seeded demonstration, tests, CI, and any evaluation without credentials |
 | `bedrock` | The Strands agents against Amazon Bedrock | Live model output from the application process |
-| `agentcore` | The Strands agents inside a deployed AgentCore runtime | Production, with the model layer on the other side of an IAM boundary |
+| `agentcore` | The Strands agents inside a deployed AgentCore runtime, invoked over `InvokeAgentRuntime`. The console builds no local model | Production, with the model layer on the other side of an IAM boundary |
 
 The governance guarantees hold identically in all three, because they are
 properties of the ordering and of the store rather than of the model.
@@ -84,9 +95,28 @@ properties of the ordering and of the store rather than of the model.
 
 The console container is the sole writer of the database and mounts `/app/data`
 on durable storage. The AgentCore image is stateless, exposes `/ping` and
-`/invocations`, and its runtime role grants model invocation and telemetry. It
-re-runs the deterministic test itself rather than accepting a result from its
-caller.
+`/invocations`, and its runtime role grants model invocation and telemetry.
+
+`countersign/agentcore_client.py` is the console side of that boundary. In
+`agentcore` mode, `run_onboarding` and `run_review` leave the process: the
+runtime is sent a control and a period, never a result, and it re-runs the
+deterministic test on its own side. Two independent counts of the population
+therefore exist for every review, and the console compares them. A disagreement
+is recorded on the run and in the trace, and the console's count is published,
+because the console owns the database.
+
+An unreachable runtime degrades a review to the deterministic composer and
+records it. The outcome was never the model's to produce, so the runtime is not
+load-bearing for anything that gets published.
+
+## Source boundary
+
+A source kind falls back to the seeded corpus only while every source is a
+fallback. As soon as one adapter is live, an uncredentialed kind resolves to
+`DisconnectedConnector` and raises, so a control cannot join real evidence to
+invented evidence and publish a single outcome over both. Three kinds have live
+adapters today; the rest are corpus-only, which the console states per source.
+`COUNTERSIGN_ALLOW_SOURCE_MIXING` lifts the boundary for a demonstration.
 
 ## Concurrency and integrity
 
