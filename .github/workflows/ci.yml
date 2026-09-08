@@ -3,9 +3,12 @@
 # The rule this file follows: every claim the README makes should fail here if
 # it stops being true. So the suite runs against the committed lock rather than
 # a fresh resolution, both container images are built and started, the AgentCore
-# runtime is invoked and asked what it is, the answer keys are marked, and the
-# dependency set is audited. The two credentialed jobs at the end run only where
-# the secrets exist, and say so when they do not.
+# runtime is asked what it is, the answer keys are marked and the dependency set
+# is audited.
+#
+# Everything here runs without credentials, which is the same property the
+# product has: a judge with no AWS account runs all of it. The checks that need
+# a live account are in cloud-checks.yml and are run on demand.
 
 name: CI
 
@@ -156,101 +159,3 @@ jobs:
       - name: Logs on failure
         if: failure()
         run: docker logs runtime
-
-  credentials:
-    name: Check for AWS credentials
-    runs-on: ubuntu-latest
-    outputs:
-      aws: ${{ steps.check.outputs.aws }}
-      runtime: ${{ steps.check.outputs.runtime }}
-    steps:
-      - id: check
-        env:
-          ROLE: ${{ secrets.AWS_ROLE_ARN }}
-          ARN: ${{ secrets.COUNTERSIGN_AGENTCORE_ARN }}
-        run: |
-          aws=false; runtime=false
-          if [ -n "$ROLE" ]; then aws=true; fi
-          if [ -n "$ARN" ]; then runtime=true; fi
-          echo "aws=$aws" >> "$GITHUB_OUTPUT"
-          echo "runtime=$runtime" >> "$GITHUB_OUTPUT"
-          {
-            echo "Credentialed jobs are skipped unless the repository holds the secrets."
-            echo "- AWS role configured: $aws"
-            echo "- AgentCore runtime ARN configured: $runtime"
-          } >> "$GITHUB_STEP_SUMMARY"
-
-  bedrock:
-    name: A credentialed Bedrock run reaches the same outcome
-    needs: [test, credentials]
-    if: needs.credentials.outputs.aws == 'true'
-    runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: read
-    env:
-      COUNTERSIGN_BEDROCK_REGION: ${{ vars.COUNTERSIGN_BEDROCK_REGION || 'eu-west-1' }}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-      - uses: aws-actions/configure-aws-credentials@v4
-        with:
-          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
-          aws-region: ${{ vars.COUNTERSIGN_BEDROCK_REGION || 'eu-west-1' }}
-      - run: |
-          python -m pip install --require-hashes -r requirements.lock
-          python -m pip install --no-deps -e .
-
-      - name: Seed deterministically, then re-run one control against Bedrock
-        # The whole governance claim in one assertion: the agents write the
-        # report and the count writes the outcome, so turning the agents on
-        # cannot change the answer.
-        run: |
-          python -m countersign.cli seed --tenant kestrel > /dev/null
-          COUNTERSIGN_MODEL_MODE=demo python -m countersign.cli run IAM-JML-01 \
-            --tenant kestrel --lookback 91 > demo.json
-          COUNTERSIGN_MODEL_MODE=bedrock python -m countersign.cli run IAM-JML-01 \
-            --tenant kestrel --lookback 91 > bedrock.json
-          python - <<'EOF'
-          import json
-          demo = json.load(open("demo.json"))
-          live = json.load(open("bedrock.json"))
-          for field in ("outcome", "population", "exceptions"):
-              assert demo[field] == live[field], (field, demo[field], live[field])
-          print("identical under both model modes:", demo["outcome"], demo["population"], "items")
-          EOF
-
-  agentcore:
-    name: The deployed runtime answers the console
-    needs: [test, credentials]
-    if: needs.credentials.outputs.runtime == 'true'
-    runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: read
-    env:
-      COUNTERSIGN_MODEL_MODE: agentcore
-      COUNTERSIGN_AGENTCORE_ARN: ${{ secrets.COUNTERSIGN_AGENTCORE_ARN }}
-      COUNTERSIGN_BEDROCK_REGION: ${{ vars.COUNTERSIGN_BEDROCK_REGION || 'eu-west-1' }}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-      - uses: aws-actions/configure-aws-credentials@v4
-        with:
-          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
-          aws-region: ${{ vars.COUNTERSIGN_BEDROCK_REGION || 'eu-west-1' }}
-      - run: |
-          python -m pip install --require-hashes -r requirements.lock
-          python -m pip install --no-deps -e .
-
-      - name: Ask the deployed runtime what it is
-        run: python -m countersign.cli runtime
-
-      - name: Run a control with the review dispatched to the runtime
-        run: |
-          COUNTERSIGN_MODEL_MODE=demo python -m countersign.cli seed --tenant kestrel > /dev/null
-          python -m countersign.cli run IAM-JML-01 --tenant kestrel --lookback 91

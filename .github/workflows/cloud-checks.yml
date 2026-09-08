@@ -1,0 +1,116 @@
+# Checks that need a live AWS account.
+#
+# Run on demand rather than on every push, because they spend money and because
+# a push-triggered job that needs credentials is a job that reports on the
+# credentials rather than on the code. The two things worth checking against a
+# real account are here:
+#
+#   Bedrock parity     one control run deterministically and again with the
+#                      agents live, asserting the outcome, the population and
+#                      the exception count are identical. That is the whole
+#                      governance claim in a single assertion.
+#   AgentCore runtime  the deployed runtime is asked what it is, then a control
+#                      is run with the review dispatched to it.
+#
+# Both want repository secrets: AWS_ROLE_ARN (an OIDC role that may call
+# Bedrock), and for the second COUNTERSIGN_AGENTCORE_ARN.
+
+name: Cloud checks
+
+on:
+  workflow_dispatch:
+    inputs:
+      control:
+        description: The control code to run
+        default: IAM-JML-01
+        required: false
+      tenant:
+        description: The tenant to seed and run against
+        default: kestrel
+        required: false
+
+permissions:
+  contents: read
+  id-token: write
+
+env:
+  AWS_REGION: eu-west-1
+  PIP_DISABLE_PIP_VERSION_CHECK: "1"
+
+jobs:
+  bedrock:
+    name: The agents change the prose and not the outcome
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+      - name: Install the locked runtime
+        run: |
+          python -m pip install --require-hashes -r requirements.lock
+          python -m pip install --no-deps -e .
+
+      - name: Seed, then run one control in each mode
+        env:
+          TENANT: ${{ inputs.tenant }}
+          CONTROL: ${{ inputs.control }}
+          COUNTERSIGN_BEDROCK_REGION: ${{ env.AWS_REGION }}
+        run: |
+          python -m countersign.cli seed --tenant "$TENANT" > /dev/null
+          COUNTERSIGN_MODEL_MODE=demo python -m countersign.cli run "$CONTROL" \
+            --tenant "$TENANT" --lookback 91 > deterministic.json
+          COUNTERSIGN_MODEL_MODE=bedrock python -m countersign.cli run "$CONTROL" \
+            --tenant "$TENANT" --lookback 91 > live.json
+          python - <<'EOF'
+          import json
+          deterministic = json.load(open("deterministic.json"))
+          live = json.load(open("live.json"))
+          for field in ("outcome", "population", "exceptions"):
+              assert deterministic[field] == live[field], (
+                  field, deterministic[field], live[field]
+              )
+          print(
+              "identical in both modes:",
+              deterministic["outcome"],
+              deterministic["population"], "items,",
+              deterministic["exceptions"], "exceptions",
+          )
+          EOF
+
+  agentcore:
+    name: The deployed runtime answers the console
+    runs-on: ubuntu-latest
+    env:
+      COUNTERSIGN_MODEL_MODE: agentcore
+      COUNTERSIGN_AGENTCORE_ARN: ${{ secrets.COUNTERSIGN_AGENTCORE_ARN }}
+      COUNTERSIGN_BEDROCK_REGION: eu-west-1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+      - name: Install the locked runtime
+        run: |
+          python -m pip install --require-hashes -r requirements.lock
+          python -m pip install --no-deps -e .
+
+      - name: Ask the runtime what it is
+        run: python -m countersign.cli runtime
+
+      - name: Run a control with the review dispatched to it
+        env:
+          TENANT: ${{ inputs.tenant }}
+          CONTROL: ${{ inputs.control }}
+        run: |
+          COUNTERSIGN_MODEL_MODE=demo python -m countersign.cli seed \
+            --tenant "$TENANT" > /dev/null
+          python -m countersign.cli run "$CONTROL" --tenant "$TENANT" --lookback 91
