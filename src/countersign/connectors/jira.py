@@ -1,6 +1,8 @@
 """Jira Cloud, live.
 
-Serves ``projects`` and ``issues`` from the REST API. ``automation_settings``
+Serves ``projects`` and ``issues`` from the REST API, both walked to the end of
+their pagination: a control that counts a population cannot be reading the first
+page of it. ``automation_settings``
 is served from a project property, because Jira exposes no read API for
 automation rule configuration; a control that needs it against an estate where
 the property is absent records untested population rather than inventing a
@@ -22,6 +24,9 @@ from countersign.domain import DiscoveredAsset
 # thresholds its automation enforces. Countersign reads it; it never writes it.
 SETTINGS_PROPERTY = "countersign.thresholds"
 
+# Jira Cloud's maximum page size for both listings used here.
+PAGE_SIZE = 100
+
 
 class JiraConnector:
     """Read-only Jira Cloud access via an API token."""
@@ -32,6 +37,7 @@ class JiraConnector:
     def __init__(self, site: str, email: str, token: str, timeout: float = 20.0):
         credential = base64.b64encode(f"{email}:{token}".encode()).decode()
         self.site = site.rstrip("/")
+        self._project_cache: list[dict[str, Any]] | None = None
         self._client = httpx.Client(
             base_url=f"{self.site}/rest/api/3",
             timeout=timeout,
@@ -48,18 +54,37 @@ class JiraConnector:
         return response.json()
 
     def _projects(self) -> list[dict[str, Any]]:
-        payload = self._get("/project/search", maxResults=50)
-        return [
-            {
-                "id": project["key"],
-                "key": project["key"],
-                "name": project["name"],
-                "asset_kind": "project",
-                "project_type": project.get("projectTypeKey", ""),
-                "url": f"{self.site}/browse/{project['key']}",
-            }
-            for project in payload.get("values", [])
-        ]
+        """Every project on the site, all pages of it.
+
+        The issue walk is bounded by the project inventory, so a truncated
+        project list would silently shrink every population computed from Jira.
+        ``/project/search`` is paged rather than capped for that reason, and the
+        result is cached because three call sites ask for it per run.
+        """
+        if self._project_cache is not None:
+            return self._project_cache
+
+        rows: list[dict[str, Any]] = []
+        start = 0
+        while True:
+            payload = self._get("/project/search", maxResults=PAGE_SIZE, startAt=start)
+            values = payload.get("values", [])
+            rows.extend(
+                {
+                    "id": project["key"],
+                    "key": project["key"],
+                    "name": project["name"],
+                    "asset_kind": "project",
+                    "project_type": project.get("projectTypeKey", ""),
+                    "url": f"{self.site}/browse/{project['key']}",
+                }
+                for project in values
+            )
+            start += len(values)
+            if payload.get("isLast", True) or not values or start >= payload.get("total", start):
+                break
+        self._project_cache = rows
+        return rows
 
     def inventory(self) -> list[DiscoveredAsset]:
         return [
@@ -92,7 +117,7 @@ class JiraConnector:
             payload = self._get(
                 "/search/jql",
                 jql=jql,
-                maxResults=100,
+                maxResults=PAGE_SIZE,
                 startAt=start,
                 fields="summary,issuetype,status,created,resolutiondate,priority,labels,project,assignee,reporter",
             )
@@ -118,7 +143,7 @@ class JiraConnector:
                     }
                 )
             start += len(issues)
-            if len(issues) < 100 or start >= payload.get("total", start):
+            if len(issues) < PAGE_SIZE or start >= payload.get("total", start):
                 break
         return rows
 
