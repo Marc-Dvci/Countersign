@@ -43,6 +43,11 @@ raises nothing.
 - Walk the tabs: **Population** lists all four items with reasons and evidence,
   **Findings** shows the four-part finding, **Challenge** shows the argument
   against it, **Trace** shows which agents ran.
+- The Challenge tab is worth a second look. The challenger's job is to make the
+  strongest case against a finding, so a reviewer is never shown only the case
+  for it. It cannot act on its own argument: a finding it says should not stand
+  is raised anyway and marked *Challenged*, and the disagreement goes into the
+  audit chain. Whether an exception reaches you is decided by the count.
 
 **Try to break a gate.** Open any finding, click *Accept the risk*, type one
 word, submit. It is refused, and the refusal explains itself. There is no
@@ -56,7 +61,7 @@ payment integrity and ICT resilience.
 ## 4. Check the claims (2 minutes)
 
 ```bash
-.venv/Scripts/python -m pytest -q                 # 130 passed
+.venv/Scripts/python -m pytest -q                 # 137 passed
 .venv/Scripts/python -m countersign.cli verify    # recomputes the audit chain
 .venv/Scripts/python tools/ui_smoke.py            # drives the console in Chromium
 ```
@@ -83,6 +88,8 @@ from the UI runs it, and that the taxonomy changes between tenants.
 | The outcome is counted, never written | `src/countersign/control_tests.py`, `TestResult.outcome()` in `domain.py` |
 | Six agent roles: sequential onboarding, one review graph | `src/countersign/workflow.py` |
 | Untested is not passing | `TestResult.outcome()` in `domain.py`, `tests/test_coverage.py` |
+| Every exception reaches a person | `cover_every_exception()` in `workflow.py`, `tests/test_findings_surface.py` |
+| A challenge argues, it does not withdraw | `record_run()` in `database.py`, `tests/test_findings_surface.py` |
 | agentcore mode really leaves the process | `src/countersign/agentcore_client.py`, `tests/test_agentcore.py` |
 | The population is walked, not sampled | `_pages()` in `connectors/github.py`, `tests/test_connectors.py` |
 | A model may only bind to a registered test | `REGISTRY` in `control_tests.py`, `validate_control()` in `workflow.py` |

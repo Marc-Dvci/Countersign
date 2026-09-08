@@ -18,11 +18,17 @@ Countersign separates what a model may produce from what is true.
    control run, and its answer is never revised. A member the connectors could
    not serve evidence for goes to `not_tested`, and a run holding any of those
    is `inconclusive` rather than `effective`: untested is not passing.
-4. **Authority.** Three transactions carry it: accepting a risk domain,
+4. **The findings surface.** Every exception of an ineffective run is
+   represented by a finding before the run is stored; anything a review left
+   uncovered is composed from the test result and marked `deterministic`. A
+   challenge is an argument recorded beside a finding, so `survives: false`
+   marks it rather than removing it, and a suggested downgrade is stored as a
+   suggestion. What reaches a person is decided by the count.
+5. **Authority.** Three transactions carry it: accepting a risk domain,
    approving a control into the schedule, and dispositioning a finding. All
    three refuse an actor whose identity begins with `agent:`, in the store
    rather than in the interface.
-5. **Persistence.** SQLite, one writer, short `BEGIN IMMEDIATE` transactions,
+6. **Persistence.** SQLite, one writer, short `BEGIN IMMEDIATE` transactions,
    and an append-only audit table whose triggers reject `UPDATE` and `DELETE`.
 
 ## Loop A: onboarding
@@ -50,6 +56,11 @@ with the evidence behind it.
 
 The narrator's `proposed_outcome` is recorded so that a disagreement between the
 model and the count is visible. The count is what is stored.
+
+The findings are reconciled the same way. Every exception of an ineffective run
+has to be represented by one, and a challenge marks a finding rather than
+withdrawing it, so the review decides how a finding is written and never whether
+an exception reaches a person.
 
 The injection scan runs in every model mode, over the documents that were part
 of that run's evidence, before the graph is built. Containment is a property of

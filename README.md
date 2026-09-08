@@ -134,6 +134,36 @@ finding. A control that walked eight of eleven members and closed the finding
 about the ninth is the failure this rule exists to prevent, and
 `tests/test_coverage.py` drives it end to end against the store.
 
+### An exception always reaches a person
+
+Protecting the outcome is not enough on its own, because the outcome is not the
+thing anyone acts on. The findings are. Two rules protect those, in the same
+place and by the same method.
+
+**Every exception of an ineffective run is represented by a finding.** A review
+that concluded `ineffective` and then wrote about two of three exceptions would
+leave the third with no first-class record anywhere, and an absence is the one
+defect nobody downstream can notice. `cover_every_exception` in `workflow.py`
+reconciles the subjects the way the count and the injection scan are already
+reconciled: anything the review left uncovered gets a finding composed from the
+test result, marked `deterministic` so a reviewer can see which half of the
+system wrote it, and the omission is stated in the run's observations rather
+than quietly repaired. `origin` is stamped by the pipeline, never taken from the
+payload, so a model cannot present its own prose as the deterministic record.
+
+**A challenge is an argument, not a veto.** The challenger exists so a reviewer
+is never shown only the case *for* a finding. It does not get to act on its own
+argument: a finding it says should not stand is raised anyway, marked
+`Challenged` in the worklist with the counterargument beside it, and
+`agent:challenger` writes the disagreement into the audit chain. A suggested
+downgrade is stored as a suggestion; the recorded severity is the one the
+control was approved with. The alternative, letting `survives: false` keep a
+finding out of the queue, would put a probabilistic agent in charge of what a
+person is shown, which is the decision this product exists to keep.
+
+Disposition is still a person's, and `closed` is available to nobody.
+
+
 ### Three gates a model cannot open
 
 | Gate | What it refuses |
@@ -387,11 +417,17 @@ claims live on, not only the suite:
 | Audit the locked dependencies | `pip-audit` over the lock. |
 | The console image builds and serves | The image is built, started, and has to answer `/api/state` with an intact audit chain. |
 | The AgentCore runtime builds on ARM64 and answers | Built for `linux/arm64`, which is what AgentCore runs, and started under emulation: `/ping` healthy, `/invocations` serving `status` with the full test registry, and an operation it does not have refused with a 400. |
-| A credentialed Bedrock run reaches the same outcome | Runs where the repository holds AWS credentials. One control is run in `demo` and again in `bedrock`, and the outcome, population and exception count have to be identical. That is the governance claim in one assertion. |
-| The deployed runtime answers the console | Runs where an AgentCore ARN is configured. Calls `countersign runtime`, then runs a control with the review dispatched to the deployed runtime. |
+
+Everything in that table runs without credentials, which is the same property
+the product has: a judge with no AWS account runs all of it. The two checks that
+need a live account are in `.github/workflows/cloud-checks.yml` and are run on
+demand — one runs a control in `demo` and again in `bedrock` and requires the
+outcome, population and exception count to be identical, which is the governance
+claim in a single assertion; the other calls the deployed runtime and runs a
+control with the review dispatched to it.
 
 ```bash
-.venv/Scripts/python -m pytest -q                 # 130 passed
+.venv/Scripts/python -m pytest -q                 # 137 passed
 .venv/Scripts/python -m ruff check src tests tools scripts
 .venv/Scripts/python tools/ui_smoke.py            # drives the real console in Chromium
 .venv/Scripts/python -m countersign.cli score     # marks the run against the answer key
